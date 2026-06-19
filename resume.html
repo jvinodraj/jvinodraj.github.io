@@ -55,6 +55,21 @@
             color: var(--muted);
             font-weight: 600;
         }
+        .cert-toggle {
+            margin-top: 0.8rem;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: #fbfdfc;
+            padding: 0.6rem 0.8rem;
+        }
+        .cert-toggle summary {
+            cursor: pointer;
+            color: var(--brand);
+            font-weight: 700;
+            list-style: none;
+        }
+        .cert-toggle summary::-webkit-details-marker { display: none; }
+        .cert-toggle ul { margin-top: 0.7rem; }
         .small { font-size: 0.95rem; color: var(--muted); }
     </style>
 </head>
@@ -76,28 +91,23 @@
 
     <main class="container">
         <h1>Executive Resume</h1>
-        <p class="meta">Vinodraj Jayaraman | Autonomous Data Engineer | Chennai, India | vinodraj.jayaraman@atos.net</p>
+        <p class="meta">Vinodraj Jayaraman | Data Engineer | Chennai, India | vinodraj.jayaraman@atos.net</p>
 
         <div class="section">
             <h2>Professional Summary</h2>
-            <p>Data Engineer with 17+ years of experience delivering and supporting production data systems across analytics, retail, payments, and financial services. Over the last year, focused on R&D across Data Observability, Agentic AI, and Business Intelligence modernization, including Power BI MCP integration and end-to-end tracing for AI applications.</p>
+            <p>Data Engineer with 17+ years of experience delivering and supporting production data platforms, data pipelines, and analytics solutions across retail, payments, and financial services. Over the last year, focused on R&D in Data Observability, Agentic AI, and Business Intelligence modernization, including Power BI MCP integration, semantic model access, and end-to-end tracing for AI applications.</p>
         </div>
 
         <div class="section">
             <h2>Core Skills</h2>
             <div class="chips">
-                <span class="chip">Apache Airflow</span>
-                <span class="chip">Google Cloud Platform</span>
-                <span class="chip">BigQuery</span>
                 <span class="chip">Python</span>
                 <span class="chip">SQL</span>
                 <span class="chip">C++</span>
-                <span class="chip">Oracle PL/SQL</span>
-                <span class="chip">Teradata</span>
                 <span class="chip">Docker</span>
                 <span class="chip">Grafana</span>
-                <span class="chip">GitHub</span>
-                <span class="chip">Production Support</span>
+                <span class="chip">Power BI</span>
+                <span class="chip">Dynatrace</span>
             </div>
         </div>
 
@@ -127,6 +137,11 @@
             <div class="role">
                 <h3>Atos | Aug 2012 - Present</h3>
                 <p class="timeline">Worked across multiple client engagements in data engineering, modernization, production support, and R&D initiatives.</p>
+                <ul>
+                    <li>Participated in end-to-end SDLC delivery including requirement analysis, design, development, testing, deployment, and production support.</li>
+                    <li>Coordinated with onsite and offshore teams for release planning, defect triage, and incident response.</li>
+                    <li>Drove engineering quality through code reviews, technical documentation, and operational runbooks.</li>
+                </ul>
             </div>
 
             <div class="role">
@@ -135,7 +150,8 @@
                 <ul>
                     <li>Drive research initiatives in data observability and AI-enabled operations across enterprise data platforms.</li>
                     <li>Develop and validate Power BI MCP and migration accelerator patterns for BI modernization programs.</li>
-                    <li>Lead Dynatrace-based observability work for end-to-end tracing of AI agent workflows and chat interactions.</li>
+                    <li>Lead Dynatrace-based observability implementation for end-to-end tracing of AI agent workflows and chat interactions.</li>
+                    <li>Design traceability frameworks covering user interactions, LLM requests/responses, tool invocation flows, and multi-agent execution paths.</li>
                 </ul>
             </div>
 
@@ -143,9 +159,11 @@
                 <h3>The Home Depot | Consultant Data Engineer</h3>
                 <p class="timeline">Jun 2023 - Dec 2024</p>
                 <ul>
-                    <li>Build and support Apache Airflow DAGs and Python tasks for fulfillment and customer data workflows.</li>
+                    <li>Build and support Apache Airflow DAGs and Python tasks for fulfillment, customer, and core data workflows.</li>
                     <li>Troubleshoot production issues, coordinate fixes, and support deployment readiness.</li>
                     <li>Use monitoring and performance analysis to improve pipeline reliability and response time.</li>
+                    <li>Participated in standups, design sessions, story grooming, retrospectives, and cross-team delivery coordination.</li>
+                    <li>Prepared deployment documentation and troubleshooting guides to support faster issue resolution and knowledge transfer.</li>
                 </ul>
             </div>
 
@@ -155,6 +173,8 @@
                 <ul>
                     <li>Executed application refactoring and change requests across C++, Python, shell scripting, and PL/SQL.</li>
                     <li>Provided production hot-fix support and delivered quality improvements through code reviews.</li>
+                    <li>Designed and optimized Oracle SQL/PLSQL routines and Python scripts for data extraction, transformation, and process automation.</li>
+                    <li>Monitored application performance against KPIs and supported enhancements across development, testing, and production lifecycles.</li>
                 </ul>
             </div>
 
@@ -164,10 +184,12 @@
                 <ul>
                     <li>Automated interfaces using Python and PowerShell, and managed build/deploy/test cycles for change requests.</li>
                     <li>Supported production monitoring and incident handling for data workflows and dependent systems.</li>
+                    <li>Collaborated with SMEs to gather business requirements and translate them into executable process flows.</li>
+                    <li>Enforced development best practices including code reviews and unit testing to maintain engineering quality.</li>
                 </ul>
             </div>
 
-            <p class="small"><strong>Additional Atos client history:</strong> StateStreet (Sr. Analyst, 2013 - 2016) and PayPal (Software Engineer, 2012 - 2013), focused on Teradata/Oracle development, scripting automation, and enterprise data delivery operations.</p>
+            <p class="small"><strong>Additional Atos client history:</strong> StateStreet (Sr. Analyst, 2013 - 2016) and PayPal (Software Engineer, 2012 - 2013), with responsibilities spanning Teradata utilities (BTEQ, MLoad, FLoad), database object creation, SQL/PLSQL development, shell-based automation, data quality checks, and enterprise data delivery support.</p>
 
             <div class="role">
                 <h3>Global Analytics | Software Engineer</h3>
@@ -202,18 +224,37 @@
             <div>
                 <h2>Certifications</h2>
                 <ul>
-                    <li>Intro to Go Programming - HackerRank (2023)</li>
-                    <li>Communication Skills - Udemy (2022)</li>
-                    <li>Python for Data Analysis L2 - Mettl (2021)</li>
-                    <li>Docker - Mettl (2021)</li>
+                    <li>Post Graduate Program in Data Engineering - NIELIT (Issued Nov 2023)</li>
+                    <li>BigQuery for Big Data Engineers: Master BigQuery Internals - Udemy (Issued Oct 2023, Credential ID: UC-afcc8980-197d-4a77-8020-2b196501c4fd)</li>
+                    <li>Go (Basic) - HackerRank (Issued Mar 2023, Credential ID: 33a5ff20f7c3)</li>
+                    <li>Go: The Complete Developer's Guide (Golang) - Udemy (Issued Aug 2022, Credential ID: UC-a92652ea-6d78-4dc1-95c8-bab776d3961e)</li>
+                    <li>The Complete Splunk Beginner Course 2022 - Udemy (Issued May 2022, Credential ID: UC-a67cf037-fbe2-40a7-a841-9a0c39b7d0e1)</li>
                 </ul>
+                <details class="cert-toggle">
+                    <summary>Show all other certifications</summary>
+                    <ul>
+                        <li>Write Better Emails: Tactics for Smarter Team Communication - Udemy (Issued Mar 2022)</li>
+                        <li>Programming in C++ Certification - Udemy (Issued Feb 2022, Credential ID: c03d8c4d-d362-47bf-9d1e-49dacddb9850)</li>
+                        <li>Data Analysis using Python Level 2 - Mettl (Issued Jun 2021)</li>
+                        <li>Docker Workshop - Mettl (Issued Apr 2021)</li>
+                        <li>Machine Learning Level 1 - Mettl (Issued Apr 2021)</li>
+                        <li>Python Basics - Mettl (Issued Mar 2021)</li>
+                        <li>Deploying Applications - GCP - Coursera (Issued Aug 2019)</li>
+                        <li>Kubernetes in the Google Cloud - Coursera (Issued Aug 2019)</li>
+                        <li>Application Development - Python - Coursera (Issued Aug 2019)</li>
+                        <li>App Deployment, Debugging, and Performance - Coursera (Issued Aug 2019, Credential ID: 9JU5KVT5WSQK)</li>
+                        <li>Securing and Integrating Components of your Application - Coursera (Issued Aug 2019, Credential ID: EX54Y7PFLM)</li>
+                        <li>Getting Started With Application Development - Coursera (Issued Jun 2019, Credential ID: 4F34P7E34M44)</li>
+                        <li>Google Cloud Platform Fundamentals: Core Infrastructure - Coursera (Issued Jul 2019, Credential ID: KJX7P49N7GZ3)</li>
+                    </ul>
+                </details>
             </div>
             <div>
                 <h2>Education</h2>
                 <p><strong>Bachelor Degree in Computer Science</strong></p>
                 <p class="small">Shri Andal Alagar College of Engineering (2004 - 2008)</p>
                 <h2>Language</h2>
-                <p class="small">English</p>
+                <p class="small">Tamil, English</p>
             </div>
         </div>
     </main>
