@@ -31,6 +31,31 @@
         main { padding: 2.5rem 0; }
         .section { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem; margin-bottom: 1rem; }
         ul { margin: 0.5rem 0 0; }
+        .meta { color: var(--muted); margin: 0.2rem 0 0.8rem; }
+        .two-col {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+        .role { margin-bottom: 1.2rem; }
+        .role h3 { margin-bottom: 0.35rem; }
+        .role .timeline { color: var(--muted); font-weight: 600; margin: 0 0 0.6rem; }
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-top: 0.7rem;
+        }
+        .chip {
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            padding: 0.22rem 0.58rem;
+            font-size: 0.86rem;
+            background: #f8fbfa;
+            color: var(--muted);
+            font-weight: 600;
+        }
+        .small { font-size: 0.95rem; color: var(--muted); }
     </style>
 </head>
 <body>
@@ -50,29 +75,146 @@
     </header>
 
     <main class="container">
-        <h1>Resume</h1>
+        <h1>Executive Resume</h1>
+        <p class="meta">Vinodraj Jayaraman | Autonomous Data Engineer | Chennai, India | vinodraj.jayaraman@atos.net</p>
 
         <div class="section">
-            <h2>Summary</h2>
-            <p>Agentic AI Engineer and Data Engineer with hands-on experience in building reliable analytics systems, AI workflows, and developer platforms.</p>
+            <h2>Professional Summary</h2>
+            <p>Data Engineer with 17+ years of experience delivering and supporting production data systems across analytics, retail, payments, and financial services. Over the last year, focused on R&D across Data Observability, Agentic AI, and Business Intelligence modernization, including Power BI MCP integration and end-to-end tracing for AI applications.</p>
         </div>
 
         <div class="section">
             <h2>Core Skills</h2>
+            <div class="chips">
+                <span class="chip">Apache Airflow</span>
+                <span class="chip">Google Cloud Platform</span>
+                <span class="chip">BigQuery</span>
+                <span class="chip">Python</span>
+                <span class="chip">SQL</span>
+                <span class="chip">C++</span>
+                <span class="chip">Oracle PL/SQL</span>
+                <span class="chip">Teradata</span>
+                <span class="chip">Docker</span>
+                <span class="chip">Grafana</span>
+                <span class="chip">GitHub</span>
+                <span class="chip">Production Support</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Selected Achievements</h2>
             <ul>
-                <li>Data Engineering: SQL, modeling, ETL/ELT, orchestration</li>
-                <li>AI Engineering: Agent systems, MCP servers, tool integrations</li>
-                <li>Platform: CI/CD, observability, production debugging</li>
+                <li>Designed and optimized Airflow workflows, improving pipeline reliability and reducing rerun frequency.</li>
+                <li>Improved operational visibility through proactive dashboards and alerting, helping teams triage incidents faster.</li>
+                <li>Refactored and reviewed multi-language codebases, improving maintainability and release confidence.</li>
+                <li>Automated recurring operational processes with Python and shell scripting to reduce manual effort.</li>
             </ul>
         </div>
 
         <div class="section">
-            <h2>Project Highlights</h2>
+            <h2>R&D and Innovation Contributions (Last 1 Year)</h2>
             <ul>
-                <li>TheEagle - Garmin FIT File Analytics Platform</li>
-                <li>Zion Gospel Ministry - Bible Reading and Ministry Platform</li>
-                <li>Agentic AI Projects - MCP Servers, AI Agents, Data Observability</li>
+                <li><strong>Data Observability Platform Research:</strong> Evaluated enterprise architecture patterns for anomaly detection, data quality, freshness, lineage, and schema drift across GCP, Azure, and AWS, and created a reusable reference framework.</li>
+                <li><strong>Power BI MCP Server for Polaris Agent Studio:</strong> Designed and developed MCP capabilities (XMLA, DAX, semantic model metadata) to enable AI agents to access enterprise Power BI assets.</li>
+                <li><strong>Power BI Migration Accelerator:</strong> Built reusable migration components for metadata extraction and dependency analysis to improve migration planning consistency and delivery speed.</li>
+                <li><strong>Dynatrace-Based Agentic AI Observability:</strong> Leading R&D for end-to-end traceability across chat interactions, agent flows, LLM calls, and tool invocations to improve root-cause analysis and operational visibility.</li>
             </ul>
+        </div>
+
+        <div class="section">
+            <h2>Experience</h2>
+
+            <div class="role">
+                <h3>Atos | Aug 2012 - Present</h3>
+                <p class="timeline">Worked across multiple client engagements in data engineering, modernization, production support, and R&D initiatives.</p>
+            </div>
+
+            <div class="role">
+                <h3>R&D Project | Data Observability and Agentic AI</h3>
+                <p class="timeline">Jan 2025 - Present</p>
+                <ul>
+                    <li>Drive research initiatives in data observability and AI-enabled operations across enterprise data platforms.</li>
+                    <li>Develop and validate Power BI MCP and migration accelerator patterns for BI modernization programs.</li>
+                    <li>Lead Dynatrace-based observability work for end-to-end tracing of AI agent workflows and chat interactions.</li>
+                </ul>
+            </div>
+
+            <div class="role">
+                <h3>The Home Depot | Consultant Data Engineer</h3>
+                <p class="timeline">Jun 2023 - Dec 2024</p>
+                <ul>
+                    <li>Build and support Apache Airflow DAGs and Python tasks for fulfillment and customer data workflows.</li>
+                    <li>Troubleshoot production issues, coordinate fixes, and support deployment readiness.</li>
+                    <li>Use monitoring and performance analysis to improve pipeline reliability and response time.</li>
+                </ul>
+            </div>
+
+            <div class="role">
+                <h3>PayPal | Consultant Software Developer</h3>
+                <p class="timeline">Jan 2022 - Jan 2023</p>
+                <ul>
+                    <li>Executed application refactoring and change requests across C++, Python, shell scripting, and PL/SQL.</li>
+                    <li>Provided production hot-fix support and delivered quality improvements through code reviews.</li>
+                </ul>
+            </div>
+
+            <div class="role">
+                <h3>StateStreet | Consultant</h3>
+                <p class="timeline">Oct 2016 - Dec 2021</p>
+                <ul>
+                    <li>Automated interfaces using Python and PowerShell, and managed build/deploy/test cycles for change requests.</li>
+                    <li>Supported production monitoring and incident handling for data workflows and dependent systems.</li>
+                </ul>
+            </div>
+
+            <p class="small"><strong>Additional Atos client history:</strong> StateStreet (Sr. Analyst, 2013 - 2016) and PayPal (Software Engineer, 2012 - 2013), focused on Teradata/Oracle development, scripting automation, and enterprise data delivery operations.</p>
+
+            <div class="role">
+                <h3>Global Analytics | Software Engineer</h3>
+                <p class="timeline">Mar 2010 - Mar 2012</p>
+                <ul>
+                    <li>Worked with business analysts to translate requirements into technical implementations and complex SQL-based solutions.</li>
+                    <li>Developed functions, procedures, and complex queries across Netezza SQL, MySQL, and Oracle environments.</li>
+                    <li>Created and maintained database objects such as tables, views, sequences, and synonyms.</li>
+                    <li>Developed SQL-Loader and PL/SQL scripts for ingesting data from external sources.</li>
+                    <li>Performed bug analysis and debugging; integrated C++ modules with Python scripts for real-time transaction flows.</li>
+                    <li>Used makefile, gcc, and gdb tooling for compile/debug activities.</li>
+                </ul>
+                <p class="small"><strong>Environment:</strong> Python, C++, MySQL, Oracle, Netezza, SVN</p>
+            </div>
+
+            <div class="role">
+                <h3>CalydonTech | Analyst Programmer</h3>
+                <p class="timeline">Mar 2008 - Mar 2010</p>
+                <ul>
+                    <li>Designed and implemented GSM communication workflows for mobile communication use cases.</li>
+                    <li>Contributed to database design and implementation, including table and view creation based on data models.</li>
+                    <li>Prepared UI and functional documentation and maintained project data documentation standards.</li>
+                    <li>Created, modified, and maintained GIS datasets for engineering and survey initiatives.</li>
+                    <li>Collaborated with technicians and analysts on project support, data processing, and visualization requests.</li>
+                    <li>Maintained desktop geospatial datasets with QA/QC focus on data accuracy and content quality.</li>
+                </ul>
+                <p class="small"><strong>Environment:</strong> Oracle, Keil C</p>
+            </div>
+        </div>
+
+        <div class="section two-col">
+            <div>
+                <h2>Certifications</h2>
+                <ul>
+                    <li>Intro to Go Programming - HackerRank (2023)</li>
+                    <li>Communication Skills - Udemy (2022)</li>
+                    <li>Python for Data Analysis L2 - Mettl (2021)</li>
+                    <li>Docker - Mettl (2021)</li>
+                </ul>
+            </div>
+            <div>
+                <h2>Education</h2>
+                <p><strong>Bachelor Degree in Computer Science</strong></p>
+                <p class="small">Shri Andal Alagar College of Engineering (2004 - 2008)</p>
+                <h2>Language</h2>
+                <p class="small">English</p>
+            </div>
         </div>
     </main>
 </body>
