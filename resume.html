@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume | Vinodraj Jayaraman</title>
+    <meta name="description" content="Resume overview for Vinodraj Jayaraman.">
+    <style>
+        :root {
+            --bg: #f7f8f3;
+            --surface: #ffffff;
+            --ink: #132023;
+            --muted: #4b5f63;
+            --brand: #0f766e;
+            --line: #d8dfdb;
+            --radius: 14px;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+        }
+        .container { width: min(980px, 92vw); margin: 0 auto; }
+        header { border-bottom: 1px solid var(--line); background: #fff; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; }
+        .links { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+        .links a { text-decoration: none; color: var(--muted); font-weight: 600; }
+        .links a:hover { color: var(--brand); }
+        main { padding: 2.5rem 0; }
+        .section { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem; margin-bottom: 1rem; }
+        ul { margin: 0.5rem 0 0; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <strong>Vinodraj Jayaraman</strong>
+                <div class="links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="projects.html">Projects</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Resume</h1>
+
+        <div class="section">
+            <h2>Summary</h2>
+            <p>Agentic AI Engineer and Data Engineer with hands-on experience in building reliable analytics systems, AI workflows, and developer platforms.</p>
+        </div>
+
+        <div class="section">
+            <h2>Core Skills</h2>
+            <ul>
+                <li>Data Engineering: SQL, modeling, ETL/ELT, orchestration</li>
+                <li>AI Engineering: Agent systems, MCP servers, tool integrations</li>
+                <li>Platform: CI/CD, observability, production debugging</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Project Highlights</h2>
+            <ul>
+                <li>TheEagle - Garmin FIT File Analytics Platform</li>
+                <li>Zion Gospel Ministry - Bible Reading and Ministry Platform</li>
+                <li>Agentic AI Projects - MCP Servers, AI Agents, Data Observability</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

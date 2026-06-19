@@ -1,23 +1,264 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Vinodraj Jayaraman</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinodraj Jayaraman | Portfolio</title>
+    <meta name="description" content="Portfolio of Vinodraj Jayaraman - Agentic AI Engineer and Data Engineer.">
+    <style>
+        :root {
+            --bg: #f7f8f3;
+            --surface: #ffffff;
+            --ink: #132023;
+            --muted: #4b5f63;
+            --brand: #0f766e;
+            --brand-2: #f59e0b;
+            --line: #d8dfdb;
+            --radius: 14px;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 5% 5%, #d8f3ea 0%, transparent 35%),
+                radial-gradient(circle at 95% 20%, #fff3cc 0%, transparent 35%),
+                var(--bg);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: min(1100px, 92vw);
+            margin: 0 auto;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(8px);
+            background: rgba(247, 248, 243, 0.9);
+            border-bottom: 1px solid var(--line);
+            z-index: 20;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.85rem 0;
+        }
+
+        .brand {
+            font-weight: 700;
+            letter-spacing: 0.2px;
+        }
+
+        .links {
+            display: flex;
+            gap: 0.9rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .links a:hover { color: var(--brand); }
+
+        .hero {
+            padding: 5rem 0 3.5rem;
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .kicker {
+            display: inline-block;
+            background: #d1fae5;
+            color: #065f46;
+            border-radius: 999px;
+            padding: 0.35rem 0.8rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        h1, h2, h3 { line-height: 1.15; }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+        }
+
+        section { padding: 2.2rem 0; }
+
+        .cards {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 1.1rem;
+            box-shadow: 0 6px 18px rgba(16, 24, 40, 0.05);
+        }
+
+        .card h3 { margin-top: 0; }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+        }
+
+        .tag {
+            background: #ecfeff;
+            color: #155e75;
+            border: 1px solid #bae6fd;
+            padding: 0.2rem 0.55rem;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        .cta-row {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 700;
+            padding: 0.62rem 0.9rem;
+            border: 1px solid transparent;
+        }
+
+        .btn.primary {
+            background: var(--brand);
+            color: #fff;
+        }
+
+        .btn.secondary {
+            border-color: var(--line);
+            color: var(--ink);
+            background: #fff;
+        }
+
+        footer {
+            margin-top: 2rem;
+            border-top: 1px solid var(--line);
+            padding: 1.5rem 0 2rem;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+    </style>
 </head>
 <body>
-    <h1>Vinodraj Jayaraman</h1>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="brand">Vinodraj Jayaraman</div>
+                <div class="links">
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#blog">Blog</a>
+                    <a href="#contact">Contact</a>
+                    <a href="about.html">Pages</a>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-    <p>Agentic AI Engineer | Data Engineer</p>
+    <main class="container">
+        <section class="hero" id="hero">
+            <span class="kicker">Agentic AI + Data Engineering</span>
+            <h1>Building intelligent platforms from data pipelines to production AI agents.</h1>
+            <p>I design and ship systems for analytics, observability, and automation with a strong focus on reliability, user impact, and engineering speed.</p>
+            <div class="cta-row">
+                <a class="btn primary" href="projects.html">View Projects</a>
+                <a class="btn secondary" href="resume.html">Open Resume</a>
+            </div>
+        </section>
 
-    <h2>Projects</h2>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I am Vinodraj Jayaraman, an engineer focused on Agentic AI, data engineering, and production-grade analytics platforms. I enjoy building products that turn complex data workflows into practical tools for teams and communities.</p>
+        </section>
 
-    <ul>
-        <li>TheEagle</li>
-        <li>Zion Gospel Ministry</li>
-        <li>Data Observability Platform</li>
-    </ul>
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="tag-row">
+                <span class="tag">Python</span>
+                <span class="tag">SQL</span>
+                <span class="tag">ETL / ELT</span>
+                <span class="tag">MCP Servers</span>
+                <span class="tag">AI Agents</span>
+                <span class="tag">Data Observability</span>
+                <span class="tag">Cloud Data Platforms</span>
+                <span class="tag">GitHub Actions</span>
+            </div>
+        </section>
 
-    <a href="https://github.com/jvinodraj">
-        GitHub Profile
-    </a>
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="cards">
+                <article class="card">
+                    <h3>TheEagle</h3>
+                    <p>Garmin FIT File Analytics Platform for performance tracking, analysis workflows, and insight extraction.</p>
+                </article>
+                <article class="card">
+                    <h3>Zion Gospel Ministry</h3>
+                    <p>Bible Reading and Ministry Platform supporting scripture engagement, devotional plans, and ministry outreach.</p>
+                </article>
+                <article class="card">
+                    <h3>Agentic AI Projects</h3>
+                    <p>Hands-on projects around MCP Servers, AI Agents, and Data Observability implementations.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="card">
+                <h3>Data and AI Engineering</h3>
+                <p>Delivered end-to-end data products, observability flows, and AI-assisted solutions spanning ingestion, transformation, orchestration, and user-facing analytics.</p>
+            </div>
+        </section>
+
+        <section id="blog">
+            <h2>Blog</h2>
+            <p>I share practical notes on Agentic AI architecture, data platform design, and lessons from production engineering.</p>
+            <a class="btn secondary" href="blog.html">Read Posts</a>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>For collaboration, consulting, or engineering discussions, connect via GitHub or drop a message from the contact page.</p>
+            <div class="cta-row">
+                <a class="btn primary" href="contact.html">Contact Me</a>
+                <a class="btn secondary" href="https://github.com/jvinodraj" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div>&copy; 2026 Vinodraj Jayaraman. Built on GitHub Pages.</div>
+        </div>
+    </footer>
 </body>
 </html>
