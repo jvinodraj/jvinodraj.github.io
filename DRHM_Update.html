@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10 Weeks of Running in Chennai — What the Data Actually Says</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #F0EBE1;
+    --ink-muted: #9A9082;
+    --ink-faint: #3A3530;
+    --bg: #0F0F0D;
+    --surface: #161612;
+    --cyan: #00D4B8;
+    --amber: #C8873A;
+    --red: #E05C5C;
+    --green: #4DB87A;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  html { background: var(--bg); color: var(--ink); font-family: var(--sans); }
+
+  body {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  /* ── HERO ─────────────────────────────────────────── */
+  .hero {
+    padding: 72px 0 48px;
+    border-bottom: 1px solid var(--ink-faint);
+    margin-bottom: 56px;
+  }
+
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 6vw, 54px);
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 20px;
+    font-weight: 400;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--cyan);
+  }
+
+  .subtitle {
+    font-size: 19px;
+    color: var(--ink-muted);
+    line-height: 1.55;
+    max-width: 580px;
+    margin-bottom: 40px;
+  }
+
+  .hero-trace {
+    width: 100%;
+    height: 80px;
+    margin-top: 32px;
+    overflow: visible;
+  }
+
+  .trace-path {
+    fill: none;
+    stroke: var(--cyan);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    opacity: 0.7;
+  }
+
+  .trace-glow {
+    fill: none;
+    stroke: var(--cyan);
+    stroke-width: 6;
+    stroke-linecap: round;
+    opacity: 0.06;
+  }
+
+  /* animated draw-on */
+  @keyframes draw {
+    from { stroke-dashoffset: 2200; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  .trace-path, .trace-glow {
+    stroke-dasharray: 2200;
+    stroke-dashoffset: 2200;
+    animation: draw 3.2s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards;
+  }
+
+  /* ── PROSE ────────────────────────────────────────── */
+  p { color: var(--ink); margin-bottom: 1.5rem; }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--ink);
+    margin: 3rem 0 1rem;
+    line-height: 1.25;
+  }
+
+  h3 {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin: 2.5rem 0 0.75rem;
+  }
+
+  .drop-cap::first-letter {
+    font-family: var(--serif);
+    font-size: 72px;
+    float: left;
+    line-height: 0.78;
+    margin-right: 8px;
+    margin-top: 6px;
+    color: var(--cyan);
+  }
+
+  /* ── CALLOUT CARDS ────────────────────────────────── */
+  .callout {
+    margin: 2.5rem -8px;
+    padding: 28px 32px;
+    background: var(--surface);
+    border-left: 3px solid var(--cyan);
+    border-radius: 0 8px 8px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+
+  .callout.amber { border-left-color: var(--amber); }
+  .callout.red { border-left-color: var(--red); }
+  .callout.green { border-left-color: var(--green); }
+
+  .callout-single {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-item {}
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 36px;
+    color: var(--cyan);
+    line-height: 1;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .callout.amber .stat-num { color: var(--amber); }
+  .callout.red .stat-num { color: var(--red); }
+  .callout.green .stat-num { color: var(--green); }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.4;
+  }
+  .stat-sub {
+    font-size: 13px;
+    color: var(--ink-muted);
+    margin-top: 6px;
+  }
+
+  /* ── PULLQUOTE ────────────────────────────────────── */
+  blockquote {
+    margin: 2.5rem 0;
+    padding: 0 0 0 24px;
+    border-left: 1px solid var(--ink-faint);
+    font-family: var(--serif);
+    font-size: 22px;
+    font-style: italic;
+    color: var(--ink-muted);
+    line-height: 1.5;
+  }
+
+  /* ── CHART SECTION ────────────────────────────────── */
+  .chart-wrap {
+    background: var(--surface);
+    border: 1px solid var(--ink-faint);
+    border-radius: 12px;
+    padding: 28px 24px 20px;
+    margin: 2.5rem 0;
+  }
+
+  .chart-title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 20px;
+  }
+
+  .chart-canvas-wrap {
+    position: relative;
+    width: 100%;
+    height: 220px;
+  }
+
+  /* ── INLINE DATA TABLE ────────────────────────────── */
+  .data-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--ink-faint);
+    gap: 12px;
+  }
+  .data-row:last-child { border-bottom: none; }
+  .data-row-label { font-size: 14px; color: var(--ink-muted); flex: 1; }
+  .data-row-val { font-family: var(--serif); font-size: 20px; color: var(--ink); }
+  .data-row-delta { font-size: 13px; padding: 2px 8px; border-radius: 4px; font-weight: 500; }
+  .up { background: rgba(77, 184, 122, 0.15); color: var(--green); }
+  .down { background: rgba(224, 92, 92, 0.15); color: var(--red); }
+  .flat { background: rgba(154, 144, 130, 0.15); color: var(--ink-muted); }
+
+  /* ── WEEK BAND ────────────────────────────────────── */
+  .week-band {
+    display: flex;
+    gap: 4px;
+    margin: 2rem 0;
+    align-items: flex-end;
+    height: 56px;
+  }
+  .week-bar {
+    flex: 1;
+    border-radius: 3px 3px 0 0;
+    min-height: 4px;
+    position: relative;
+    transition: opacity 0.2s;
+  }
+  .week-bar:hover { opacity: 0.7; }
+  .week-labels {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+  .week-label {
+    flex: 1;
+    font-size: 9px;
+    color: var(--ink-muted);
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── STRENGTH TABLE ───────────────────────────────── */
+  .signal-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--ink-faint);
+  }
+  .signal-row:last-child { border-bottom: none; }
+  .signal-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .signal-desc { flex: 1; font-size: 15px; color: var(--ink); }
+  .signal-count { font-size: 13px; color: var(--ink-muted); }
+
+  /* ── DIVIDER ──────────────────────────────────────── */
+  .divider {
+    height: 1px;
+    background: var(--ink-faint);
+    margin: 3rem 0;
+  }
+
+  /* ── AUTHOR / FOOTER ──────────────────────────────── */
+  .author-line {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 32px 0;
+    border-top: 1px solid var(--ink-faint);
+    margin-top: 4rem;
+  }
+  .author-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--cyan), var(--amber));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--bg);
+    flex-shrink: 0;
+  }
+  .author-meta { font-size: 14px; color: var(--ink-muted); line-height: 1.5; }
+  .author-name { font-weight: 500; color: var(--ink); }
+
+  .tag-row { margin-top: 2rem; display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag {
+    font-size: 12px;
+    padding: 4px 12px;
+    border: 1px solid var(--ink-faint);
+    border-radius: 20px;
+    color: var(--ink-muted);
+  }
+</style>
+</head>
+<body>
+
+<article>
+
+<!-- HERO -->
+<header class="hero">
+  <p class="eyebrow">Running Science · Personal Data · 10-Week Analysis</p>
+  <h1>I Ran 17 Easy Runs in the Chennai Heat.<br><em>Here's what the data actually showed.</em></h1>
+  <p class="subtitle">A self-experiment in aerobic efficiency, biomechanics, and the cost of training at 30°C — tracked to the heartbeat.</p>
+
+  <!-- Animated HR trace hero -->
+  <svg class="hero-trace" viewBox="0 0 680 80" preserveAspectRatio="none" aria-hidden="true">
+    <path class="trace-glow" d="M0,50 L60,50 L68,30 L76,68 L84,22 L92,58 L100,50 L160,50 L168,32 L176,66 L182,20 L190,56 L198,50 L248,48 L256,28 L264,64 L272,18 L280,54 L288,48 L338,46 L346,24 L354,60 L362,14 L370,52 L378,46 L428,44 L436,20 L444,58 L452,10 L460,50 L468,44 L528,42 L536,18 L544,56 L552,8 L560,48 L568,42 L620,40 L680,40"/>
+    <path class="trace-path" d="M0,50 L60,50 L68,30 L76,68 L84,22 L92,58 L100,50 L160,50 L168,32 L176,66 L182,20 L190,56 L198,50 L248,48 L256,28 L264,64 L272,18 L280,54 L288,48 L338,46 L346,24 L354,60 L362,14 L370,52 L378,46 L428,44 L436,20 L444,58 L452,10 L460,50 L468,44 L528,42 L536,18 L544,56 L552,8 L560,48 L568,42 L620,40 L680,40"/>
+    <text x="16" y="74" font-family="Inter, sans-serif" font-size="9" fill="#3A3530" letter-spacing="0.1em">APR</text>
+    <text x="198" y="74" font-family="Inter, sans-serif" font-size="9" fill="#3A3530" letter-spacing="0.1em">MAY</text>
+    <text x="398" y="74" font-family="Inter, sans-serif" font-size="9" fill="#3A3530" letter-spacing="0.1em">JUN</text>
+  </svg>
+</header>
+
+
+<!-- INTRO -->
+<p class="drop-cap">The heart does not lie. You can game pace. You can explain away a bad session. But the relationship between how fast your heart beats and how fast your legs move — that ratio, tracked over weeks — tells you something the mirror can't.</p>
+
+<p>Between April 16 and June 23, 2026, I ran 17 easy sessions in Chennai — a city where the air itself feels like a second workout. I wore a Garmin, logged every FIT file, and ran the numbers through a biomechanics analysis pipeline built from scratch. What follows is what I found.</p>
+
+<p>Spoiler: the news is mostly good, with one recurring flag I can't ignore.</p>
+
+<div class="callout">
+  <div class="stat-item">
+    <span class="stat-num">17</span>
+    <span class="stat-label">Easy runs analyzed</span>
+    <p class="stat-sub">Apr 16 – Jun 23, 2026</p>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">+6.4%</span>
+    <span class="stat-label">Aerobic efficiency gain</span>
+    <p class="stat-sub">Power per heartbeat (W/bpm)</p>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">14/17</span>
+    <span class="stat-label">Runs at 30°C or hotter</span>
+    <p class="stat-sub">The Chennai confound</p>
+  </div>
+</div>
+
+
+<!-- SECTION 1 -->
+<h2>The metric that matters: efficiency, not pace</h2>
+
+<p>Most runners fixate on pace. I did too — until I started logging power. The number I care about now is called the <strong>Efficiency Factor</strong>: watts produced per heartbeat. It's the Joe Friel / TrainingPeaks standard for aerobic development, and it doesn't care whether you ran 5km or 12km, whether it was cool or a furnace.</p>
+
+<p>My EF moved from 1.536 W/bpm on the first run to 1.634 W/bpm on the last. That's a 6.4% gain in true aerobic output over ten weeks. For reference: below 1.4 is beginner territory; above 1.8 is trained. I'm moving through the middle of the recreational band — and moving in the right direction.</p>
+
+<div class="chart-wrap">
+  <p class="chart-title">Efficiency Factor (W/bpm) across 17 easy runs</p>
+  <div class="chart-canvas-wrap">
+    <canvas id="efChart" role="img" aria-label="Line chart showing Efficiency Factor improving from 1.536 to 1.634 across 17 runs from April to June 2026"></canvas>
+  </div>
+</div>
+
+<p>The pace barely budged — around 7.3–7.5 min/km throughout. But the heart is doing less work to produce the same output. That's adaptation. That's what easy running is supposed to build.</p>
+
+
+<!-- SECTION 2 -->
+<h2>The flag I can't explain away</h2>
+
+<p>Here's the uncomfortable part. Aerobic decoupling measures how much your heart rate drifts upward relative to your pace within a single run. Under 5% is the benchmark for an aerobically fit run. My median? <strong>7.1%</strong>. Only 3 of 17 runs came in under threshold.</p>
+
+<blockquote>"Five of seventeen runs crossed the 8% line — the strongest within-run fatigue signal in these sessions."</blockquote>
+
+<div class="callout amber">
+  <div class="stat-item">
+    <span class="stat-num">7.1%</span>
+    <span class="stat-label">Median aerobic decoupling</span>
+    <p class="stat-sub">Benchmark: &lt;5% per run</p>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">3/17</span>
+    <span class="stat-label">Runs below 5% threshold</span>
+    <p class="stat-sub">18% pass rate</p>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">5/17</span>
+    <span class="stat-label">Runs above 8% — high fatigue signal</span>
+    <p class="stat-sub">Including the last two</p>
+  </div>
+</div>
+
+<p>Now, there's a major confound: <strong>14 of my 17 runs happened at 30°C or above</strong>. Heat drives cardiac drift regardless of fitness. The question is whether the decoupling is heat-induced or fatigue-induced — and probably, it's both. The last two runs (June 16 and June 23) both sat at 8.4%, suggesting load is accumulating.</p>
+
+
+<!-- SECTION 3 – Weekly EF band -->
+<h2>Week by week: the shape of adaptation</h2>
+
+<p>Zoom out to weekly averages and you see the adaptation curve more clearly — bursts of improvement punctuated by fatigue-risk weeks where the body is absorbing load before it expresses it.</p>
+
+<!-- Week EF bars -->
+<div>
+  <div class="week-labels">
+    <span class="week-label">W15</span>
+    <span class="week-label">W16</span>
+    <span class="week-label">W17</span>
+    <span class="week-label">W18</span>
+    <span class="week-label">W19</span>
+    <span class="week-label">W20</span>
+    <span class="week-label">W21</span>
+    <span class="week-label">W22</span>
+    <span class="week-label">W23</span>
+    <span class="week-label">W24</span>
+    <span class="week-label">W25</span>
+  </div>
+  <div class="week-band" id="weekBand"></div>
+</div>
+
+<!-- run-status timeline -->
+<div id="runTimeline" style="margin: 1.5rem 0 2.5rem;">
+  <!-- built by JS -->
+</div>
+
+<p>Weeks 17, 18, and 19 (early–mid May) were fatigue-risk territory. Then weeks 22 and 23 brought the clearest improving signal of the whole block — EF 1.63, decoupling under 7%. The latest two weeks (24 and 25) have crept back into caution territory. A planned recovery week is overdue.</p>
+
+
+<!-- SECTION 4 -->
+<h2>Intervals and threshold: going harder</h2>
+
+<p>The easy runs are only part of the picture. Alongside them, I ran 12 interval and threshold sessions — and these have been growing in both volume and stimulus.</p>
+
+<div class="callout green">
+  <div class="stat-item">
+    <span class="stat-num">12</span>
+    <span class="stat-label">Interval / threshold sessions</span>
+    <p class="stat-sub">Apr 28 – Jun 27</p>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">5.0</span>
+    <span class="stat-label">Peak aerobic training effect</span>
+    <p class="stat-sub">Today's session (Jun 27)</p>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">1,893s</span>
+    <span class="stat-label">Time near threshold today</span>
+    <p class="stat-sub">Best of the entire block</p>
+  </div>
+</div>
+
+<p>Today's session (June 27) was 101 minutes and 16km — the longest of the block. Eleven reps, near-zero pace fade (0.15%), and a power consistency CV of just 1.6%. By the numbers, this was the most controlled quality session of the ten weeks.</p>
+
+<p>Threshold pace has stabilized around 6.2–6.3 min/km. For context, the first interval session in late April had a threshold pace of 5.56 min/km — a faster number, but far less controlled. The sessions now are longer, more consistent, and producing a bigger stimulus. That's the correct direction.</p>
+
+
+<!-- SECTION 5 -->
+<h2>What the bones are doing: biomechanics</h2>
+
+<p>This is the part most training apps don't show you. I tracked three biomechanical indices across 17 sessions:</p>
+
+<div class="chart-wrap">
+  <p class="chart-title">Biomechanical indices: April vs May (latest)</p>
+  <div style="padding-top: 8px;">
+
+    <div class="data-row">
+      <span class="data-row-label">CSI — Cadence Stability Index<br><small style="font-size:12px; color: #3A3530;">Steadier cadence under stress</small></span>
+      <span class="data-row-val">56.2</span>
+      <span class="data-row-delta up">+77%</span>
+    </div>
+
+    <div class="data-row">
+      <span class="data-row-label">GDI — Ground Contact Durability<br><small style="font-size:12px; color: #3A3530;">More stable foot contact over time</small></span>
+      <span class="data-row-val">64.4</span>
+      <span class="data-row-delta up">+198%</span>
+    </div>
+
+    <div class="data-row">
+      <span class="data-row-label">FRS — Fatigue Resistance Score<br><small style="font-size:12px; color: #3A3530;">Less pace &amp; cardio collapse late in runs</small></span>
+      <span class="data-row-val">43.4</span>
+      <span class="data-row-delta down">−18%</span>
+    </div>
+
+    <div class="data-row">
+      <span class="data-row-label">BES — Biomechanical Efficiency<br><small style="font-size:12px; color: #3A3530;">Better pace-power with less mechanical waste</small></span>
+      <span class="data-row-val">48.5</span>
+      <span class="data-row-delta flat">mean</span>
+    </div>
+
+  </div>
+</div>
+
+<p>The GDI jump is the most striking: from 21.6 in April to 47.2 in May, latest reading 64.4. My ground-contact behavior is dramatically more consistent now than when I started. This is a signal that the connective tissue and motor patterns are adapting to the volume.</p>
+
+<p>One nuance the data revealed: <strong>in heat, GDI drops sharply</strong>. On cool days (n=8), GDI averaged 51.0. On hot days (n=9), it fell to 26.8. The heat doesn't just raise your heart rate — it degrades the quality of your footstrike mechanics. Something to monitor in Chennai.</p>
+
+<p>The most interesting correlation in the whole dataset: <strong>GCT and pace have a near-perfect r=0.948 relationship</strong>. Ground contact time predicts pace almost exactly. Shorten your time on the ground — even slightly — and speed follows. This is where the next phase of training should focus.</p>
+
+
+<!-- SECTION 6 -->
+<h2>Lifting, and whether it helped</h2>
+
+<p>I ran 19 strength sessions alongside the running — roughly twice a week, averaging an hour each. The interaction with running was the hardest thing to measure, but the overall picture is positive.</p>
+
+<div class="callout" style="border-left-color: var(--ink-muted); grid-template-columns: 1fr;">
+  <div>
+    <div class="signal-row">
+      <div class="signal-dot" style="background: var(--green);"></div>
+      <span class="signal-desc">Potential positive transfer to running</span>
+      <span class="signal-count">5 sessions</span>
+    </div>
+    <div class="signal-row">
+      <div class="signal-dot" style="background: var(--red);"></div>
+      <span class="signal-desc">Possible interference with running</span>
+      <span class="signal-count">5 sessions</span>
+    </div>
+    <div class="signal-row">
+      <div class="signal-dot" style="background: var(--ink-muted);"></div>
+      <span class="signal-desc">Neutral or inconclusive signal</span>
+      <span class="signal-count">3 sessions</span>
+    </div>
+    <div class="signal-row">
+      <div class="signal-dot" style="background: var(--ink-faint);"></div>
+      <span class="signal-desc">Insufficient data (weight not logged)</span>
+      <span class="signal-count">6 sessions</span>
+    </div>
+  </div>
+</div>
+
+<p>The missing weight data is the main limitation — without external load per set, neuromuscular fatigue precision is low. The recovery cost averaged 59.4/100, which is moderate and well-tolerated. No session crossed into high fatigue risk. The strength dose appears compatible with the endurance workload. The lesson for the next block: log the kilos.</p>
+
+
+<!-- DIVIDER + CLOSING -->
+<div class="divider"></div>
+
+<h2>What comes next</h2>
+
+<p>The data points to one clear decision: a recovery week. The last two easy runs both show 8.4% decoupling. The total training volume (easy + interval + strength) has been consistently high since early May. The body has been absorbing; it needs to express.</p>
+
+<p>After that, the roadmap is cleaner than ever:</p>
+
+<p><strong>Keep building EF.</strong> Another 4–6 weeks of easy volume, targeting 10–12km per run, aiming to finally push median decoupling below 5%.</p>
+
+<p><strong>Attack GCT.</strong> The r=0.948 correlation between ground contact and pace is a gift. Drills, strides, and cadence work can move this metric — and the pace will follow.</p>
+
+<p><strong>Adjust for the heat, don't fight it.</strong> I can't run easy at 7:30 min/km pace and compare it fairly to a 22°C threshold session. The training needs a heat-adjusted pacing model. The biomechanics index on hot days is an early version of that.</p>
+
+<p>Running in this city is hard. The air resists. The sun takes. But ten weeks of data say: the heart is getting quieter for the same work. That's the whole game.</p>
+
+
+<!-- AUTHOR -->
+<footer class="author-line">
+  <div class="author-avatar">R</div>
+  <div class="author-meta">
+    <div class="author-name">Running this experiment in Chennai</div>
+    Data from Garmin FIT files · Analyzed with a custom Python pipeline · Jun 27, 2026
+  </div>
+</footer>
+
+<div class="tag-row">
+  <span class="tag">Running</span>
+  <span class="tag">Training Data</span>
+  <span class="tag">Aerobic Fitness</span>
+  <span class="tag">Heart Rate</span>
+  <span class="tag">Biomechanics</span>
+  <span class="tag">Chennai</span>
+  <span class="tag">Self-Experiment</span>
+</div>
+
+</article>
+
+<!-- CHART.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+/* EF line chart */
+const efDates = ['Apr 16','Apr 18','Apr 23','Apr 25','Apr 30','May 2','May 7','May 9','May 14','May 21','May 23','May 28','Jun 2','Jun 4','Jun 13','Jun 16','Jun 23'];
+const efVals = [1.536,1.474,1.565,1.532,1.563,1.538,1.520,1.538,1.484,1.525,1.564,1.543,1.607,1.657,1.623,1.602,1.634];
+const decVals = [7.2,2.5,5.0,5.4,7.1,9.8,8.4,8.4,6.5,7.3,4.6,7.9,6.4,6.8,5.7,10.2,8.4];
+
+new Chart(document.getElementById('efChart'), {
+  type: 'line',
+  data: {
+    labels: efDates,
+    datasets: [
+      {
+        label: 'EF (W/bpm)',
+        data: efVals,
+        borderColor: '#00D4B8',
+        backgroundColor: 'rgba(0,212,184,0.08)',
+        borderWidth: 2,
+        pointRadius: 4,
+        pointBackgroundColor: '#00D4B8',
+        pointBorderColor: '#161612',
+        pointBorderWidth: 2,
+        tension: 0.35,
+        fill: true,
+        yAxisID: 'y'
+      },
+      {
+        label: 'Decoupling %',
+        data: decVals,
+        borderColor: '#C8873A',
+        borderWidth: 1.5,
+        borderDash: [4,3],
+        pointRadius: 3,
+        pointBackgroundColor: '#C8873A',
+        pointBorderColor: '#161612',
+        pointBorderWidth: 1,
+        tension: 0.35,
+        fill: false,
+        yAxisID: 'y2'
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#1A1A17',
+        borderColor: '#3A3530',
+        borderWidth: 1,
+        titleColor: '#9A9082',
+        bodyColor: '#F0EBE1',
+        padding: 10,
+        callbacks: {
+          label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(3)
+        }
+      }
+    },
+    scales: {
+      x: {
+        ticks: { color: '#3A3530', font: { size: 10 }, maxRotation: 45, autoSkip: true, maxTicksLimit: 9 },
+        grid: { color: 'rgba(58,53,48,0.5)', lineWidth: 0.5 }
+      },
+      y: {
+        position: 'left',
+        min: 1.44,
+        max: 1.72,
+        ticks: { color: '#00D4B8', font: { size: 10 }, callback: v => v.toFixed(2) },
+        grid: { color: 'rgba(58,53,48,0.5)', lineWidth: 0.5 },
+        title: { display: true, text: 'EF W/bpm', color: '#00D4B8', font: { size: 10 } }
+      },
+      y2: {
+        position: 'right',
+        min: 0,
+        max: 14,
+        ticks: { color: '#C8873A', font: { size: 10 }, callback: v => v + '%' },
+        grid: { drawOnChartArea: false },
+        title: { display: true, text: 'Decoupling', color: '#C8873A', font: { size: 10 } }
+      }
+    }
+  }
+});
+
+/* Week EF band */
+const weekData = [
+  { label:'W15', ef: 1.505, status:'baseline' },
+  { label:'W16', ef: 1.548, status:'improving' },
+  { label:'W17', ef: 1.550, status:'fatigue_risk' },
+  { label:'W18', ef: 1.529, status:'fatigue_risk' },
+  { label:'W19', ef: 1.484, status:'fatigue_risk' },
+  { label:'W20', ef: 1.544, status:'improving' },
+  { label:'W21', ef: 1.543, status:'fatigue_risk' },
+  { label:'W22', ef: 1.632, status:'improving' },
+  { label:'W23', ef: 1.623, status:'steady' },
+  { label:'W24', ef: 1.602, status:'fatigue_risk' },
+  { label:'W25', ef: 1.634, status:'fatigue_risk' }
+];
+const colorMap = {
+  baseline: '#3A3530',
+  improving: '#00D4B8',
+  fatigue_risk: '#C8873A',
+  steady: '#4DB87A'
+};
+const minEF = 1.46, maxEF = 1.65;
+const band = document.getElementById('weekBand');
+weekData.forEach(w => {
+  const bar = document.createElement('div');
+  bar.className = 'week-bar';
+  const pct = Math.round(((w.ef - minEF) / (maxEF - minEF)) * 100);
+  bar.style.height = pct + '%';
+  bar.style.background = colorMap[w.status];
+  bar.title = w.label + ': EF ' + w.ef.toFixed(3) + ' (' + w.status.replace('_',' ') + ')';
+  band.appendChild(bar);
+});
+
+/* Custom legend for week band */
+const legend = document.getElementById('runTimeline');
+legend.innerHTML = `
+  <div style="display:flex; gap:16px; flex-wrap:wrap; font-size:12px; color:#9A9082; padding-top:8px;">
+    <span style="display:flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;border-radius:2px;background:#00D4B8;display:inline-block;"></span>Improving</span>
+    <span style="display:flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;border-radius:2px;background:#4DB87A;display:inline-block;"></span>Steady</span>
+    <span style="display:flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;border-radius:2px;background:#C8873A;display:inline-block;"></span>Fatigue risk</span>
+    <span style="display:flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;border-radius:2px;background:#3A3530;display:inline-block;"></span>Baseline</span>
+  </div>
+`;
+</script>
+</body>
+</html>
