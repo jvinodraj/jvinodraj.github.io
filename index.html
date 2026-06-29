@@ -156,6 +156,55 @@
             background: #fff;
         }
 
+        .blog-intro {
+            max-width: 70ch;
+            margin-bottom: 1rem;
+        }
+
+        .blog-list {
+            display: grid;
+            gap: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        .blog-post {
+            display: grid;
+            gap: 0.45rem;
+            padding: 1rem 1.1rem;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: linear-gradient(135deg, #ffffff, #f8fffd);
+        }
+
+        .blog-meta {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--brand);
+        }
+
+        .blog-post h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .blog-post p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .blog-link {
+            width: fit-content;
+            text-decoration: none;
+            font-weight: 700;
+            color: var(--brand);
+        }
+
+        .blog-link:hover {
+            text-decoration: underline;
+        }
+
         footer {
             margin-top: 2rem;
             border-top: 1px solid var(--line);
@@ -238,8 +287,18 @@
 
         <section id="blog">
             <h2>Blog</h2>
-            <p>I share practical notes on Agentic AI architecture, data platform design, and lessons from production engineering.</p>
-            <a class="btn secondary" href="blog.html">Read Posts</a>
+            <p class="blog-intro">I publish engineering notes on Agentic AI, data platforms, and practical experiments. The latest post is listed below, and the blog archive is structured for future posts.</p>
+            <div class="blog-list">
+                <article class="blog-post">
+                    <span class="blog-meta">Latest Post · June 2026</span>
+                    <h3>10 Weeks of Running in Chennai - What the Data Actually Says</h3>
+                    <p>A data-backed training analysis covering efficiency trends, heat impact, and performance signals across 17 easy runs.</p>
+                    <a class="blog-link" href="DRHM_Update.html">Read DRHM Update</a>
+                </article>
+            </div>
+            <div class="cta-row">
+                <a class="btn secondary" href="blog.html">Open Blog Archive</a>
+            </div>
         </section>
 
         <section id="contact">
