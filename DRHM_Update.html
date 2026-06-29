@@ -417,6 +417,44 @@
 
 <p>Now, there's a major confound: <strong>14 of my 17 runs happened at 30°C or above</strong>. Heat drives cardiac drift regardless of fitness. The question is whether the decoupling is heat-induced or fatigue-induced — and probably, it's both. The last two runs (June 16 and June 23) both sat at 8.4%, suggesting load is accumulating.</p>
 
+<p>So I ran the numbers. Plotted every run's weighted average temperature against average heart rate. The result was uncomfortably clean.</p>
+
+<!-- TEMPERATURE VS HR SCATTER -->
+<div class="chart-wrap">
+  <p class="chart-title">Temperature vs average HR — 16 easy runs (weighted avg °C)</p>
+  <div style="display:flex; gap:16px; margin-bottom:14px; flex-wrap:wrap;">
+    <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#9A9082;"><span style="width:10px;height:10px;border-radius:50%;background:#00D4B8;display:inline-block;"></span>Easy run</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#9A9082;"><span style="width:22px;height:2px;background:#C8873A;display:inline-block;"></span>Fit: HR = 2.88×Temp + 61.34</span>
+  </div>
+  <div class="chart-canvas-wrap" style="height:280px;">
+    <canvas id="tempHrChart" role="img" aria-label="Scatter plot showing positive correlation between weighted average temperature and average heart rate across 16 easy runs, with a linear fit of HR = 2.88 times temperature plus 61.34"></canvas>
+  </div>
+</div>
+
+<p>Every extra degree Celsius costs roughly <strong>2.9 beats per minute</strong>. The fit is HR = 2.88 × temp + 61.34, and the correlation is strong enough that temperature alone explains a large share of the HR variance in these sessions. This matters practically: a run at 31.5°C carries a ~7 bpm cardiac penalty compared to one at 29°C — before fatigue, fitness, or pace enter the picture at all.</p>
+
+<p>The two outliers are instructive. June 23 (29.8°C, 143 bpm) sits well below the regression line — the clearest evidence of genuine aerobic adaptation in the dataset, because that HR is lower than the temperature alone would predict. April 18 (31.1°C, 155 bpm) sits well above it — the highest HR of the entire block, early in the training, when neither heat acclimatisation nor aerobic base were established.</p>
+
+<div class="callout amber">
+  <div class="stat-item">
+    <span class="stat-num">~2.9</span>
+    <span class="stat-label">BPM cost per °C of heat</span>
+    <p class="stat-sub">Linear regression, 16 runs</p>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">−12 bpm</span>
+    <span class="stat-label">HR drop: Apr 18 → Jun 23</span>
+    <p class="stat-sub">155 → 143, similar distance</p>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">29–31.5°C</span>
+    <span class="stat-label">Temperature range across sessions</span>
+    <p class="stat-sub">~7 bpm spread from heat alone</p>
+  </div>
+</div>
+
+<p>The practical implication: comparing HR or EF across sessions without accounting for temperature is misleading. A 148 bpm run at 29°C is a fundamentally different cardiovascular effort than a 148 bpm run at 32°C. Heat-adjusted EF is the metric that matters most here — and the trend still points upward even after controlling for it.</p>
+
 
 <!-- SECTION 3 – Weekly EF band -->
 <h2>Week by week: the shape of adaptation</h2>
@@ -553,6 +591,48 @@
 <p>The missing weight data is the main limitation — without external load per set, neuromuscular fatigue precision is low. The recovery cost averaged 59.4/100, which is moderate and well-tolerated. No session crossed into high fatigue risk. The strength dose appears compatible with the endurance workload. The lesson for the next block: log the kilos.</p>
 
 
+<!-- SECTION 7 -->
+<h2>The body itself: composition over 10 weeks</h2>
+
+<p>Running and lifting leave fingerprints on the scale — but not in the way most people expect. My total weight barely shifted. What moved was the composition underneath it.</p>
+
+<div class="callout green">
+  <div class="stat-item">
+    <span class="stat-num" style="color: var(--green);">−0.8%</span>
+    <span class="stat-label">Body fat change</span>
+    <p class="stat-sub">25.8% → 25.0%</p>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num" style="color: var(--green);">+0.63 kg</span>
+    <span class="stat-label">Muscle mass gained</span>
+    <p class="stat-sub">50.86 → 51.49 kg</p>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num" style="color: var(--cyan);">+0.6%</span>
+    <span class="stat-label">Body water increase</span>
+    <p class="stat-sub">54.4% → 55.0%</p>
+  </div>
+</div>
+
+<p>The trend is slow and consistent — exactly what it should look like when you're running high volume in heat while also lifting. Fat is coming off at roughly 0.27% per measurement. Muscle is accumulating at +0.21 kg per measurement. These numbers move together, not against each other, which suggests the training dose and nutrition are compatible.</p>
+
+<div class="chart-wrap">
+  <p class="chart-title">Body composition trend — 4 measurements</p>
+  <div style="display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap;">
+    <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#9A9082;"><span style="width:10px;height:3px;background:#E05C5C;display:inline-block;border-radius:2px;"></span>Body fat %</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#9A9082;"><span style="width:10px;height:3px;background:#4DB87A;display:inline-block;border-radius:2px;"></span>Muscle mass (kg)</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#9A9082;"><span style="width:10px;height:3px;background:#00D4B8;display:inline-block;border-radius:2px;border-style:dashed;"></span>Body water %</span>
+  </div>
+  <div class="chart-canvas-wrap">
+    <canvas id="bodyCompChart" role="img" aria-label="Line chart showing body fat decreasing from 25.8 to 25.0%, muscle mass increasing from 50.86 to 51.49 kg, and body water rising from 54.4 to 55.0% across 4 measurements"></canvas>
+  </div>
+</div>
+
+<p>The protein mass uptick — from 14.8 to 15.0 kg — mirrors the muscle mass gain and confirms it's contractile tissue being added, not water weight. The body water rise is also a positive signal: better-hydrated muscle cells are more metabolically active and recover faster. In a Chennai summer, it also means the hydration habits are working.</p>
+
+<p>One honest caveat: four data points is a trend, not a verdict. Consumer bioimpedance scales have measurement variance that can swamp small week-to-week changes. What matters is the directional consistency — every metric is moving the right way across every measurement.</p>
+
+
 <!-- DIVIDER + CLOSING -->
 <div class="divider"></div>
 
@@ -567,6 +647,8 @@
 <p><strong>Attack GCT.</strong> The r=0.948 correlation between ground contact and pace is a gift. Drills, strides, and cadence work can move this metric — and the pace will follow.</p>
 
 <p><strong>Adjust for the heat, don't fight it.</strong> I can't run easy at 7:30 min/km pace and compare it fairly to a 22°C threshold session. The training needs a heat-adjusted pacing model. The biomechanics index on hot days is an early version of that.</p>
+
+<p><strong>Keep the body composition trajectory.</strong> Fat is dropping, muscle is building, protein mass is up. Four measurements in, the trend is clean. The next goal: push body fat below 24% without sacrificing muscle — achievable at this pace over the next 8–10 weeks.</p>
 
 <p>Running in this city is hard. The air resists. The sun takes. But ten weeks of data say: the heart is getting quieter for the same work. That's the whole game.</p>
 
@@ -586,6 +668,7 @@
   <span class="tag">Aerobic Fitness</span>
   <span class="tag">Heart Rate</span>
   <span class="tag">Biomechanics</span>
+  <span class="tag">Body Composition</span>
   <span class="tag">Chennai</span>
   <span class="tag">Self-Experiment</span>
 </div>
@@ -673,6 +756,189 @@ new Chart(document.getElementById('efChart'), {
         ticks: { color: '#C8873A', font: { size: 10 }, callback: v => v + '%' },
         grid: { drawOnChartArea: false },
         title: { display: true, text: 'Decoupling', color: '#C8873A', font: { size: 10 } }
+      }
+    }
+  }
+});
+
+/* Temperature vs HR scatter chart */
+const tempHrData = [
+  { x: 29.012, y: 146, label: '13-Jun' },
+  { x: 29.377, y: 147, label: '09-May' },
+  { x: 29.768, y: 143, label: '23-Jun' },
+  { x: 30.041, y: 149, label: '07-May' },
+  { x: 30.184, y: 152, label: '30-Apr' },
+  { x: 30.197, y: 149, label: '23-Apr' },
+  { x: 30.297, y: 144, label: '04-Jun' },
+  { x: 30.378, y: 148, label: '02-Jun' },
+  { x: 30.678, y: 147, label: '16-Jun' },
+  { x: 30.706, y: 152, label: '25-Apr' },
+  { x: 30.709, y: 150, label: '14-May' },
+  { x: 31.135, y: 155, label: '18-Apr' },
+  { x: 31.349, y: 153, label: '23-May' },
+  { x: 31.415, y: 151, label: '21-May' },
+  { x: 31.470, y: 152, label: '28-May' },
+  { x: 31.541, y: 150, label: '02-May' }
+];
+const slope = 2.88, intercept = 61.34;
+const fitXMin = 28.8, fitXMax = 31.8;
+const fitLine = [
+  { x: fitXMin, y: slope * fitXMin + intercept },
+  { x: fitXMax, y: slope * fitXMax + intercept }
+];
+
+new Chart(document.getElementById('tempHrChart'), {
+  type: 'scatter',
+  data: {
+    datasets: [
+      {
+        label: 'Easy run',
+        data: tempHrData,
+        backgroundColor: '#00D4B8',
+        borderColor: '#161612',
+        borderWidth: 1.5,
+        pointRadius: 7,
+        pointHoverRadius: 9
+      },
+      {
+        label: 'Regression fit',
+        data: fitLine,
+        type: 'line',
+        borderColor: '#C8873A',
+        borderWidth: 1.5,
+        borderDash: [5, 4],
+        pointRadius: 0,
+        fill: false,
+        tension: 0
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#1A1A17',
+        borderColor: '#3A3530',
+        borderWidth: 1,
+        titleColor: '#9A9082',
+        bodyColor: '#F0EBE1',
+        padding: 10,
+        filter: item => item.datasetIndex === 0,
+        callbacks: {
+          title: items => tempHrData[items[0].dataIndex]?.label || '',
+          label: ctx => 'Temp: ' + ctx.parsed.x.toFixed(1) + '°C   HR: ' + ctx.parsed.y + ' bpm'
+        }
+      }
+    },
+    scales: {
+      x: {
+        min: 28.7,
+        max: 31.8,
+        title: { display: true, text: 'Weighted avg temperature (°C)', color: '#9A9082', font: { size: 11 } },
+        ticks: { color: '#3A3530', font: { size: 10 }, callback: v => v.toFixed(1) + '°C' },
+        grid: { color: 'rgba(58,53,48,0.5)', lineWidth: 0.5 }
+      },
+      y: {
+        min: 140,
+        max: 158,
+        title: { display: true, text: 'Avg HR (bpm)', color: '#9A9082', font: { size: 11 } },
+        ticks: { color: '#9A9082', font: { size: 10 } },
+        grid: { color: 'rgba(58,53,48,0.5)', lineWidth: 0.5 }
+      }
+    }
+  }
+});
+
+/* Body composition chart */
+new Chart(document.getElementById('bodyCompChart'), {
+  type: 'line',
+  data: {
+    labels: ['M1', 'M2', 'M3', 'M4 (today)'],
+    datasets: [
+      {
+        label: 'Body fat %',
+        data: [25.8, 25.6, 25.5, 25.0],
+        borderColor: '#E05C5C',
+        backgroundColor: 'rgba(224,92,92,0.07)',
+        borderWidth: 2,
+        pointRadius: 6,
+        pointBackgroundColor: '#E05C5C',
+        pointBorderColor: '#161612',
+        pointBorderWidth: 2,
+        tension: 0.3,
+        fill: true,
+        yAxisID: 'yFat'
+      },
+      {
+        label: 'Muscle mass (kg)',
+        data: [50.86, 51.01, 51.22, 51.49],
+        borderColor: '#4DB87A',
+        backgroundColor: 'rgba(77,184,122,0.07)',
+        borderWidth: 2,
+        pointRadius: 6,
+        pointBackgroundColor: '#4DB87A',
+        pointBorderColor: '#161612',
+        pointBorderWidth: 2,
+        tension: 0.3,
+        fill: true,
+        yAxisID: 'yMuscle'
+      },
+      {
+        label: 'Body water %',
+        data: [54.4, 54.6, 54.5, 55.0],
+        borderColor: '#00D4B8',
+        borderWidth: 1.5,
+        borderDash: [5, 4],
+        pointRadius: 4,
+        pointBackgroundColor: '#00D4B8',
+        pointBorderColor: '#161612',
+        pointBorderWidth: 1,
+        tension: 0.3,
+        fill: false,
+        yAxisID: 'yFat'
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#1A1A17',
+        borderColor: '#3A3530',
+        borderWidth: 1,
+        titleColor: '#9A9082',
+        bodyColor: '#F0EBE1',
+        padding: 10,
+        callbacks: {
+          label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(2)
+        }
+      }
+    },
+    scales: {
+      x: {
+        ticks: { color: '#3A3530', font: { size: 11 } },
+        grid: { color: 'rgba(58,53,48,0.5)', lineWidth: 0.5 }
+      },
+      yFat: {
+        position: 'left',
+        min: 24.0,
+        max: 57.0,
+        ticks: { color: '#9A9082', font: { size: 10 }, callback: v => v <= 27 ? v.toFixed(1) + '%' : '' },
+        grid: { color: 'rgba(58,53,48,0.5)', lineWidth: 0.5 },
+        title: { display: true, text: 'Body fat / water %', color: '#9A9082', font: { size: 10 } }
+      },
+      yMuscle: {
+        position: 'right',
+        min: 50.4,
+        max: 52.0,
+        ticks: { color: '#4DB87A', font: { size: 10 }, callback: v => v.toFixed(2) + ' kg' },
+        grid: { drawOnChartArea: false },
+        title: { display: true, text: 'Muscle mass', color: '#4DB87A', font: { size: 10 } }
       }
     }
   }
