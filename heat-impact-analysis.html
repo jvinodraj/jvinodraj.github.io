@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Heat Shaped My Running Data | Vinodraj Jayaraman</title>
+    <meta name="description" content="Analysis of how 30°C+ temperatures affected heart rate, aerobic decoupling, and training efficiency across 17 easy runs in Chennai.">
+    <style>
+        :root {
+            --bg: #f3f7f6;
+            --surface: #ffffff;
+            --ink: #132023;
+            --muted: #4b5f63;
+            --brand: #0f766e;
+            --accent: #f59e0b;
+            --line: #d8dfdb;
+            --radius: 14px;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 10% 12%, #dcfce7 0%, transparent 28%),
+                radial-gradient(circle at 90% 0%, #fef3c7 0%, transparent 30%),
+                var(--bg);
+        }
+
+        .container { width: min(820px, 92vw); margin: 0 auto; }
+
+        header {
+            border-bottom: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(6px);
+            position: sticky;
+            top: 0;
+            z-index: 20;
+        }
+
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; }
+        .links { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+        .links a { text-decoration: none; color: var(--muted); font-weight: 600; }
+        .links a:hover { color: var(--brand); }
+
+        main { padding: 2.6rem 0 3.2rem; }
+
+        article h1 {
+            margin: 0 0 0.5rem;
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            line-height: 1.2;
+        }
+
+        .post-meta {
+            color: var(--muted);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .post-meta span { margin-right: 1.2rem; }
+
+        article p {
+            margin: 1rem 0;
+            line-height: 1.7;
+            color: var(--ink);
+        }
+
+        article h2 {
+            margin: 2rem 0 1rem;
+            font-size: 1.4rem;
+            color: var(--ink);
+        }
+
+        article h3 {
+            margin: 1.6rem 0 0.8rem;
+            font-size: 1.1rem;
+            color: var(--brand);
+        }
+
+        .stat-block {
+            background: #f8fbfa;
+            border-left: 4px solid var(--brand);
+            padding: 1rem 1.2rem;
+            margin: 1.2rem 0;
+            border-radius: 4px;
+        }
+
+        .stat-block strong { color: var(--brand); }
+
+        .metric-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .metric {
+            background: #fbfdfc;
+            padding: 0.9rem;
+            border-radius: 8px;
+            border: 1px solid var(--line);
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: var(--muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .metric-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--ink);
+            margin-top: 0.3rem;
+        }
+
+        .callout {
+            background: #fef3c7;
+            border: 1px solid #fcd34d;
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .callout strong { color: #92400e; }
+
+        .callout p { margin: 0.5rem 0; color: #78350f; }
+
+        .viz-card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 1.2rem 0;
+        }
+
+        .viz-title {
+            margin: 0 0 0.8rem;
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .stack-track {
+            display: flex;
+            width: 100%;
+            height: 18px;
+            border-radius: 999px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            background: #eef3f2;
+        }
+
+        .stack-hot { background: #f59e0b; }
+        .stack-mild { background: #10b981; }
+
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-top: 0.7rem;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 0.35rem;
+            vertical-align: baseline;
+        }
+
+        .bar-grid {
+            display: grid;
+            gap: 0.65rem;
+        }
+
+        .bar-row {
+            display: grid;
+            grid-template-columns: 190px 1fr 58px;
+            gap: 0.7rem;
+            align-items: center;
+        }
+
+        .bar-label {
+            font-size: 0.88rem;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .bar-track {
+            height: 12px;
+            border-radius: 999px;
+            background: #edf2f1;
+            border: 1px solid var(--line);
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #0f766e, #14b8a6);
+        }
+
+        .bar-fill.warn {
+            background: linear-gradient(90deg, #f59e0b, #fb923c);
+        }
+
+        .bar-fill.risk {
+            background: linear-gradient(90deg, #ef4444, #f97316);
+        }
+
+        .bar-value {
+            font-size: 0.86rem;
+            color: var(--ink);
+            font-weight: 700;
+            text-align: right;
+        }
+
+        .timeline {
+            display: grid;
+            gap: 0.7rem;
+        }
+
+        .time-item {
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 0.75rem;
+            background: #fbfdfc;
+        }
+
+        .time-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 0.8rem;
+            font-size: 0.88rem;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .time-metrics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            font-size: 0.88rem;
+            color: var(--ink);
+        }
+
+        .time-metrics strong { color: var(--brand); }
+
+        .viz-note {
+            margin-top: 0.65rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .chart-shell {
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: #fcfefd;
+            padding: 0.5rem;
+        }
+
+        .chart-shell svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .chart-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-top: 0.55rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .chip {
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            padding: 0.2rem 0.55rem;
+            background: #f6faf9;
+        }
+
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+            line-height: 1.7;
+        }
+
+        li { margin: 0.6rem 0; }
+
+        a { color: var(--brand); text-decoration: none; font-weight: 600; }
+        a:hover { text-decoration: underline; }
+
+        .back-link {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--line);
+        }
+
+        @media (max-width: 640px) {
+            .metric-row { grid-template-columns: 1fr; }
+            .bar-row { grid-template-columns: 1fr; gap: 0.35rem; }
+            .bar-value { text-align: left; }
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8DNMPT9Z2Q"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-8DNMPT9Z2Q');
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <strong>Vinodraj Jayaraman</strong>
+                <div class="links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="projects.html">Projects</a>
+                    <a href="resume.html">Resume</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <article>
+            <h1>How Heat Shaped My Running Data: The Chennai Temperature Effect</h1>
+            <div class="post-meta">
+                <span>July 2026</span>
+                <span>Data Analysis</span>
+            </div>
+
+            <p>
+                Chennai summers are unforgiving. Over 10 weeks of easy running (April–June 2026), I discovered that heat wasn't just uncomfortable—it was a primary driver of my cardiovascular response, efficiency trends, and recovery patterns. This analysis reveals how 30°C+ temperatures acted as a consistent confounder that rewrote what "normal" performance looked like.
+            </p>
+
+            <h2>The Heat Profile</h2>
+
+            <p>
+                Out of 17 easy runs analyzed, <strong>15 were conducted at 30°C or hotter</strong>. The temperature landscape:
+            </p>
+
+            <div class="metric-row">
+                <div class="metric">
+                    <div class="metric-label">Average Temperature</div>
+                    <div class="metric-value">30–31°C</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Range</div>
+                    <div class="metric-value">29–34°C</div>
+                </div>
+            </div>
+
+            <div class="viz-card">
+                <h3 class="viz-title">Heat Exposure Across Runs</h3>
+                <div class="stack-track" aria-label="Heat exposure across easy runs">
+                    <div class="stack-hot" style="width: 88.2%"></div>
+                    <div class="stack-mild" style="width: 11.8%"></div>
+                </div>
+                <div class="legend">
+                    <span><span class="dot" style="background:#f59e0b;"></span>30 C+ runs: 15 of 17 (88.2%)</span>
+                    <span><span class="dot" style="background:#10b981;"></span>Below 30 C: 2 of 17 (11.8%)</span>
+                </div>
+            </div>
+
+            <p>
+                This wasn't seasonal variation—it was the baseline. Every run lived in the heat envelope, meaning I couldn't simply compare one run to another without accounting for temperature as a primary factor.
+            </p>
+
+            <h2>Heat's Impact on Heart Rate and Aerobic Decoupling</h2>
+
+            <p>
+                The most direct heat signature appeared in <strong>aerobic decoupling</strong>—the divergence between power output and heart rate within a run. In cooler, controlled environments, aerobic decoupling typically stays below 5%. My data told a different story.
+            </p>
+
+            <div class="viz-card">
+                <h3 class="viz-title">Weighted Avg Temperature vs Average HR (Per Run)</h3>
+                <div class="chart-shell" aria-label="Scatter chart of weighted average temperature against average heart rate">
+                    <svg id="tempHrScatter" viewBox="0 0 760 360" role="img" aria-labelledby="tempHrChartTitle tempHrChartDesc">
+                        <title id="tempHrChartTitle">Weighted average temperature versus average heart rate by run</title>
+                        <desc id="tempHrChartDesc">Each dot is one run with available temperature. X axis is weighted average temperature in Celsius from 29 to 32. Y axis is average heart rate from 143 to 155 beats per minute.</desc>
+                    </svg>
+                </div>
+                <div class="chart-meta">
+                    <span class="chip" id="tempHrCount">Runs plotted: 0</span>
+                    <span class="chip">Each dot = one run</span>
+                    <span class="chip">Dashed line = linear trend</span>
+                </div>
+                <p class="viz-note">Now plotting all runs that have temperature data, using the notebook's exact weighted-temperature formula from each run's temperature distribution. Hover points to see each run's date, average temperature, and average HR.</p>
+            </div>
+
+            <div class="stat-block">
+                <strong>5 out of 18 runs crossed the 8% decoupling threshold</strong>, a marker of significant cardiovascular drift. Heat was present in all of them.
+            </div>
+
+            <div class="viz-card">
+                <h3 class="viz-title">Decoupling Severity by Key Runs</h3>
+                <div class="bar-grid">
+                    <div class="bar-row">
+                        <div class="bar-label">2026-05-02 (32 C)</div>
+                        <div class="bar-track"><div class="bar-fill risk" style="width: 98%"></div></div>
+                        <div class="bar-value">9.8%</div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label">2026-05-07 (30 C)</div>
+                        <div class="bar-track"><div class="bar-fill warn" style="width: 84%"></div></div>
+                        <div class="bar-value">8.4%</div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label">Healthy target line</div>
+                        <div class="bar-track"><div class="bar-fill" style="width: 50%"></div></div>
+                        <div class="bar-value">5.0%</div>
+                    </div>
+                </div>
+                <p class="viz-note">Bars are scaled to a 10% chart max to show how far each run drifted from typical easy-run stability.</p>
+            </div>
+
+            <h3>High-Decoupling Heat Runs</h3>
+
+            <ul>
+                <li><strong>2026-05-07 (60min, 30°C):</strong> 8.4% decoupling. Pace held steady at 7.34 min/km, but HR drifted from ~140 to ~160 bpm over the run.</li>
+                <li><strong>2026-05-02 (73min, 32°C):</strong> 9.8% decoupling—the highest in the dataset. Temperature maxed at 33°C mid-run.</li>
+                <li><strong>2026-05-28 (90min, 32°C):</strong> 41.8% of the run sat in HR zone 4, suggesting thermoregulatory stress pushed HR into high zones even on easy pace.</li>
+            </ul>
+
+            <p>
+                What's telling: these runs weren't harder or longer than others. They were hotter. The body's thermoregulatory burden increased baseline HR by 5–15 bpm, and that cost compounded over time.
+            </p>
+
+            <h2>Power-Per-Heartbeat as the Adaptation Signal</h2>
+
+            <p>
+                Despite heat's interference, one metric cut through the noise: <strong>steady power-per-heartbeat improved +8.1% across the 10-week timeline</strong>. This is the cleanest aerobic efficiency signal available in the dataset.
+            </p>
+
+            <div class="callout">
+                <strong>Why this matters:</strong> Power-per-heartbeat corrects for the absolute HR elevation caused by heat. It answers: for every beat, am I generating more mechanical work? The +8.1% gain suggests I was actually becoming more efficient—heat made the run harder, but I adapted to it.
+            </div>
+
+            <div class="viz-card">
+                <h3 class="viz-title">Signal vs Noise Snapshot</h3>
+                <div class="bar-grid">
+                    <div class="bar-row">
+                        <div class="bar-label">Power per heartbeat</div>
+                        <div class="bar-track"><div class="bar-fill" style="width: 81%"></div></div>
+                        <div class="bar-value">+8.1%</div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label">Steady easy pace</div>
+                        <div class="bar-track"><div class="bar-fill warn" style="width: 11%"></div></div>
+                        <div class="bar-value">+1.1%</div>
+                    </div>
+                </div>
+                <p class="viz-note">Efficiency improved clearly, while pace stayed nearly flat under similar heat load.</p>
+            </div>
+
+            <p>
+                Meanwhile, steady-state easy pace changed only +1.1% (essentially flat), and steady HR rose as expected in warm conditions. These metrics masked the true adaptation happening underneath: my aerobic engine was getting stronger, even as the environment pushed against it.
+            </p>
+
+            <h2>The Heat-Fatigue Interaction</h2>
+
+            <p>
+                Heat didn't just elevate HR; it accelerated fatigue perception. Fatigue resilience scores (a composite of HR drift and recovery metrics) clustered in the 52–79 range, with the lowest scores appearing in runs at 32°C+.
+            </p>
+
+            <div class="metric-row">
+                <div class="metric">
+                    <div class="metric-label">Fatigue Resilience (Cool ~29°C)</div>
+                    <div class="metric-value">~70–75</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Fatigue Resilience (Hot 32°C+)</div>
+                    <div class="metric-value">~55–65</div>
+                </div>
+            </div>
+
+            <div class="viz-card">
+                <h3 class="viz-title">Heat and Fatigue Timeline</h3>
+                <div class="timeline">
+                    <div class="time-item">
+                        <div class="time-head"><span>2026-05-14</span><span>31 C</span></div>
+                        <div class="time-metrics"><span><strong>Decoupling:</strong> 6.5%</span><span><strong>Resilience:</strong> 59/100</span></div>
+                    </div>
+                    <div class="time-item">
+                        <div class="time-head"><span>2026-05-28</span><span>32 C</span></div>
+                        <div class="time-metrics"><span><strong>Zone 4 time:</strong> 41.8%</span><span><strong>Heat strain:</strong> High</span></div>
+                    </div>
+                    <div class="time-item">
+                        <div class="time-head"><span>2026-06-30</span><span>30 C</span></div>
+                        <div class="time-metrics"><span><strong>Avg HR:</strong> 143 bpm</span><span><strong>Resilience:</strong> 62.5/100</span></div>
+                    </div>
+                </div>
+                <p class="viz-note">Longer runs in hotter conditions repeatedly showed stronger HR strain and lower resilience.</p>
+            </div>
+
+            <p>
+                The interpretation: heat consumed additional recovery capacity. A 90-minute run felt more fatiguing at 32°C than a similar effort at 29°C, even though the mechanical work was identical.
+            </p>
+
+            <h2>Methodology: Controlling for Heat in Future Analysis</h2>
+
+            <p>
+                The key takeaway for my training: I should stratify all comparisons by temperature bands. A run at 29°C is fundamentally different from one at 32°C, and treating them as equivalent introduces noise.
+            </p>
+
+            <h3>Going Forward</h3>
+
+            <ul>
+                <li><strong>Warm-weather baseline (30–32°C):</strong> Accept 7–9% aerobic decoupling as normal. Use power-per-heartbeat and pace stability as the primary efficiency signals.</li>
+                <li><strong>Heat stress threshold (33°C+):</strong> Expect 20%+ of the run in HR zone 4. Prioritize hydration and cooling; don't compare pace against cooler sessions.</li>
+                <li><strong>Recovery priority:</strong> Post-heat runs require active recovery. Rolling 3-run training load (mechanical work + aerobic effect) should be lighter after heat-heavy sessions.</li>
+            </ul>
+
+            <h2>The Bigger Picture</h2>
+
+            <p>
+                Heat is often dismissed as "just discomfort." In this dataset, it was a primary independent variable—one that elevated HR by 10–15 bpm, doubled fatigue resilience recovery time, and dominated aerobic decoupling trends. Yet beneath it, the +8.1% power-per-heartbeat gain suggests real adaptation.
+            </p>
+
+            <p>
+                Chennai's heat isn't a bug in my training data. It's the operating environment. The insight isn't to avoid it, but to quantify it, control for it, and use it to calibrate what "good" performance actually looks like when you're running in 30°C heat every week.
+            </p>
+
+            <div class="back-link">
+                <p><a href="blog.html">← Back to all posts</a></p>
+            </div>
+        </article>
+    </main>
+    <script>
+        (function renderTempHrScatter() {
+            const data = [
+                { date: "2026-04-18", temp: 31.135, hr: 155, pace: 7.53, minutes: 52.8 },
+                { date: "2026-04-23", temp: 30.197, hr: 149, pace: 7.33, minutes: 45.0 },
+                { date: "2026-04-25", temp: 30.706, hr: 152, pace: 7.35, minutes: 36.8 },
+                { date: "2026-04-30", temp: 30.184, hr: 152, pace: 7.30, minutes: 60.1 },
+                { date: "2026-05-02", temp: 31.541, hr: 150, pace: 7.32, minutes: 73.3 },
+                { date: "2026-05-07", temp: 30.041, hr: 149, pace: 7.34, minutes: 60.1 },
+                { date: "2026-05-09", temp: 29.377, hr: 147, pace: 7.35, minutes: 75.0 },
+                { date: "2026-05-14", temp: 30.709, hr: 150, pace: 7.49, minutes: 75.1 },
+                { date: "2026-05-21", temp: 31.415, hr: 151, pace: 7.34, minutes: 90.1 },
+                { date: "2026-05-23", temp: 31.349, hr: 153, pace: 6.96, minutes: 83.6 },
+                { date: "2026-05-28", temp: 31.509, hr: 152, pace: 7.36, minutes: 90.1 },
+                { date: "2026-06-02", temp: 30.378, hr: 148, pace: 7.32, minutes: 75.1 },
+                { date: "2026-06-04", temp: 30.297, hr: 144, pace: 7.36, minutes: 90.0 },
+                { date: "2026-06-13", temp: 29.012, hr: 146, pace: 7.32, minutes: 73.3 },
+                { date: "2026-06-16", temp: 30.678, hr: 147, pace: 7.33, minutes: 90.1 },
+                { date: "2026-06-23", temp: 29.768, hr: 143, pace: 7.34, minutes: 90.0 },
+                { date: "2026-06-30", temp: 30.035, hr: 143, pace: 7.36, minutes: 90.0 }
+            ];
+
+            const svg = document.getElementById("tempHrScatter");
+            const countEl = document.getElementById("tempHrCount");
+            if (!svg || !countEl) return;
+
+            const w = 760;
+            const h = 360;
+            const left = 90;
+            const right = 700;
+            const top = 35;
+            const bottom = 300;
+            const xMin = 29;
+            const xMax = 32;
+            const yMin = 143;
+            const yMax = 155;
+
+            const ns = "http://www.w3.org/2000/svg";
+            const x = (v) => left + ((v - xMin) / (xMax - xMin)) * (right - left);
+            const y = (v) => bottom - ((v - yMin) / (yMax - yMin)) * (bottom - top);
+
+            function formatPaceMmSs(decimalMinutes) {
+                const totalSeconds = Math.round(decimalMinutes * 60);
+                const mm = Math.floor(totalSeconds / 60);
+                const ss = String(totalSeconds % 60).padStart(2, "0");
+                return `${mm}:${ss}`;
+            }
+
+            function add(tag, attrs, parent = svg) {
+                const el = document.createElementNS(ns, tag);
+                Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, String(v)));
+                parent.appendChild(el);
+                return el;
+            }
+
+            add("line", { x1: left, y1: top, x2: left, y2: bottom, stroke: "#9fb0ad", "stroke-width": 1 });
+            add("line", { x1: left, y1: bottom, x2: right, y2: bottom, stroke: "#9fb0ad", "stroke-width": 1 });
+
+            [143, 146, 149, 152, 155].forEach((tick) => {
+                const yy = y(tick);
+                add("line", { x1: left, y1: yy, x2: right, y2: yy, stroke: "#e2e9e7", "stroke-width": 1 });
+                add("text", { x: 64, y: yy + 4, "font-size": 12, fill: "#4b5f63" }).textContent = tick;
+            });
+
+            [29, 30, 31, 32].forEach((tick) => {
+                const xx = x(tick);
+                add("text", { x: xx - 13, y: 324, "font-size": 12, fill: "#4b5f63" }).textContent = `${tick} C`;
+            });
+
+            add("text", { x: 332, y: 346, "font-size": 12, fill: "#4b5f63" }).textContent = "Weighted average temperature";
+            add("text", { x: 16, y: 20, "font-size": 12, fill: "#4b5f63" }).textContent = "Avg HR (bpm)";
+
+            const n = data.length;
+            const sumX = data.reduce((s, d) => s + d.temp, 0);
+            const sumY = data.reduce((s, d) => s + d.hr, 0);
+            const sumXY = data.reduce((s, d) => s + d.temp * d.hr, 0);
+            const sumX2 = data.reduce((s, d) => s + d.temp * d.temp, 0);
+            const slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
+            const intercept = (sumY - slope * sumX) / n;
+
+            const yAtMin = slope * xMin + intercept;
+            const yAtMax = slope * xMax + intercept;
+            add("line", {
+                x1: x(xMin),
+                y1: y(yAtMin),
+                x2: x(xMax),
+                y2: y(yAtMax),
+                stroke: "#f59e0b",
+                "stroke-width": 2,
+                "stroke-dasharray": "6 6"
+            });
+
+            data.forEach((d) => {
+                const color = d.temp >= 32 ? "#ef4444" : d.temp >= 31 ? "#f59e0b" : "#0f766e";
+                const c = add("circle", { cx: x(d.temp), cy: y(d.hr), r: 5.5, fill: color, "fill-opacity": 0.9 });
+                const title = add("title", {}, c);
+                title.textContent = `${d.date} | ${d.temp.toFixed(1)} C | ${d.hr} bpm | ${d.pace.toFixed(2)} min/km | ${d.minutes.toFixed(1)} min`;
+            });
+
+            data.forEach((d, i) => {
+                const dx = (i % 2 === 0) ? 8 : -70;
+                const dy = (i % 3 === 0) ? -7 : 11;
+                const label = `${formatPaceMmSs(d.pace)} /km`;
+                add("text", {
+                    x: x(d.temp) + dx,
+                    y: y(d.hr) + dy,
+                    "font-size": 10,
+                    fill: "#213336"
+                }).textContent = label;
+            });
+
+            countEl.textContent = `Runs plotted: ${data.length}`;
+        })();
+    </script>
+</body>
+</html>
