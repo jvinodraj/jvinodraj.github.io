@@ -709,6 +709,72 @@
 
 
 <!-- SECTION 9 -->
+<h2>Sub-structure of the 101-day wellness block</h2>
+
+<p>Viewed as a systems timeline, these 101 days are not one smooth curve. They break into distinct physiological phases where activity load, sleep need, stress, and Body Battery signal different constraints.</p>
+
+<div class="chart-wrap">
+  <p class="chart-title">Garmin stress vs body battery daily trend (Apr 16 to Jul 4)</p>
+  <div class="chart-canvas-wrap" style="height: 300px;">
+    <canvas id="stressBbTrendChart" role="img" aria-label="Dual-axis chart showing daily average stress and body battery with 7-day moving means from April 16 to July 4, 2026"></canvas>
+  </div>
+</div>
+
+<div class="chart-wrap">
+  <p class="chart-title">Stress vs body battery scatter with linear fit</p>
+  <div class="chart-canvas-wrap" style="height: 300px;">
+    <canvas id="stressBbScatterChart" role="img" aria-label="Scatter chart of average stress versus most recent body battery with fitted line y equals minus 0.43x plus 41.0"></canvas>
+  </div>
+</div>
+
+<p>The relationship is strongly inverse in this window: higher daily stress is associated with lower same-day most recent Body Battery. The fitted line from your snapshot data is <strong>Body Battery = -0.43 × Stress + 41.0</strong>.</p>
+
+<div class="chart-wrap">
+  <p class="chart-title">Phase map (activity + sleep + stress + body battery)</p>
+  <div style="padding-top: 6px;">
+    <div class="data-row">
+      <span class="data-row-label">Phase 1: Baseline build (Apr 16 to May 13)</span>
+      <span class="data-row-val">Stabilizing</span>
+      <span class="data-row-delta flat">mixed stress</span>
+    </div>
+    <div class="data-row">
+      <span class="data-row-label">Phase 2: Recovery crest (May 14 to May 23)</span>
+      <span class="data-row-val">Best recovery</span>
+      <span class="data-row-delta up">low RHR</span>
+    </div>
+    <div class="data-row">
+      <span class="data-row-label">Phase 3: Strain ramp (late May through June)</span>
+      <span class="data-row-val">Load accumulation</span>
+      <span class="data-row-delta up">stress jump</span>
+    </div>
+    <div class="data-row">
+      <span class="data-row-label">Phase 4: High-load edge (early July)</span>
+      <span class="data-row-val">Performance + strain</span>
+      <span class="data-row-delta up">watch fatigue</span>
+    </div>
+  </div>
+</div>
+
+<p><strong>Phase 1: Baseline build.</strong> Early sessions show adaptation beginning but not yet stable. Resting HR is still relatively high, and stress has not yet separated clearly into training vs non-training drivers.</p>
+
+<p><strong>Phase 2: Recovery crest.</strong> This is the cleanest autonomic window in the dataset: low-RHR streak (10 days at 55 bpm or below), lowest daily resting HR near 44 bpm, and the strongest short HRV window (average around 62.5, peak 69). This is the reference pattern for what "absorbing training" looks like in your data.</p>
+
+<p><strong>Phase 3: Strain ramp.</strong> June stress rises sharply (43.9 monthly average vs 28.4 in May), while volume and quality work continue. The June 9 outlier (average stress 82, max 97, minimal movement) suggests at least part of the load is systemic rather than purely mechanical.</p>
+
+<p><strong>Phase 4: High-load edge.</strong> Early July combines top-end activity and top-end stress (for example July 4). This is a productive but fragile state: fitness can still move forward, but recovery margin narrows and day-to-day readiness becomes more sleep- and stress-sensitive.</p>
+
+<blockquote>In this 101-day window, the key pattern is a recovery-led peak in mid-May followed by a stress-dominant phase in June and early July. The same training load becomes more expensive when non-training stress climbs.</blockquote>
+
+<div class="callout amber callout-single">
+  <div class="stat-item">
+    <span class="stat-num">Operational read</span>
+    <span class="stat-label">How to use this sub-structure</span>
+    <p class="stat-sub">Use resting HR + sleep-need delta + average stress as a daily control stack. When all three trend adverse together, cap intensity even if pace/power still look good.</p>
+  </div>
+</div>
+
+
+<!-- SECTION 10 -->
 <h2>Data quality caveats</h2>
 
 <div class="callout red callout-single">
@@ -1085,6 +1151,184 @@ legend.innerHTML = `
     <span style="display:flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;border-radius:2px;background:#3A3530;display:inline-block;"></span>Baseline</span>
   </div>
 `;
+
+/* Stress vs Body Battery charts (from health snapshot JSON, Apr 16 to Jul 4) */
+const stressBbDaily = [{"d":"2026-04-16","s":39.0,"b":43.0},{"d":"2026-04-17","s":17.0,"b":34.0},{"d":"2026-04-18","s":26.0,"b":45.0},{"d":"2026-04-19","s":17.0,"b":31.0},{"d":"2026-04-20","s":23.0,"b":33.0},{"d":"2026-04-21","s":20.0,"b":37.0},{"d":"2026-04-22","s":25.0,"b":30.0},{"d":"2026-04-23","s":24.0,"b":23.0},{"d":"2026-04-24","s":15.0,"b":36.0},{"d":"2026-04-25","s":26.0,"b":58.0},{"d":"2026-04-26","s":17.0,"b":42.0},{"d":"2026-04-27","s":17.0,"b":51.0},{"d":"2026-04-28","s":22.0,"b":37.0},{"d":"2026-04-29","s":26.0,"b":23.0},{"d":"2026-04-30","s":21.0,"b":46.0},{"d":"2026-05-01","s":12.0,"b":42.0},{"d":"2026-05-02","s":29.0,"b":30.0},{"d":"2026-05-03","s":20.0,"b":41.0},{"d":"2026-05-04","s":26.0,"b":29.0},{"d":"2026-05-05","s":24.0,"b":25.0},{"d":"2026-05-06","s":38.0,"b":63.0},{"d":"2026-05-07","s":9.0,"b":55.0},{"d":"2026-05-08","s":16.0,"b":43.0},{"d":"2026-05-09","s":20.0,"b":38.0},{"d":"2026-05-10","s":8.0,"b":82.0},{"d":"2026-05-11","s":30.0,"b":26.0},{"d":"2026-05-12","s":40.0,"b":18.0},{"d":"2026-05-13","s":37.0,"b":26.0},{"d":"2026-05-14","s":27.0,"b":31.0},{"d":"2026-05-15","s":10.0,"b":46.0},{"d":"2026-05-16","s":22.0,"b":24.0},{"d":"2026-05-17","s":22.0,"b":31.0},{"d":"2026-05-18","s":17.0,"b":28.0},{"d":"2026-05-19","s":28.0,"b":14.0},{"d":"2026-05-20","s":26.0,"b":5.0},{"d":"2026-05-21","s":46.0,"b":17.0},{"d":"2026-05-22","s":33.0,"b":33.0},{"d":"2026-05-23","s":28.0,"b":13.0},{"d":"2026-05-24","s":29.0,"b":22.0},{"d":"2026-05-25","s":42.0,"b":25.0},{"d":"2026-05-26","s":47.0,"b":13.0},{"d":"2026-05-27","s":44.0,"b":15.0},{"d":"2026-05-28","s":48.0,"b":5.0},{"d":"2026-05-29","s":35.0,"b":6.0},{"d":"2026-05-30","s":43.0,"b":5.0},{"d":"2026-05-31","s":25.0,"b":23.0},{"d":"2026-06-01","s":32.0,"b":24.0},{"d":"2026-06-02","s":50.0,"b":5.0},{"d":"2026-06-03","s":40.0,"b":14.0},{"d":"2026-06-04","s":66.0,"b":14.0},{"d":"2026-06-05","s":37.0,"b":19.0},{"d":"2026-06-06","s":64.0,"b":18.0},{"d":"2026-06-07","s":33.0,"b":26.0},{"d":"2026-06-08","s":21.0,"b":14.0},{"d":"2026-06-09","s":82.0,"b":40.0},{"d":"2026-06-10","s":53.0,"b":14.0},{"d":"2026-06-11","s":48.0,"b":14.0},{"d":"2026-06-12","s":36.0,"b":17.0},{"d":"2026-06-13","s":62.0,"b":8.0},{"d":"2026-06-14","s":36.0,"b":23.0},{"d":"2026-06-15","s":40.0,"b":23.0},{"d":"2026-06-16","s":51.0,"b":15.0},{"d":"2026-06-17","s":49.0,"b":18.0},{"d":"2026-06-18","s":46.0,"b":13.0},{"d":"2026-06-19","s":33.0,"b":32.0},{"d":"2026-06-20","s":65.0,"b":10.0},{"d":"2026-06-21","s":35.0,"b":20.0},{"d":"2026-06-22","s":25.0,"b":34.0},{"d":"2026-06-23","s":46.0,"b":23.0},{"d":"2026-06-24","s":35.0,"b":23.0},{"d":"2026-06-25","s":43.0,"b":19.0},{"d":"2026-06-26","s":32.0,"b":17.0},{"d":"2026-06-27","s":47.0,"b":11.0},{"d":"2026-06-28","s":32.0,"b":19.0},{"d":"2026-06-29","s":32.0,"b":22.0},{"d":"2026-06-30","s":47.0,"b":14.0},{"d":"2026-07-01","s":28.0,"b":22.0},{"d":"2026-07-02","s":46.0,"b":12.0},{"d":"2026-07-03","s":25.0,"b":16.0},{"d":"2026-07-04","s":80.0,"b":49.0}];
+
+function rollingMean(values, windowSize) {
+  const out = [];
+  for (let i = 0; i < values.length; i += 1) {
+    const start = Math.max(0, i - windowSize + 1);
+    const slice = values.slice(start, i + 1);
+    const sum = slice.reduce((acc, v) => acc + v, 0);
+    out.push(sum / slice.length);
+  }
+  return out;
+}
+
+const stressDates = stressBbDaily.map(r => r.d.slice(5));
+const stressValsDaily = stressBbDaily.map(r => r.s);
+const bbValsDaily = stressBbDaily.map(r => r.b);
+const stress7 = rollingMean(stressValsDaily, 7);
+const bb7 = rollingMean(bbValsDaily, 7);
+
+new Chart(document.getElementById('stressBbTrendChart'), {
+  type: 'line',
+  data: {
+    labels: stressDates,
+    datasets: [
+      {
+        label: 'Daily Avg Stress',
+        data: stressValsDaily,
+        borderColor: 'rgba(224, 92, 92, 0.35)',
+        backgroundColor: 'rgba(224, 92, 92, 0.08)',
+        borderWidth: 1.5,
+        pointRadius: 0,
+        tension: 0.2,
+        yAxisID: 'yStress'
+      },
+      {
+        label: 'Stress 7d Mean',
+        data: stress7,
+        borderColor: '#C53E2C',
+        borderWidth: 3,
+        pointRadius: 0,
+        tension: 0.25,
+        yAxisID: 'yStress'
+      },
+      {
+        label: 'Daily Body Battery',
+        data: bbValsDaily,
+        borderColor: 'rgba(81, 153, 197, 0.45)',
+        backgroundColor: 'rgba(81, 153, 197, 0.08)',
+        borderWidth: 1.5,
+        pointRadius: 0,
+        tension: 0.2,
+        yAxisID: 'yBattery'
+      },
+      {
+        label: 'Body Battery 7d Mean',
+        data: bb7,
+        borderColor: '#2A6798',
+        borderWidth: 3,
+        pointRadius: 0,
+        tension: 0.25,
+        yAxisID: 'yBattery'
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: {
+        labels: { color: '#9A9082', boxWidth: 22, boxHeight: 2 }
+      },
+      tooltip: {
+        backgroundColor: '#1A1A17',
+        borderColor: '#3A3530',
+        borderWidth: 1,
+        titleColor: '#9A9082',
+        bodyColor: '#F0EBE1',
+        padding: 10
+      }
+    },
+    scales: {
+      x: {
+        ticks: { color: '#9A9082', font: { size: 10 }, maxTicksLimit: 8 },
+        grid: { color: 'rgba(58,53,48,0.5)', lineWidth: 0.5 }
+      },
+      yStress: {
+        position: 'left',
+        min: 0,
+        max: 86,
+        ticks: { color: '#E05C5C', font: { size: 10 } },
+        title: { display: true, text: 'Stress level', color: '#E05C5C', font: { size: 11 } },
+        grid: { color: 'rgba(58,53,48,0.5)', lineWidth: 0.5 }
+      },
+      yBattery: {
+        position: 'right',
+        min: 0,
+        max: 86,
+        ticks: { color: '#5F98C4', font: { size: 10 } },
+        title: { display: true, text: 'Body Battery', color: '#5F98C4', font: { size: 11 } },
+        grid: { drawOnChartArea: false }
+      }
+    }
+  }
+});
+
+const scatterPoints = stressBbDaily.map(r => ({ x: r.s, y: r.b }));
+const fitSlope = -0.4341;
+const fitIntercept = 41.035;
+const fitLineStressBb = [
+  { x: 8, y: fitSlope * 8 + fitIntercept },
+  { x: 82, y: fitSlope * 82 + fitIntercept }
+];
+
+new Chart(document.getElementById('stressBbScatterChart'), {
+  type: 'scatter',
+  data: {
+    datasets: [
+      {
+        label: 'Daily points',
+        data: scatterPoints,
+        backgroundColor: 'rgba(95, 152, 196, 0.8)',
+        borderColor: '#161612',
+        borderWidth: 1,
+        pointRadius: 4,
+        pointHoverRadius: 6
+      },
+      {
+        label: 'Fit: y = -0.43x + 41.0',
+        data: fitLineStressBb,
+        type: 'line',
+        borderColor: '#C53E2C',
+        borderWidth: 2.5,
+        pointRadius: 0,
+        tension: 0,
+        fill: false
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        labels: { color: '#9A9082' }
+      },
+      tooltip: {
+        backgroundColor: '#1A1A17',
+        borderColor: '#3A3530',
+        borderWidth: 1,
+        titleColor: '#9A9082',
+        bodyColor: '#F0EBE1',
+        padding: 10,
+        callbacks: {
+          label: ctx => 'Stress: ' + ctx.parsed.x.toFixed(0) + '   Body Battery: ' + ctx.parsed.y.toFixed(0)
+        }
+      }
+    },
+    scales: {
+      x: {
+        min: 6,
+        max: 86,
+        title: { display: true, text: 'Average stress level', color: '#9A9082', font: { size: 11 } },
+        ticks: { color: '#9A9082', font: { size: 10 } },
+        grid: { color: 'rgba(58,53,48,0.5)', lineWidth: 0.5 }
+      },
+      y: {
+        min: 4,
+        max: 86,
+        title: { display: true, text: 'Body Battery (most recent)', color: '#9A9082', font: { size: 11 } },
+        ticks: { color: '#9A9082', font: { size: 10 } },
+        grid: { color: 'rgba(58,53,48,0.5)', lineWidth: 0.5 }
+      }
+    }
+  }
+});
 </script>
 
 <p align="center">
