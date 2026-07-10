@@ -611,13 +611,10 @@
 </div>
 
 <!-- COACH CREDIT -->
-<div style="margin: 2rem 0; padding: 20px 24px; background: var(--surface); border-radius: 8px; border: 1px solid var(--ink-faint); display: flex; align-items: center; gap: 16px;">
-  <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--amber), #8B4A1A); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 17px; color: var(--bg); flex-shrink: 0;">G</div>
-  <div>
-    <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 4px;">Coach</div>
-    <a href="https://www.linkedin.com/in/gokul-prasad-pb-lt-commander-in-data-center-practitioner-73562930/" target="_blank" rel="noopener" style="font-size: 15px; font-weight: 500; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink-faint);">Gokul Prasad PB</a>
-    <div style="font-size: 13px; color: var(--ink-muted); margin-top: 3px;">Lt Commander, Indian Navy · TTK Coach</div>
-  </div>
+<div style="margin: 3rem -24px; padding: 18px 32px; background: var(--surface); border-top: 1px solid var(--ink-faint); border-bottom: 1px solid var(--ink-faint); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+  <div style="font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); white-space: nowrap;">Coached by</div>
+  <a href="https://www.linkedin.com/in/gokul-prasad-pb-lt-commander-in-data-center-practitioner-73562930/" target="_blank" rel="noopener" style="font-family: var(--serif); font-size: 24px; font-weight: 400; color: var(--ink); text-decoration: none; flex: 1; text-align: center; white-space: nowrap;">Gokul Prasad PB</a>
+  <div style="font-size: 12px; color: var(--ink-muted); text-align: right; white-space: nowrap; line-height: 1.6;">Lt Commander, Indian Navy<br>TTK Coach</div>
 </div>
 
 
@@ -900,7 +897,7 @@
   </div>
 </div>
 
-<h3>2. Stress rose sharply in June and early July</h3>
+<h3>2. Stress spiked in June, then eased through early July</h3>
 <div class="chart-wrap">
   <p class="chart-title">Monthly average stress</p>
   <div style="padding-top: 6px;">
@@ -920,14 +917,16 @@
       <span class="data-row-delta up">+15.5</span>
     </div>
     <div class="data-row">
-      <span class="data-row-label">July (first 4 wellness days)</span>
-      <span class="data-row-val">44.8</span>
-      <span class="data-row-delta flat">elevated</span>
+      <span class="data-row-label">July (first 10 wellness days)</span>
+      <span class="data-row-val">33.5</span>
+      <span class="data-row-delta down">−10.4</span>
     </div>
   </div>
 </div>
 
 <p>The highest stress day was June 9: average stress 82 and maximum stress 97, despite very low activity (608 steps, 0.48 km). That pattern usually points to non-training load such as illness pressure, poor recovery, or life/work stressors.</p>
+
+<p>An expanded pull of the stress dataset (86 daily readings, April 16 through July 10) confirms the June spike was a peak, not a new normal: July has averaged 33.5, back below June's 43.9 and closer to the April–May range. Across the full window, mean stress sits at 33.4 (median 32), with 25.6% of days landing in the high-stress band and an equal share landing low — a wide spread, but one that's trending back down. A correlation pass across wellness metrics reinforces the earlier read: stress tracks most strongly (inversely) with Body Battery — most-recent value (r = −0.52), charged value (r = −0.51), and value at wake (r = −0.45) — and positively with minimum heart rate (r = 0.59) and resting calories from activity (r = 0.47). HRV shows a moderate inverse relationship (r = −0.39). In short, the days that spike stress are the days the body never fully recharges, not simply the days with the most training volume.</p>
 
 <h3>3. A very strong recovery block happened in mid-May</h3>
 <p>Lowest resting HR days clustered around May 14 to May 19, including a low of 44 bpm. HRV was available for only 11 days, but that window was relatively strong: last-night HRV averaged around 62.5 and peaked at 69. Together with the low-RHR phase, that indicates a short period of excellent autonomic recovery status.</p>
@@ -943,8 +942,8 @@
   </div>
 </div>
 
-<h3>5. High-load days often line up with higher stress strain</h3>
-<p>Big activity days included June 18, June 20, June 27, and July 4, with top-day volume around 18 to 19.5 km. July 4 was especially notable: high training volume paired with very high stress (average 80).</p>
+<h3>5. High-load days often line up with higher stress strain — but not always</h3>
+<p>Big activity days included June 18, June 20, June 27, and July 4, with top-day volume around 18 to 19.5 km. June 20 is the clearest pairing of the two signals: high volume alongside Medium-band stress (average 65). July 4 is the useful counter-example — a refreshed pull of that day's wellness data corrects an earlier reading and shows average stress at a normal 34, not the spike originally logged. Similar training load, a much calmer physiological response — a sign that by early July, high-volume days were being absorbed rather than compounding fatigue.</p>
 
 
 <!-- SECTION 9 -->
@@ -962,11 +961,11 @@
 <div class="chart-wrap">
   <p class="chart-title">Stress vs body battery scatter with linear fit</p>
   <div class="chart-canvas-wrap" style="height: 300px;">
-    <canvas id="stressBbScatterChart" role="img" aria-label="Scatter chart of average stress versus most recent body battery with fitted line y equals minus 0.43x plus 41.0"></canvas>
+    <canvas id="stressBbScatterChart" role="img" aria-label="Scatter chart of average stress versus most recent body battery with fitted line y equals minus 0.56x plus 44.9"></canvas>
   </div>
 </div>
 
-<p>The relationship is strongly inverse in this window: higher daily stress is associated with lower same-day most recent Body Battery. The fitted line from your snapshot data is <strong>Body Battery = -0.43 × Stress + 41.0</strong>.</p>
+<p>The relationship is strongly inverse in this window: higher daily stress is associated with lower same-day most recent Body Battery. The fitted line from your snapshot data (updated after correcting the July 4 stress reading) is <strong>Body Battery = -0.56 × Stress + 44.9</strong> — a steeper relationship than the earlier estimate, and one that lines up with the broader correlation pass (r = −0.52 between stress and most-recent Body Battery).</p>
 
 <div class="chart-wrap">
   <p class="chart-title">Phase map (activity + sleep + stress + body battery)</p>
@@ -988,8 +987,8 @@
     </div>
     <div class="data-row">
       <span class="data-row-label">Phase 4: High-load edge (early July)</span>
-      <span class="data-row-val">Performance + strain</span>
-      <span class="data-row-delta up">watch fatigue</span>
+      <span class="data-row-val">Performance, stress easing</span>
+      <span class="data-row-delta down">cooling off</span>
     </div>
   </div>
 </div>
@@ -1000,9 +999,9 @@
 
 <p><strong>Phase 3: Strain ramp.</strong> June stress rises sharply (43.9 monthly average vs 28.4 in May), while volume and quality work continue. The June 9 outlier (average stress 82, max 97, minimal movement) suggests at least part of the load is systemic rather than purely mechanical.</p>
 
-<p><strong>Phase 4: High-load edge.</strong> Early July combines top-end activity and top-end stress (for example July 4). This is a productive but fragile state: fitness can still move forward, but recovery margin narrows and day-to-day readiness becomes more sleep- and stress-sensitive.</p>
+<p><strong>Phase 4: High-load edge.</strong> Early July still combines top-end training activity with real training volume, but stress itself has pulled back: a corrected reading for July 4 (34, not the originally logged 80) and a 10-day July average of 33.5 both point the same direction — the June strain phase peaked and is resolving even as the training load holds. Recovery margin is still worth watching, but the signal is now closer to "absorbing" than "compounding."</p>
 
-<blockquote>In this 101-day window, the key pattern is a recovery-led peak in mid-May followed by a stress-dominant phase in June and early July. The same training load becomes more expensive when non-training stress climbs.</blockquote>
+<blockquote>In this window, the key pattern is a recovery-led peak in mid-May, a stress-dominant phase in June, and an early-July cooldown even as training volume stays high. The same training load gets more expensive when non-training stress climbs — and cheaper again once it recedes.</blockquote>
 
 <div class="callout amber callout-single">
   <div class="stat-item">
@@ -1018,14 +1017,47 @@
 
 <div class="callout red callout-single">
   <div class="stat-item">
-    <span class="stat-num">21 days</span>
+    <span class="stat-num">15 days</span>
     <span class="stat-label">Missing wellness metrics</span>
-    <p class="stat-sub">Apr 11–Apr 15 and Jul 5–Jul 20</p>
+    <p class="stat-sub">Apr 11–Apr 15 and Jul 11–Jul 20</p>
   </div>
 </div>
 
-<p>The most reliable health trend window is effectively April 16 to July 4, 2026. HRV and full sleep-stage data are only present for a short subset (mostly in May), so long-range conclusions for HRV and sleep staging should be treated as directional rather than definitive.</p>
+<p>The most reliable health trend window is effectively April 16 to July 4, 2026, for Body Battery, sleep, and HRV. Stress is the exception: a refreshed pull now covers 86 daily readings from April 16 through July 10, and that pass also corrected a bad reading for July 4 (originally logged as 80, actually 34) — a reminder that any single-day outlier in this dataset is worth re-checking before it drives the narrative. HRV and full sleep-stage data are only present for a short subset (mostly in May), so long-range conclusions for HRV and sleep staging should be treated as directional rather than definitive.</p>
 
+
+<!-- TOOLS & EQUIPMENT -->
+<h2>Tools &amp; equipment</h2>
+
+<p>This research was conducted using a small stack of consumer hardware and Garmin's developer APIs.</p>
+
+<div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin: 2rem 0;">
+
+  <div style="background:var(--surface); border:1px solid var(--ink-faint); border-radius:10px; padding:20px 22px;">
+    <div style="font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--cyan); margin-bottom:8px;">Wearable</div>
+    <div style="font-size:16px; font-weight:500; color:var(--ink); margin-bottom:4px;">Garmin Forerunner 255</div>
+    <div style="font-size:13px; color:var(--ink-muted); line-height:1.5;">GPS running watch. Source for HR, cadence, ground contact time, power, and FIT files.</div>
+  </div>
+
+  <div style="background:var(--surface); border:1px solid var(--ink-faint); border-radius:10px; padding:20px 22px;">
+    <div style="font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--cyan); margin-bottom:8px;">Body Composition</div>
+    <div style="font-size:16px; font-weight:500; color:var(--ink); margin-bottom:4px;">Dr. Trust 360</div>
+    <div style="font-size:13px; color:var(--ink-muted); line-height:1.5;">Smart body composition scale. Source for weight, body fat %, muscle mass, protein mass, and body water %.</div>
+  </div>
+
+  <div style="background:var(--surface); border:1px solid var(--ink-faint); border-radius:10px; padding:20px 22px;">
+    <div style="font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--amber); margin-bottom:8px;">Data API</div>
+    <div style="font-size:16px; font-weight:500; color:var(--ink); margin-bottom:4px;">Garmin Activity API</div>
+    <div style="font-size:13px; color:var(--ink-muted); line-height:1.5;">Programmatic access to activity summaries, laps, and raw FIT file data for the custom analysis pipeline.</div>
+  </div>
+
+  <div style="background:var(--surface); border:1px solid var(--ink-faint); border-radius:10px; padding:20px 22px;">
+    <div style="font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--amber); margin-bottom:8px;">Data API</div>
+    <div style="font-size:16px; font-weight:500; color:var(--ink); margin-bottom:4px;">Garmin Health API</div>
+    <div style="font-size:13px; color:var(--ink-muted); line-height:1.5;">Daily wellness metrics: resting HR, HRV, stress, sleep-need delta, and Body Battery used in the 101-day analysis.</div>
+  </div>
+
+</div>
 
 <!-- DIVIDER + CLOSING -->
 <div class="divider"></div>
@@ -1052,7 +1084,7 @@
   <div class="author-avatar">R</div>
   <div class="author-meta">
     <div class="author-name">Running this experiment in Chennai</div>
-    Data from Garmin FIT files · Analyzed with a custom Python pipeline · Jun 27, 2026
+    Data from Garmin FIT files · Analyzed with a custom Python pipeline · Jun 27, 2026 · Stress analysis refreshed Jul 10, 2026
   </div>
 </footer>
 
@@ -1396,7 +1428,7 @@ if (metricsToggle) {
 }
 
 /* Stress vs Body Battery charts (from health snapshot JSON, Apr 16 to Jul 4) */
-const stressBbDaily = [{"d":"2026-04-16","s":39.0,"b":43.0},{"d":"2026-04-17","s":17.0,"b":34.0},{"d":"2026-04-18","s":26.0,"b":45.0},{"d":"2026-04-19","s":17.0,"b":31.0},{"d":"2026-04-20","s":23.0,"b":33.0},{"d":"2026-04-21","s":20.0,"b":37.0},{"d":"2026-04-22","s":25.0,"b":30.0},{"d":"2026-04-23","s":24.0,"b":23.0},{"d":"2026-04-24","s":15.0,"b":36.0},{"d":"2026-04-25","s":26.0,"b":58.0},{"d":"2026-04-26","s":17.0,"b":42.0},{"d":"2026-04-27","s":17.0,"b":51.0},{"d":"2026-04-28","s":22.0,"b":37.0},{"d":"2026-04-29","s":26.0,"b":23.0},{"d":"2026-04-30","s":21.0,"b":46.0},{"d":"2026-05-01","s":12.0,"b":42.0},{"d":"2026-05-02","s":29.0,"b":30.0},{"d":"2026-05-03","s":20.0,"b":41.0},{"d":"2026-05-04","s":26.0,"b":29.0},{"d":"2026-05-05","s":24.0,"b":25.0},{"d":"2026-05-06","s":38.0,"b":63.0},{"d":"2026-05-07","s":9.0,"b":55.0},{"d":"2026-05-08","s":16.0,"b":43.0},{"d":"2026-05-09","s":20.0,"b":38.0},{"d":"2026-05-10","s":8.0,"b":82.0},{"d":"2026-05-11","s":30.0,"b":26.0},{"d":"2026-05-12","s":40.0,"b":18.0},{"d":"2026-05-13","s":37.0,"b":26.0},{"d":"2026-05-14","s":27.0,"b":31.0},{"d":"2026-05-15","s":10.0,"b":46.0},{"d":"2026-05-16","s":22.0,"b":24.0},{"d":"2026-05-17","s":22.0,"b":31.0},{"d":"2026-05-18","s":17.0,"b":28.0},{"d":"2026-05-19","s":28.0,"b":14.0},{"d":"2026-05-20","s":26.0,"b":5.0},{"d":"2026-05-21","s":46.0,"b":17.0},{"d":"2026-05-22","s":33.0,"b":33.0},{"d":"2026-05-23","s":28.0,"b":13.0},{"d":"2026-05-24","s":29.0,"b":22.0},{"d":"2026-05-25","s":42.0,"b":25.0},{"d":"2026-05-26","s":47.0,"b":13.0},{"d":"2026-05-27","s":44.0,"b":15.0},{"d":"2026-05-28","s":48.0,"b":5.0},{"d":"2026-05-29","s":35.0,"b":6.0},{"d":"2026-05-30","s":43.0,"b":5.0},{"d":"2026-05-31","s":25.0,"b":23.0},{"d":"2026-06-01","s":32.0,"b":24.0},{"d":"2026-06-02","s":50.0,"b":5.0},{"d":"2026-06-03","s":40.0,"b":14.0},{"d":"2026-06-04","s":66.0,"b":14.0},{"d":"2026-06-05","s":37.0,"b":19.0},{"d":"2026-06-06","s":64.0,"b":18.0},{"d":"2026-06-07","s":33.0,"b":26.0},{"d":"2026-06-08","s":21.0,"b":14.0},{"d":"2026-06-09","s":82.0,"b":40.0},{"d":"2026-06-10","s":53.0,"b":14.0},{"d":"2026-06-11","s":48.0,"b":14.0},{"d":"2026-06-12","s":36.0,"b":17.0},{"d":"2026-06-13","s":62.0,"b":8.0},{"d":"2026-06-14","s":36.0,"b":23.0},{"d":"2026-06-15","s":40.0,"b":23.0},{"d":"2026-06-16","s":51.0,"b":15.0},{"d":"2026-06-17","s":49.0,"b":18.0},{"d":"2026-06-18","s":46.0,"b":13.0},{"d":"2026-06-19","s":33.0,"b":32.0},{"d":"2026-06-20","s":65.0,"b":10.0},{"d":"2026-06-21","s":35.0,"b":20.0},{"d":"2026-06-22","s":25.0,"b":34.0},{"d":"2026-06-23","s":46.0,"b":23.0},{"d":"2026-06-24","s":35.0,"b":23.0},{"d":"2026-06-25","s":43.0,"b":19.0},{"d":"2026-06-26","s":32.0,"b":17.0},{"d":"2026-06-27","s":47.0,"b":11.0},{"d":"2026-06-28","s":32.0,"b":19.0},{"d":"2026-06-29","s":32.0,"b":22.0},{"d":"2026-06-30","s":47.0,"b":14.0},{"d":"2026-07-01","s":28.0,"b":22.0},{"d":"2026-07-02","s":46.0,"b":12.0},{"d":"2026-07-03","s":25.0,"b":16.0},{"d":"2026-07-04","s":80.0,"b":49.0}];
+const stressBbDaily = [{"d":"2026-04-16","s":39.0,"b":43.0},{"d":"2026-04-17","s":17.0,"b":34.0},{"d":"2026-04-18","s":26.0,"b":45.0},{"d":"2026-04-19","s":17.0,"b":31.0},{"d":"2026-04-20","s":23.0,"b":33.0},{"d":"2026-04-21","s":20.0,"b":37.0},{"d":"2026-04-22","s":25.0,"b":30.0},{"d":"2026-04-23","s":24.0,"b":23.0},{"d":"2026-04-24","s":15.0,"b":36.0},{"d":"2026-04-25","s":26.0,"b":58.0},{"d":"2026-04-26","s":17.0,"b":42.0},{"d":"2026-04-27","s":17.0,"b":51.0},{"d":"2026-04-28","s":22.0,"b":37.0},{"d":"2026-04-29","s":26.0,"b":23.0},{"d":"2026-04-30","s":21.0,"b":46.0},{"d":"2026-05-01","s":12.0,"b":42.0},{"d":"2026-05-02","s":29.0,"b":30.0},{"d":"2026-05-03","s":20.0,"b":41.0},{"d":"2026-05-04","s":26.0,"b":29.0},{"d":"2026-05-05","s":24.0,"b":25.0},{"d":"2026-05-06","s":38.0,"b":63.0},{"d":"2026-05-07","s":9.0,"b":55.0},{"d":"2026-05-08","s":16.0,"b":43.0},{"d":"2026-05-09","s":20.0,"b":38.0},{"d":"2026-05-10","s":8.0,"b":82.0},{"d":"2026-05-11","s":30.0,"b":26.0},{"d":"2026-05-12","s":40.0,"b":18.0},{"d":"2026-05-13","s":37.0,"b":26.0},{"d":"2026-05-14","s":27.0,"b":31.0},{"d":"2026-05-15","s":10.0,"b":46.0},{"d":"2026-05-16","s":22.0,"b":24.0},{"d":"2026-05-17","s":22.0,"b":31.0},{"d":"2026-05-18","s":17.0,"b":28.0},{"d":"2026-05-19","s":28.0,"b":14.0},{"d":"2026-05-20","s":26.0,"b":5.0},{"d":"2026-05-21","s":46.0,"b":17.0},{"d":"2026-05-22","s":33.0,"b":33.0},{"d":"2026-05-23","s":28.0,"b":13.0},{"d":"2026-05-24","s":29.0,"b":22.0},{"d":"2026-05-25","s":42.0,"b":25.0},{"d":"2026-05-26","s":47.0,"b":13.0},{"d":"2026-05-27","s":44.0,"b":15.0},{"d":"2026-05-28","s":48.0,"b":5.0},{"d":"2026-05-29","s":35.0,"b":6.0},{"d":"2026-05-30","s":43.0,"b":5.0},{"d":"2026-05-31","s":25.0,"b":23.0},{"d":"2026-06-01","s":32.0,"b":24.0},{"d":"2026-06-02","s":50.0,"b":5.0},{"d":"2026-06-03","s":40.0,"b":14.0},{"d":"2026-06-04","s":66.0,"b":14.0},{"d":"2026-06-05","s":37.0,"b":19.0},{"d":"2026-06-06","s":64.0,"b":18.0},{"d":"2026-06-07","s":33.0,"b":26.0},{"d":"2026-06-08","s":21.0,"b":14.0},{"d":"2026-06-09","s":82.0,"b":40.0},{"d":"2026-06-10","s":53.0,"b":14.0},{"d":"2026-06-11","s":48.0,"b":14.0},{"d":"2026-06-12","s":36.0,"b":17.0},{"d":"2026-06-13","s":62.0,"b":8.0},{"d":"2026-06-14","s":36.0,"b":23.0},{"d":"2026-06-15","s":40.0,"b":23.0},{"d":"2026-06-16","s":51.0,"b":15.0},{"d":"2026-06-17","s":49.0,"b":18.0},{"d":"2026-06-18","s":46.0,"b":13.0},{"d":"2026-06-19","s":33.0,"b":32.0},{"d":"2026-06-20","s":65.0,"b":10.0},{"d":"2026-06-21","s":35.0,"b":20.0},{"d":"2026-06-22","s":25.0,"b":34.0},{"d":"2026-06-23","s":46.0,"b":23.0},{"d":"2026-06-24","s":35.0,"b":23.0},{"d":"2026-06-25","s":43.0,"b":19.0},{"d":"2026-06-26","s":32.0,"b":17.0},{"d":"2026-06-27","s":47.0,"b":11.0},{"d":"2026-06-28","s":32.0,"b":19.0},{"d":"2026-06-29","s":32.0,"b":22.0},{"d":"2026-06-30","s":47.0,"b":14.0},{"d":"2026-07-01","s":28.0,"b":22.0},{"d":"2026-07-02","s":46.0,"b":12.0},{"d":"2026-07-03","s":25.0,"b":16.0},{"d":"2026-07-04","s":34.0,"b":49.0}];
 
 function rollingMean(values, windowSize) {
   const out = [];
@@ -1503,8 +1535,8 @@ new Chart(document.getElementById('stressBbTrendChart'), {
 });
 
 const scatterPoints = stressBbDaily.map(r => ({ x: r.s, y: r.b }));
-const fitSlope = -0.4341;
-const fitIntercept = 41.035;
+const fitSlope = -0.5569;
+const fitIntercept = 44.879;
 const fitLineStressBb = [
   { x: 8, y: fitSlope * 8 + fitIntercept },
   { x: 82, y: fitSlope * 82 + fitIntercept }
