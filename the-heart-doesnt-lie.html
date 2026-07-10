@@ -411,6 +411,84 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-8DNMPT9Z2Q');
+
+  function getDeviceType() {
+    const ua = navigator.userAgent || '';
+    if (/tablet|ipad/i.test(ua)) {
+      return 'tablet';
+    }
+    if (/mobi|android|iphone|ipod/i.test(ua)) {
+      return 'mobile';
+    }
+    return 'desktop';
+  }
+
+  function getBrowserName() {
+    const ua = navigator.userAgent || '';
+    if (/edg\//i.test(ua)) return 'Edge';
+    if (/opr\//i.test(ua)) return 'Opera';
+    if (/chrome\//i.test(ua)) return 'Chrome';
+    if (/safari\//i.test(ua) && !/chrome\//i.test(ua)) return 'Safari';
+    if (/firefox\//i.test(ua)) return 'Firefox';
+    return 'Unknown';
+  }
+
+  function getUserNameHint() {
+    const qp = new URLSearchParams(window.location.search);
+    const fromQuery = qp.get('user');
+    const fromStorage = localStorage.getItem('site_user_name');
+    return fromQuery || fromStorage || 'unavailable';
+  }
+
+  async function getPublicIpAddress() {
+    try {
+      const response = await fetch('https://api.ipify.org?format=json', { cache: 'no-store' });
+      if (!response.ok) {
+        return 'unavailable';
+      }
+      const payload = await response.json();
+      return payload && payload.ip ? payload.ip : 'unavailable';
+    } catch (error) {
+      return 'unavailable';
+    }
+  }
+
+  async function captureDeviceDetails() {
+    const platform = navigator.platform || 'Unknown';
+    const browser = getBrowserName();
+    const deviceType = getDeviceType();
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Unknown';
+    const timestampIso = new Date().toISOString();
+    const screenSize = window.screen ? window.screen.width + 'x' + window.screen.height : 'Unknown';
+    const viewportSize = window.innerWidth + 'x' + window.innerHeight;
+    const language = navigator.language || 'Unknown';
+    const hardwareConcurrency = navigator.hardwareConcurrency || null;
+    const deviceMemoryGb = navigator.deviceMemory || null;
+    const ipAddress = await getPublicIpAddress();
+    const userName = getUserNameHint();
+
+    // Browser security prevents reading real OS hostname/username directly.
+    const deviceName = platform + ' - ' + browser;
+
+    gtag('event', 'device_details_capture', {
+      timestamp_iso: timestampIso,
+      device_name: deviceName,
+      user_name: userName,
+      ip_address: ipAddress,
+      device_type: deviceType,
+      browser_name: browser,
+      platform_name: platform,
+      time_zone: timeZone,
+      language_code: language,
+      screen_size: screenSize,
+      viewport_size: viewportSize,
+      cpu_threads: hardwareConcurrency,
+      device_memory_gb: deviceMemoryGb,
+      page_path: window.location.pathname
+    });
+  }
+
+  captureDeviceDetails();
 </script>
 </head>
 <body>
