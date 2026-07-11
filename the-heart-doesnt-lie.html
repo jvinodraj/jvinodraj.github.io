@@ -71,39 +71,48 @@
     margin-bottom: 40px;
   }
 
-  .hero-trace {
+  /* ── BREATH CYCLE ─────────────────────────────────── */
+  .breath-wrap {
+    margin-top: 32px;
+  }
+
+  .breath-wave-holder {
     width: 100%;
     height: 80px;
-    margin-top: 32px;
+    overflow: visible;
+    transform-origin: center;
+    animation: wave-breathe 11s cubic-bezier(0.45, 0, 0.2, 1) infinite;
+  }
+
+  .breath-wave {
+    width: 100%;
+    height: 100%;
     overflow: visible;
   }
 
-  .trace-path {
+  .wave-path {
     fill: none;
     stroke: var(--cyan);
     stroke-width: 1.5;
     stroke-linecap: round;
-    opacity: 0.7;
+    stroke-linejoin: round;
+    opacity: 0.75;
   }
 
-  .trace-glow {
+  .wave-glow {
     fill: none;
     stroke: var(--cyan);
-    stroke-width: 6;
+    stroke-width: 7;
     stroke-linecap: round;
-    opacity: 0.06;
+    stroke-linejoin: round;
+    opacity: 0.08;
   }
 
-  /* animated draw-on */
-  @keyframes draw {
-    from { stroke-dashoffset: 2200; }
-    to { stroke-dashoffset: 0; }
-  }
-
-  .trace-path, .trace-glow {
-    stroke-dasharray: 2200;
-    stroke-dashoffset: 2200;
-    animation: draw 3.2s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards;
+  @keyframes wave-breathe {
+    0%    { transform: scaleY(0.32); }
+    40.9% { transform: scaleY(1.4);  }
+    50%   { transform: scaleY(1.4);  }
+    100%  { transform: scaleY(0.32); }
   }
 
   /* ── PROSE ────────────────────────────────────────── */
@@ -501,14 +510,16 @@
   <h1>I Ran 17 Easy Runs in the Chennai Heat.<br><em>Here's what the data actually showed.</em></h1>
   <p class="subtitle">A personal experiment tracking my fitness, my running form, and how training in 30°C heat affects my body — measured heartbeat by heartbeat.</p>
 
-  <!-- Animated HR trace hero -->
-  <svg class="hero-trace" viewBox="0 0 680 80" preserveAspectRatio="none" aria-hidden="true">
-    <path class="trace-glow" d="M0,50 L60,50 L68,30 L76,68 L84,22 L92,58 L100,50 L160,50 L168,32 L176,66 L182,20 L190,56 L198,50 L248,48 L256,28 L264,64 L272,18 L280,54 L288,48 L338,46 L346,24 L354,60 L362,14 L370,52 L378,46 L428,44 L436,20 L444,58 L452,10 L460,50 L468,44 L528,42 L536,18 L544,56 L552,8 L560,48 L568,42 L620,40 L680,40"/>
-    <path class="trace-path" d="M0,50 L60,50 L68,30 L76,68 L84,22 L92,58 L100,50 L160,50 L168,32 L176,66 L182,20 L190,56 L198,50 L248,48 L256,28 L264,64 L272,18 L280,54 L288,48 L338,46 L346,24 L354,60 L362,14 L370,52 L378,46 L428,44 L436,20 L444,58 L452,10 L460,50 L468,44 L528,42 L536,18 L544,56 L552,8 L560,48 L568,42 L620,40 L680,40"/>
-    <text x="16" y="74" font-family="Inter, sans-serif" font-size="9" fill="#3A3530" letter-spacing="0.1em">APR</text>
-    <text x="198" y="74" font-family="Inter, sans-serif" font-size="9" fill="#3A3530" letter-spacing="0.1em">MAY</text>
-    <text x="398" y="74" font-family="Inter, sans-serif" font-size="9" fill="#3A3530" letter-spacing="0.1em">JUN</text>
-  </svg>
+  <!-- Breath cycle -->
+  <div class="breath-wrap">
+    <div class="breath-wave-holder">
+      <svg class="breath-wave" viewBox="0 0 680 80" preserveAspectRatio="none" aria-hidden="true">
+        <path class="wave-glow" d="M0,50 L60,50 L68,30 L76,68 L84,22 L92,58 L100,50 L160,50 L168,32 L176,66 L182,20 L190,56 L198,50 L248,48 L256,28 L264,64 L272,18 L280,54 L288,48 L338,46 L346,24 L354,60 L362,14 L370,52 L378,46 L428,44 L436,20 L444,58 L452,10 L460,50 L468,44 L528,42 L536,18 L544,56 L552,8 L560,48 L568,42 L620,40 L680,40"/>
+        <path class="wave-path" d="M0,50 L60,50 L68,30 L76,68 L84,22 L92,58 L100,50 L160,50 L168,32 L176,66 L182,20 L190,56 L198,50 L248,48 L256,28 L264,64 L272,18 L280,54 L288,48 L338,46 L346,24 L354,60 L362,14 L370,52 L378,46 L428,44 L436,20 L444,58 L452,10 L460,50 L468,44 L528,42 L536,18 L544,56 L552,8 L560,48 L568,42 L620,40 L680,40"/>
+      </svg>
+    </div>
+  </div>
+
 </header>
 
 
@@ -1113,26 +1124,32 @@
 
   <div style="background:var(--surface); border:1px solid var(--ink-faint); border-radius:10px; padding:20px 22px;">
     <div style="font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--cyan); margin-bottom:8px;">Wearable</div>
-    <div style="font-size:16px; font-weight:500; color:var(--ink); margin-bottom:4px;">Garmin Forerunner 255</div>
+    <div style="font-size:16px; font-weight:500; color:var(--ink); margin-bottom:4px;"><a href="https://www.garmin.com/en-US/p/780139" target="_blank" rel="noopener" style="color:var(--ink);">Garmin Forerunner 255</a></div>
     <div style="font-size:13px; color:var(--ink-muted); line-height:1.5;">GPS running watch. Source for HR, cadence, ground contact time, power, and FIT files.</div>
   </div>
 
   <div style="background:var(--surface); border:1px solid var(--ink-faint); border-radius:10px; padding:20px 22px;">
     <div style="font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--cyan); margin-bottom:8px;">Body Composition</div>
-    <div style="font-size:16px; font-weight:500; color:var(--ink); margin-bottom:4px;">Dr. Trust 360</div>
+    <div style="font-size:16px; font-weight:500; color:var(--ink); margin-bottom:4px;"><a href="https://drtrust.in/products/dr-trust-smart-body-fat-scale-360" target="_blank" rel="noopener" style="color:var(--ink);">Dr. Trust 360</a></div>
     <div style="font-size:13px; color:var(--ink-muted); line-height:1.5;">Smart body composition scale. Source for weight, body fat %, muscle mass, protein mass, and body water %.</div>
   </div>
 
   <div style="background:var(--surface); border:1px solid var(--ink-faint); border-radius:10px; padding:20px 22px;">
     <div style="font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--amber); margin-bottom:8px;">Data API</div>
-    <div style="font-size:16px; font-weight:500; color:var(--ink); margin-bottom:4px;">Garmin Activity API</div>
+    <div style="font-size:16px; font-weight:500; color:var(--ink); margin-bottom:4px;"><a href="https://developer.garmin.com/gc-developer-program/activity-api/" target="_blank" rel="noopener" style="color:var(--ink);">Garmin Activity API</a></div>
     <div style="font-size:13px; color:var(--ink-muted); line-height:1.5;">Programmatic access to activity summaries, laps, and raw FIT file data for the custom analysis pipeline.</div>
   </div>
 
   <div style="background:var(--surface); border:1px solid var(--ink-faint); border-radius:10px; padding:20px 22px;">
     <div style="font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--amber); margin-bottom:8px;">Data API</div>
-    <div style="font-size:16px; font-weight:500; color:var(--ink); margin-bottom:4px;">Garmin Health API</div>
+    <div style="font-size:16px; font-weight:500; color:var(--ink); margin-bottom:4px;"><a href="https://developer.garmin.com/gc-developer-program/health-api/" target="_blank" rel="noopener" style="color:var(--ink);">Garmin Health API</a></div>
     <div style="font-size:13px; color:var(--ink-muted); line-height:1.5;">Daily wellness metrics: resting HR, HRV, stress, sleep-need delta, and Body Battery used in the 101-day analysis.</div>
+  </div>
+
+  <div style="background:var(--surface); border:1px solid var(--ink-faint); border-radius:10px; padding:20px 22px; grid-column: 1 / -1;">
+    <div style="font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--green); margin-bottom:8px;">Code Repository</div>
+    <div style="font-size:16px; font-weight:500; color:var(--ink); margin-bottom:4px;"><a href="https://github.com/jvinodraj/theEagle" target="_blank" rel="noopener" style="color:var(--ink);">jvinodraj/theEagle</a></div>
+    <div style="font-size:13px; color:var(--ink-muted); line-height:1.5;">Python toolkit for Garmin FIT analysis across easy runs, interval, tempo, threshold, speed, and strength sessions with dedicated performance reports.</div>
   </div>
 
 </div>
