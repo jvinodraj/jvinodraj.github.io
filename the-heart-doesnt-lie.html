@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>10 Weeks of Running in Chennai — What the Data Actually Says</title>
+<meta property="og:title" content="10 Weeks of Running in Chennai — What the Data Actually Says">
+<meta property="og:description" content="An end-to-end review of 17 easy runs, efficiency trends, fatigue indicators, heat impact, and what changed over 101 days.">
+<meta property="og:image" content="https://jvinodraj.github.io/assets/images/medium/heart-wordcloud.png">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jvinodraj.github.io/assets/images/medium/heart-wordcloud.png">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -227,6 +233,22 @@
     position: relative;
     width: 100%;
     height: 220px;
+  }
+
+  /* ── TRAINING PYRAMID ─────────────────────────────── */
+  .pyramid-fade-in {
+    animation: pyramidRise 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  @keyframes pyramidRise {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .pyramid-tier {
+    transition: filter 0.2s ease;
+    cursor: default;
+  }
+  .pyramid-tier:hover {
+    filter: brightness(1.1);
   }
 
   /* ── INLINE DATA TABLE ────────────────────────────── */
@@ -567,9 +589,9 @@
       <tbody>
         <tr class="top-metric">
           <td>VO₂ Max</td>
-          <td>48</td>
+          <td>45</td>
           <td>50</td>
-          <td>+2 (+4.2%)</td>
+          <td>+5 (+11.1%)</td>
           <td>Improved aerobic fitness</td>
         </tr>
         <tr class="top-metric">
@@ -601,27 +623,6 @@
           <td>Positive body recomposition</td>
         </tr>
 
-        <tr class="hidden-metric">
-          <td>Easy Runs Completed</td>
-          <td>0</td>
-          <td>17</td>
-          <td>+17</td>
-          <td>Consistent aerobic base building</td>
-        </tr>
-        <tr class="hidden-metric">
-          <td>Interval Sessions</td>
-          <td>0</td>
-          <td>12</td>
-          <td>+12</td>
-          <td>Increased quality training</td>
-        </tr>
-        <tr class="hidden-metric">
-          <td>Strength Sessions</td>
-          <td>0</td>
-          <td>19</td>
-          <td>+19</td>
-          <td>Good strength consistency</td>
-        </tr>
         <tr class="hidden-metric">
           <td>Body Weight</td>
           <td>~74.3 kg</td>
@@ -707,6 +708,68 @@
 </div>
 
 
+<!-- SECTION 3.5 -->
+<h2>Training composition: the big picture</h2>
+
+<p>Before breaking down the interval sessions and the lifting, here's how the whole block adds up. Strength actually outweighs the easy running in hours — so it forms the base here, not the tip.</p>
+
+<div class="chart-wrap">
+  <p class="chart-title">Training pyramid — Apr 15 to Jul 11</p>
+  <div class="pyramid-fade-in" style="padding-top: 8px; text-align: center;">
+    <svg viewBox="0 0 700 470" style="width: 100%; max-width: 560px; height: auto;" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="pyAmber" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#DDA262" />
+          <stop offset="100%" stop-color="#C8873A" />
+        </linearGradient>
+        <linearGradient id="pyGreen" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#6FC393" />
+          <stop offset="100%" stop-color="#4DB87A" />
+        </linearGradient>
+        <linearGradient id="pyCyan" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#33E4C9" />
+          <stop offset="100%" stop-color="#00D4B8" />
+        </linearGradient>
+      </defs>
+
+      <!-- Tip: Interval / Threshold — 27% of height (softly rounded apex) -->
+      <path class="pyramid-tier" d="M346.4,34.8 Q350,30 353.6,34.8 L425.7,130 L274.3,130 Z"
+            style="fill: url(#pyAmber); stroke: var(--bg); stroke-width: 2; stroke-linejoin: round; filter: drop-shadow(0 4px 10px rgba(200,135,58,0.25));" />
+
+      <!-- Middle: Easy / Aerobic Base — 33% of height -->
+      <polygon class="pyramid-tier" points="274.3,130 425.7,130 518,252 182,252"
+               style="fill: url(#pyGreen); stroke: var(--bg); stroke-width: 2; stroke-linejoin: round; filter: drop-shadow(0 4px 10px rgba(77,184,122,0.22));" />
+
+      <!-- Base: Strength — 40% of height (rounded base corners) -->
+      <path class="pyramid-tier" d="M182,252 L518,252 L621.5,388.8 Q630,400 616,400 L84,400 Q70,400 78.5,388.8 Z"
+            style="fill: url(#pyCyan); stroke: var(--bg); stroke-width: 2; stroke-linejoin: round; filter: drop-shadow(0 4px 10px rgba(0,212,184,0.22));" />
+
+      <!-- Tip: external label with leader line -->
+      <circle cx="395" cy="90" r="3" style="fill: var(--amber);" />
+      <line x1="399" y1="90" x2="460" y2="90" style="stroke: var(--amber); stroke-width: 1.5; stroke-dasharray: 3 3;" />
+      <text x="466" y="88" style="font-family: var(--sans); font-size: 14px; font-weight: 700; fill: var(--amber);">Interval / Threshold</text>
+      <text x="466" y="105" style="font-family: var(--sans); font-size: 12px; font-weight: 500; fill: var(--amber); opacity: 0.85;">15 sessions · 20.6 hrs · 27%</text>
+
+      <!-- Middle label -->
+      <text x="350" y="184" text-anchor="middle" style="font-family: var(--sans); font-size: 18px; font-weight: 700; fill: var(--bg);">Easy / Aerobic Base</text>
+      <text x="350" y="206" text-anchor="middle" style="font-family: var(--sans); font-size: 13px; font-weight: 600; fill: var(--bg); opacity: 0.75;">20 sessions · 24.9 hrs · 33%</text>
+
+      <!-- Base label -->
+      <text x="350" y="313" text-anchor="middle" style="font-family: var(--sans); font-size: 22px; font-weight: 700; fill: var(--bg);">Strength</text>
+      <text x="350" y="337" text-anchor="middle" style="font-family: var(--sans); font-size: 14px; font-weight: 600; fill: var(--bg); opacity: 0.75;">23 sessions · 29.9 hrs · 40%</text>
+
+      <!-- Footer divider + totals -->
+      <line x1="255" y1="416" x2="445" y2="416" style="stroke: var(--ink-faint); stroke-width: 1;" />
+      <text x="350" y="437" text-anchor="middle" style="font-family: var(--sans); font-size: 14px; font-weight: 600; fill: var(--ink-muted);">Total: 75.4 hrs · 58 sessions</text>
+      <text x="350" y="455" text-anchor="middle" style="font-family: var(--sans); font-size: 12px; fill: var(--ink-muted); opacity: 0.7;">Apr 15 – Jul 11, 2026</text>
+    </svg>
+  </div>
+</div>
+
+<p>Strength ended up carrying the largest single share of hours (40%) — a byproduct of consistency rather than intent, since each session ran close to an hour. The aerobic base and the interval/threshold work split the rest almost evenly, at 33% and 27%. That's a leaner base than a textbook pyramid would call for, but it lines up with a short block aimed at a specific race rather than a full aerobic-development cycle.</p>
+
+
+
 <!-- SECTION 1 -->
 <h2>The metric that matters: efficiency, not pace</h2>
 
@@ -755,25 +818,26 @@
 
 <!-- TEMPERATURE VS HR SCATTER -->
 <div class="chart-wrap">
-  <p class="chart-title">Temperature vs average HR — 16 easy runs (weighted avg °C)</p>
+  <p class="chart-title">Temperature vs average HR — 19 easy runs (weighted avg °C)</p>
+  <p style="font-size:12px; color:var(--ink-muted); margin-bottom:14px;">Notebook used for this analysis: <a href="https://github.com/jvinodraj/theEagle/blob/master/notebooks/easy_run_daily_hr_smoothness.ipynb" target="_blank" rel="noopener" style="color:var(--cyan);">easy_run_daily_hr_smoothness.ipynb</a>.</p>
   <div style="display:flex; gap:16px; margin-bottom:14px; flex-wrap:wrap;">
     <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#9A9082;"><span style="width:10px;height:10px;border-radius:50%;background:#00D4B8;display:inline-block;"></span>Easy run</span>
-    <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#9A9082;"><span style="width:22px;height:2px;background:#C8873A;display:inline-block;"></span>Fit: HR = 2.88×Temp + 61.34</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#9A9082;"><span style="width:22px;height:2px;background:#C8873A;display:inline-block;"></span>Fit: HR = 3.05×Temp + 55.39</span>
   </div>
   <div class="chart-canvas-wrap" style="height:280px;">
-    <canvas id="tempHrChart" role="img" aria-label="Scatter plot showing positive correlation between weighted average temperature and average heart rate across 16 easy runs, with a linear fit of HR = 2.88 times temperature plus 61.34"></canvas>
+    <canvas id="tempHrChart" role="img" aria-label="Scatter plot showing positive correlation between weighted average temperature and average heart rate across 19 easy runs, with a linear fit of HR = 3.05 times temperature plus 55.39"></canvas>
   </div>
 </div>
 
-<p>Each extra degree Celsius adds roughly <strong>2.9 beats per minute</strong> to my heart rate. The formula is HR = 2.88 × temperature + 61.34, and temperature alone explains most of the difference in heart rate between my runs. In practical terms: a run at 31.5°C puts about 7 more beats per minute of strain on my heart than a run at 29°C — before fatigue, fitness, or pace are even considered.</p>
+<p>Each extra degree Celsius adds roughly <strong>3.0 beats per minute</strong> to my heart rate. The formula is HR = 3.05 × temperature + 55.39, and temperature alone explains most of the difference in heart rate between my runs. In practical terms: a run at 31.5°C puts about 7 more beats per minute of strain on my heart than a run at 29°C — before fatigue, fitness, or pace are even considered.</p>
 
 <p>Two runs stand out. On June 23 (29.8°C, 143 bpm), my heart rate was lower than the temperature alone would predict — the clearest sign of real fitness improvement in the whole dataset. On April 18 (31.1°C, 155 bpm), my heart rate was higher than expected — the highest of the entire ten weeks, early on, before I had adapted to the heat or built an aerobic base.</p>
 
 <div class="callout amber">
   <div class="stat-item">
-    <span class="stat-num">~2.9</span>
+    <span class="stat-num">~3.0</span>
     <span class="stat-label">BPM cost per °C of heat</span>
-    <p class="stat-sub">Linear regression, 16 runs</p>
+    <p class="stat-sub">Linear regression, 19 runs</p>
   </div>
   <div class="stat-item">
     <span class="stat-num">−12 bpm</span>
@@ -1042,6 +1106,7 @@
 
 <div class="chart-wrap">
   <p class="chart-title">Garmin stress vs body battery daily trend (Apr 16 to Jul 4)</p>
+  <p style="font-size:12px; color:var(--ink-muted); margin-bottom:14px;">Notebook used for this analysis: <a href="https://github.com/jvinodraj/theEagle/blob/master/notebooks/garmin_stress_body_battery_trend.ipynb" target="_blank" rel="noopener" style="color:var(--cyan);">garmin_stress_body_battery_trend.ipynb</a>.</p>
   <div class="chart-canvas-wrap" style="height: 300px;">
     <canvas id="stressBbTrendChart" role="img" aria-label="Dual-axis chart showing daily average stress and body battery with 7-day moving means from April 16 to July 4, 2026"></canvas>
   </div>
@@ -1284,24 +1349,27 @@ new Chart(document.getElementById('efChart'), {
 
 /* Temperature vs HR scatter chart */
 const tempHrData = [
-  { x: 29.012, y: 146, label: '13-Jun' },
-  { x: 29.377, y: 147, label: '09-May' },
-  { x: 29.768, y: 143, label: '23-Jun' },
-  { x: 30.041, y: 149, label: '07-May' },
-  { x: 30.184, y: 152, label: '30-Apr' },
-  { x: 30.197, y: 149, label: '23-Apr' },
-  { x: 30.297, y: 144, label: '04-Jun' },
-  { x: 30.378, y: 148, label: '02-Jun' },
-  { x: 30.678, y: 147, label: '16-Jun' },
-  { x: 30.706, y: 152, label: '25-Apr' },
-  { x: 30.709, y: 150, label: '14-May' },
   { x: 31.135, y: 155, label: '18-Apr' },
-  { x: 31.349, y: 153, label: '23-May' },
-  { x: 31.415, y: 151, label: '21-May' },
+  { x: 30.197, y: 149, label: '23-Apr' },
+  { x: 30.706, y: 152, label: '25-Apr' },
+  { x: 30.184, y: 152, label: '30-Apr' },
+  { x: 31.541, y: 150, label: '02-May' },
+  { x: 30.041, y: 149, label: '07-May' },
+  { x: 29.377, y: 147, label: '09-May' },
+  { x: 30.709, y: 150, label: '14-May' },
+  { x: 31.446, y: 151, label: '21-May' },
+  { x: 31.380, y: 153, label: '23-May' },
   { x: 31.470, y: 152, label: '28-May' },
-  { x: 31.541, y: 150, label: '02-May' }
+  { x: 30.378, y: 148, label: '02-Jun' },
+  { x: 30.297, y: 144, label: '04-Jun' },
+  { x: 29.012, y: 146, label: '13-Jun' },
+  { x: 30.678, y: 147, label: '16-Jun' },
+  { x: 29.768, y: 143, label: '23-Jun' },
+  { x: 30.005, y: 143, label: '30-Jun' },
+  { x: 30.997, y: 145, label: '04-Jul' },
+  { x: 30.026, y: 143, label: '07-Jul' }
 ];
-const slope = 2.88, intercept = 61.34;
+const slope = 3.05, intercept = 55.39;
 const fitXMin = 28.8, fitXMax = 31.8;
 const fitLine = [
   { x: fitXMin, y: slope * fitXMin + intercept },
