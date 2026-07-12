@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+(function() {
+  try {
+    var saved = localStorage.getItem('theme');
+    var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+    var theme = saved || (prefersLight ? 'light' : 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+})();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>10 Weeks of Running in Chennai — What the Data Actually Says</title>
@@ -434,6 +446,114 @@
     border-radius: 20px;
     color: var(--ink-muted);
   }
+
+  /* ── LIGHT THEME OVERRIDES ────────────────────────── */
+  html[data-theme="light"] {
+    --ink: #1C1A16;
+    --ink-muted: #6B6355;
+    --ink-faint: #E2DBCB;
+    --bg: #FBF8F2;
+    --surface: #FFFFFF;
+    --cyan: #037C6D;
+    --amber: #9F5F1A;
+    --red: #C23B3B;
+    --green: #297C4F;
+  }
+
+  html, body, .chart-wrap, .callout, .metrics-table-wrap, .theme-toggle, .toggle-thumb {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* ── THEME TOGGLE (ECG pill switch) ───────────────── */
+  .theme-toggle {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    z-index: 200;
+    width: 60px;
+    height: 28px;
+    border-radius: 999px;
+    background: var(--surface);
+    border: 1px solid var(--ink-faint);
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    overflow: visible;
+  }
+  .theme-toggle:hover { border-color: var(--cyan); }
+
+  .ecg-track {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 60px;
+    height: 24px;
+    pointer-events: none;
+  }
+  .ecg-line {
+    fill: none;
+    stroke: var(--cyan);
+    stroke-width: 1.3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.35;
+  }
+  .theme-toggle.pulse .ecg-line {
+    animation: ecgFlash 0.6s ease;
+  }
+  @keyframes ecgFlash {
+    0%   { opacity: 0.35; stroke-width: 1.3; }
+    30%  { opacity: 1;    stroke-width: 2;   }
+    100% { opacity: 0.35; stroke-width: 1.3; }
+  }
+
+  .toggle-thumb {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 1px solid var(--ink-faint);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(3px);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease;
+    color: var(--cyan);
+  }
+  html[data-theme="light"] .toggle-thumb {
+    transform: translateX(35px);
+    color: var(--amber);
+  }
+
+  .icon-sun, .icon-moon {
+    position: absolute;
+    transition: opacity 0.2s ease, transform 0.25s ease;
+  }
+  .icon-moon { opacity: 1; transform: scale(1) rotate(0deg); }
+  .icon-sun  { opacity: 0; transform: scale(0.5) rotate(-90deg); }
+  html[data-theme="light"] .icon-moon { opacity: 0; transform: scale(0.5) rotate(90deg); }
+  html[data-theme="light"] .icon-sun  { opacity: 1; transform: scale(1) rotate(0deg); }
+
+  @media (max-width: 480px) {
+    .theme-toggle { top: 12px; right: 12px; }
+
+    .callout {
+      grid-template-columns: 1fr;
+      padding: 22px 20px;
+      gap: 18px;
+      margin: 2.5rem -4px;
+    }
+    .callout .stat-item:not(:last-child) {
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--ink-faint);
+    }
+    .stat-num { font-size: 32px; }
+
+    .tools-grid { grid-template-columns: 1fr !important; }
+  }
+
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8DNMPT9Z2Q"></script>
@@ -524,12 +644,22 @@
 </head>
 <body>
 
+<button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch between dark and light theme" aria-pressed="false">
+  <svg class="ecg-track" viewBox="0 0 60 24" width="60" height="24" aria-hidden="true">
+    <path class="ecg-line" d="M0,12 L14,12 L18,4 L22,20 L26,12 L60,12" />
+  </svg>
+  <span class="toggle-thumb">
+    <svg class="icon-moon" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor"/></svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></g></svg>
+  </span>
+</button>
+
 <article>
 
 <!-- HERO -->
 <header class="hero">
   <p class="eyebrow">Running Science · Personal Data · 10-Week Analysis</p>
-  <h1>I Ran 17 Easy Runs in the Chennai Heat.<br><em>Here's what the data actually showed.</em></h1>
+  <h1>I Ran 20 Easy Runs in the Chennai Heat.<br><em>Here's what the data actually showed.</em></h1>
   <p class="subtitle">A personal experiment tracking my fitness, my running form, and how training in 30°C heat affects my body — measured heartbeat by heartbeat.</p>
 
   <!-- Breath cycle -->
@@ -546,17 +676,17 @@
 
 
 <!-- INTRO -->
-<p class="drop-cap">The heart does not lie. You can run slower or faster on purpose. You can blame a bad workout on outside factors. But your heart rate compared to your speed — tracked over weeks — tells you the real story.</p>
+<p class="drop-cap">The heart does not lie. You can run slower or faster on purpose. You can blame a bad workout on outside factors. But your heart rate compared to your speed — tracked over weeks — tells you the pakka story.</p>
 
-<p>Between April 16 and June 23, 2026, I ran 17 easy sessions in Chennai, where the heat alone makes every run harder. I wore a Garmin, saved every workout file, and analyzed the numbers using a tool I built myself. Here's what I found.</p>
+<p>Between April 16 and July 16, 2026, I ran 20 easy sessions in Chennai, where the heat alone makes every run harder which I found out later. I wore a Garmin, saved every workout file, and analyzed the numbers using a tool I built myself. Here's what I found.</p>
 
 <p>The results are mostly good news — but there's one problem I keep seeing and can't ignore.</p>
 
 <div class="callout">
   <div class="stat-item">
-    <span class="stat-num">17</span>
+    <span class="stat-num">20</span>
     <span class="stat-label">Easy runs analyzed</span>
-    <p class="stat-sub">Apr 16 – Jun 23, 2026</p>
+    <p class="stat-sub">Apr 16 – Jul 16, 2026</p>
   </div>
   <div class="stat-item">
     <span class="stat-num">+6.4%</span>
@@ -564,7 +694,7 @@
     <p class="stat-sub">Power per heartbeat (W/bpm)</p>
   </div>
   <div class="stat-item">
-    <span class="stat-num">14/17</span>
+    <span class="stat-num">14/20</span>
     <span class="stat-label">Runs at 30°C or hotter</span>
     <p class="stat-sub">The Chennai heat factor</p>
   </div>
@@ -766,19 +896,19 @@
   </div>
 </div>
 
-<p>Strength ended up carrying the largest single share of hours (40%) — a byproduct of consistency rather than intent, since each session ran close to an hour. The aerobic base and the interval/threshold work split the rest almost evenly, at 33% and 27%. That's a leaner base than a textbook pyramid would call for, but it lines up with a short block aimed at a specific race rather than a full aerobic-development cycle.</p>
+<p>Strength ended up carrying the largest single share of hours (40%) — a byproduct of consistency rather than intent, since each session ran close to an hour. The aerobic base and the interval/threshold/tempo work split the rest almost evenly, at 33% and 27%. That's a leaner base than a textbook pyramid would call for, but it lines up with a short block aimed at a specific race rather than a full aerobic-development cycle.</p>
 
 
 
 <!-- SECTION 1 -->
 <h2>The metric that matters: efficiency, not pace</h2>
 
-<p>Most runners focus only on pace. I used to as well — until I started tracking power. The number I care about most now is called the <strong>Efficiency Factor</strong>: how many watts I produce for every heartbeat. It's a standard measure (used by coaches like Joe Friel and tools like TrainingPeaks) for tracking aerobic fitness. It works the same whether the run was 5km or 12km, and whether the day was cool or very hot.</p>
+<p>Most runners focus only on pace. I used to as well — until I realized the power factor. The number I care about most now is called the <strong>Efficiency Factor</strong>: how many watts I produce for every heartbeat. It's a standard measure (used by coaches like Joe Friel and tools like TrainingPeaks) for tracking aerobic fitness. It works the same whether the run was 5km or 12km, and whether the day was cool or very hot.</p>
 
 <p>My Efficiency Factor went from 1.536 W/bpm on my first run to 1.634 W/bpm on my most recent one. That's a 6.4% improvement in true aerobic fitness over ten weeks. For context: a score below 1.4 usually means a beginner, and above 1.8 usually means a well-trained runner. I'm in the middle of the range for a regular recreational runner — and moving in the right direction.</p>
 
 <div class="chart-wrap">
-  <p class="chart-title">Efficiency Factor (W/bpm) across 17 easy runs</p>
+  <p class="chart-title">Efficiency Factor (W/bpm) across 20 easy runs</p>
   <div class="chart-canvas-wrap">
     <canvas id="efChart" role="img" aria-label="Line chart showing Efficiency Factor improving from 1.536 to 1.634 across 17 runs from April to June 2026"></canvas>
   </div>
@@ -812,7 +942,7 @@
   </div>
 </div>
 
-<p>But there's an important factor to consider: <strong>14 of my 17 runs happened at 30°C or hotter</strong>. Heat alone pushes your heart rate up during a run, no matter how fit you are. So it's hard to know how much of my decoupling is caused by heat and how much by fatigue — it's probably both. My last two runs (June 16 and June 23) both came in at 8.4%, which suggests fatigue is building.</p>
+<p>But there's an important factor to consider: <strong>14 of my 20 runs happened at 30°C or hotter</strong>. Heat alone pushes your heart rate up during a run, no matter how fit you are. So it's hard to know how much of my decoupling is caused by heat and how much by fatigue — it's probably both. My last two runs (June 16 and June 23) both came in at 8.4%, which suggests fatigue is building.</p>
 
 <p>So I compared each run's average temperature against its average heart rate. The pattern was very clear.</p>
 
@@ -1185,7 +1315,7 @@
 
 <p>This research was conducted using a small stack of consumer hardware and Garmin's developer APIs.</p>
 
-<div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin: 2rem 0;">
+<div class="tools-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin: 2rem 0;">
 
   <div style="background:var(--surface); border:1px solid var(--ink-faint); border-radius:10px; padding:20px 22px;">
     <div style="font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--cyan); margin-bottom:8px;">Wearable</div>
@@ -1575,6 +1705,21 @@ legend.innerHTML = `
     <span style="display:flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;border-radius:2px;background:#3A3530;display:inline-block;"></span>Baseline</span>
   </div>
 `;
+
+/* Theme toggle (dark / light) */
+const themeToggle = document.getElementById('themeToggle');
+if (themeToggle) {
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+  themeToggle.setAttribute('aria-pressed', String(currentTheme === 'light'));
+  themeToggle.addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    themeToggle.setAttribute('aria-pressed', String(next === 'light'));
+    themeToggle.classList.add('pulse');
+    setTimeout(() => themeToggle.classList.remove('pulse'), 650);
+  });
+}
 
 /* Expand/collapse progress metrics table */
 const metricsToggle = document.getElementById('metricsToggle');
