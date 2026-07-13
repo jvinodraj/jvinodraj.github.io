@@ -682,15 +682,15 @@
 <!-- INTRO -->
 <p class="drop-cap">The heart does not lie. You can run slower or faster on purpose. You can blame a bad workout on outside factors. But your heart rate compared to your speed — tracked over weeks — tells you the pakka story.</p>
 
-<p>Between April 16 and July 16, 2026, I ran 21 easy sessions in Chennai, where the heat alone makes every run harder which I found out later. I wore a Garmin, saved every workout file, and analyzed the numbers using a tool I built myself. Here's what I found.</p>
+<p>Between April 16 and July 18, 2026, I ran 21 easy sessions in Chennai, where the heat alone makes every run harder which I found out later. Wore a Sports watch, saved every workout file, and analyzed the numbers using a FIT file analyser. Here's what I found.</p>
 
-<p>The results are mostly good news — but there's one problem I keep seeing and can't ignore.</p>
+<p>The results are mostly good news. aanaa enna... but there's one problem which I can't ignore. Namma chennai wheather condition tha</p>
 
 <div class="callout">
   <div class="stat-item">
     <span class="stat-num">21</span>
     <span class="stat-label">Easy runs analyzed</span>
-    <p class="stat-sub">Apr 16 – Jul 16, 2026</p>
+    <p class="stat-sub">Apr 16 – Jul 18, 2026</p>
   </div>
   <div class="stat-item">
     <span class="stat-num">+6.4%</span>
@@ -961,28 +961,28 @@
 
 
 <!-- SECTION 1 -->
-<h2>The metric that matters: efficiency, not pace</h2>
+<h2>The metric that matters: Its efficiency, not the pace</h2>
 
-<p>Most runners focus only on pace. I used to as well — until I realized the power factor. The number I care about most now is called the <strong>Efficiency Factor</strong>: how many watts I produce for every heartbeat. It's a standard measure (used by coaches like Joe Friel and tools like TrainingPeaks) for tracking aerobic fitness. It works the same whether the run was 5km or 12km, and whether the day was cool or very hot.</p>
+<p>Most runners focus only on pace. I used to be as well — until I realized the power metric that is least to be considered. The number I care about to stess upon is <strong>Efficiency Factor</strong>: how many watts I produce for every heartbeat. One of the standard measures for tracking aerobic fitness. It works the same whether the run was 5km or 12km, and whether the day was cool or very hot.</p>
 
-<p>My Efficiency Factor went from 1.536 W/bpm on my first run to 1.634 W/bpm on my most recent one. That's a 6.4% improvement in true aerobic fitness over ten weeks. For context: a score below 1.4 usually means a beginner, and above 1.8 usually means a well-trained runner. I'm in the middle of the range for a regular recreational runner — and moving in the right direction.</p>
+<p>My Efficiency Factor went from 1.536 W/bpm on my first run to 1.634 W/bpm on my most recent one. That's a 6.4% improvement in true aerobic fitness over 15 weeks of training. For a better understanding, a score below 1.4 usually means a beginner, and above 1.8 usually means a well-trained runner. I'm in the middle of the range for a regular recreational runner.</p>
 
 <div class="chart-wrap">
-  <p class="chart-title">Efficiency Factor (W/bpm) across 20 easy runs</p>
-  <div class="chart-canvas-wrap">
-    <canvas id="efChart" role="img" aria-label="Line chart showing Efficiency Factor improving from 1.536 to 1.634 across 17 runs from April to June 2026"></canvas>
+  <p class="chart-title">Efficiency Factor (W/bpm) across 21 easy runs</p>
+  <div class="chart-canvas-wrap" style="height:350px;">
+    <canvas id="efChart" role="img" aria-label="Line chart showing Efficiency Factor improving from 1.536 to 1.634 across 21 runs from April to June 2026"></canvas>
   </div>
 </div>
 
-<p>My pace barely changed — it stayed around 7.3 to 7.5 minutes per kilometer the whole time. But my heart is doing less work to produce that same speed. That's what real improvement looks like. That's what easy running is supposed to build.</p>
+<p>My pace barely changed — it stayed around 7.3 to 7.5 minutes per kilometer the whole time. Over the period of time, I was able to handle the load better it is gradually keep increasing week after week. Barely from 153 bpm to 145 bpm.</p>
 
 
 <!-- SECTION 2 -->
 <h2>The problem I can't explain away</h2>
 
-<p>Here's the part I can't ignore. Aerobic decoupling measures how much your heart rate rises compared to your pace during a single run. A run is considered aerobically fit when this number stays under 5%. My median was <strong>7.1%</strong>. Only 3 of my 17 runs stayed under that 5% mark.</p>
+<p>Here's the part I can't ignore. Aerobic decoupling measures how much your heart rate rises compared to your pace during a single run. A run is considered aerobically fit when this number stays under 5%. My median was <strong>7.1%</strong>. Only 3 of my 21 runs stayed under that 5% mark.</p>
 
-<blockquote>"Five of seventeen runs crossed the 8% line — the strongest within-run fatigue signal in these sessions."</blockquote>
+<blockquote>"Five of twentyone runs crossed the 8% line — the strongest within-run fatigue signal in these sessions."</blockquote>
 
 <div class="callout amber">
   <div class="stat-item">
@@ -1598,7 +1598,7 @@ new Chart(document.getElementById('efChart'), {
     labels: efDates,
     datasets: [
       {
-        label: 'EF (W/bpm)',
+        label: '',
         data: efVals,
         borderColor: '#00D4B8',
         backgroundColor: 'rgba(0,212,184,0.08)',
@@ -1612,7 +1612,7 @@ new Chart(document.getElementById('efChart'), {
         yAxisID: 'y'
       },
       {
-        label: 'Decoupling %',
+        label: '',
         data: decVals,
         borderColor: '#C8873A',
         borderWidth: 1.5,
@@ -1624,6 +1624,26 @@ new Chart(document.getElementById('efChart'), {
         tension: 0.35,
         fill: false,
         yAxisID: 'y2'
+      },
+      {
+        label: 'Aerobically Fit (5%)',
+        data: efDates.map(() => 5),
+        borderColor: '#4DB87A',
+        borderWidth: 1.5,
+        borderDash: [5,5],
+        pointRadius: 0,
+        fill: false,
+        yAxisID: 'y2'
+      },
+      {
+        label: 'High Drift (8%)',
+        data: efDates.map(() => 8),
+        borderColor: '#E05C5C',
+        borderWidth: 1.5,
+        borderDash: [5,5],
+        pointRadius: 0,
+        fill: false,
+        yAxisID: 'y2'
       }
     ]
   },
@@ -1632,7 +1652,23 @@ new Chart(document.getElementById('efChart'), {
     maintainAspectRatio: false,
     interaction: { mode: 'index', intersect: false },
     plugins: {
-      legend: { display: false },
+      legend: { 
+        display: true, 
+        position: 'top', 
+        labels: { 
+          color: '#F0EBE1', 
+          font: { size: 11, weight: '500' }, 
+          padding: 15, 
+          usePointStyle: false,
+          boxWidth: 12,
+          boxHeight: 2,
+          filter: item => item.text !== ''
+        },
+        backgroundColor: 'rgba(22,22,18,0.8)',
+        borderColor: '#3A3530',
+        borderWidth: 1,
+        borderRadius: 6
+      },
       tooltip: {
         backgroundColor: '#1A1A17',
         borderColor: '#3A3530',
