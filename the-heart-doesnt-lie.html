@@ -1589,12 +1589,24 @@ new Chart(document.getElementById('efChart'), {
         display: true, 
         position: 'top',
         labels: { 
-          color: '#F0EBE1', 
-          font: { size: 10, weight: '500' }, 
-          padding: 10, 
+          color: '#FFFFFF', 
+          font: { size: 11, weight: '600' }, 
+          padding: 12, 
           usePointStyle: false,
-          boxWidth: 10,
-          boxHeight: 2
+          boxWidth: 12,
+          boxHeight: 2,
+          filter: item => item.text !== '',
+          generateLabels: ctx => {
+            const datasets = ctx.data.datasets;
+            return datasets.map((dataset, i) => ({
+              text: dataset.label,
+              fillStyle: dataset.borderColor,
+              strokeStyle: dataset.borderColor,
+              lineWidth: 1,
+              hidden: false,
+              index: i
+            }));
+          }
         }
       },
       tooltip: {
