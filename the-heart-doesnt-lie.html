@@ -1590,15 +1590,14 @@ new Chart(document.getElementById('efChart'), {
         position: 'top',
         labels: { 
           color: '#9A9082', 
-          font: { size: 11, weight: '600' }, 
-          padding: 12, 
+          font: { size: 11, weight: '500' }, 
+          padding: 10, 
           usePointStyle: false,
-          boxWidth: 12,
+          boxWidth: 10,
           boxHeight: 2,
-          filter: item => item.text !== '',
           generateLabels: ctx => {
             const datasets = ctx.data.datasets;
-            return datasets.map((dataset, i) => ({
+            return datasets.slice(0, 2).map((dataset, i) => ({
               text: dataset.label,
               fillStyle: dataset.borderColor,
               strokeStyle: dataset.borderColor,
