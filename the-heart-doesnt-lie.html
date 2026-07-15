@@ -1583,37 +1583,19 @@ new Chart(document.getElementById('efChart'), {
   options: {
     responsive: true,
     maintainAspectRatio: false,
-    layout: {
-      padding: { top: 40, bottom: 10, left: 10, right: 10 }
-    },
     interaction: { mode: 'index', intersect: false },
     plugins: {
       legend: { 
         display: true, 
-        position: 'top', 
+        position: 'top',
         labels: { 
-          color: '#FFFFFF', 
-          font: { size: 13, weight: '700' }, 
-          padding: 20, 
+          color: '#F0EBE1', 
+          font: { size: 10, weight: '500' }, 
+          padding: 10, 
           usePointStyle: false,
-          boxWidth: 16,
-          boxHeight: 4,
-          generateLabels: ctx => {
-            const datasets = ctx.data.datasets;
-            return datasets.map((dataset, i) => ({
-              text: dataset.label,
-              fillStyle: dataset.borderColor,
-              hidden: false,
-              index: i
-            }));
-          }
-        },
-        backgroundColor: 'rgba(22,22,18,0.99)',
-        borderColor: '#5A5550',
-        borderWidth: 2,
-        borderRadius: 8,
-        padding: 15,
-        maxHeight: 60
+          boxWidth: 10,
+          boxHeight: 2
+        }
       },
       tooltip: {
         backgroundColor: '#1A1A17',
