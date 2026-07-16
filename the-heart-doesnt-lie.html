@@ -1014,6 +1014,8 @@
 
 <p>Week 1, from 20 to 26 April, marks the start of this training block. I kept the previous week only as a baseline so I could compare how the training progressed. Week 8 was different. Got fever, and Coach asked me to take rest. This way I missed the Tuesday, Wednesday, and Thursday workouts, and my weekly load dropped to 1310, the lowest of the entire training block. The following week, I was back to training as usual. By Week 10, the weekly load reached its highest point at 2884, helped by a 16 km tempo run on Saturday. Week 13 was the taper week. It included only an easy run on Tuesday and a shorter interval session on Wednesday, with Thursday and Saturday kept completely free before race day.</p>
 
+<p>The Load Focus chart tells its own story. During the first half of the training block, most of the load came from easy runs. In the second half, full of tempo and threshold sessions.</p>
+
 <p style="font-size:12px; color:var(--ink-muted); margin-top:-1rem;">*All loads calculated from device metrics; manual entry for consistency.</p>
 
 <p style="font-size:12px; color:var(--ink-muted); margin-top:-0.5rem;">Source: <a href="https://docs.google.com/spreadsheets/d/1EMRGG6NvOwmLqFuWzaR4VSWpw7U0bds4Hmn0_BqESoE/edit" target="_blank" rel="noopener" style="color:var(--cyan);">DRHM 2026 Performance Tracker</a>, Daily/Weekly logging on performance metric manually .</p>
@@ -1023,7 +1025,22 @@
 <!-- SECTION 1 -->
 <h2>The metric that matters: Its efficiency, not the pace</h2>
 
-<p>As a runner, we have a practice of tracking the pace... even I used to be as well — until I realized the power metric that is least to be considered. The number I found more useful is <strong>Efficiency Factor</strong>: how many watts I produce for every heartbeat. One of the standard measures for tracking aerobic fitness. It works the same no matter whether the run was 5km or 12km, and whether the day was cool or very hot.</p>
+<p>Like many runners, I always thought pace was the best way to measure fitness. If my pace got faster, I felt I was getting fitter. I spent a lot of time looking at pace, heart rate, and other charts, but hardly paid any attention to the power metrics. Even on the Garmin activity page, the power chart appears near the bottom, making it easy to overlook. As I spent more time exploring my running data, I realized this was one of the metrics that deserved much more attention.</p>
+
+<p>Efficiency Factor measures how many watts I produce for every heartbeat. In simple terms, it tells me how much running power I generate for the effort my heart is putting in.</p>
+
+<strong><p>Efficiency Factor</p></strong>
+
+<p>Average Power ÷ Average Heart Rate</p>
+
+<p>For example,</p>
+
+<p>Average Power = 230 W<br>
+Average Heart Rate = 150 bpm</p>
+
+<p>Efficiency Factor = 230 ÷ 150 = 1.53 W/bpm</p>
+
+<p>The higher the Efficiency Factor, the more running power I am producing for each heartbeat. I found this to be a much better way to understand how efficiently my body was working than looking at pace alone.</p>
 
 <p>Efficiency Factor went from 1.536 W/bpm on my first run to 1.642 W/bpm on my most recent one. That's a 6.9% improvement in true aerobic fitness over 13 weeks of training. For a better understanding, a score below 1.4 usually means a beginner, and above 1.8 usually means a well-trained runner. I'm in the middle of the range for a regular recreational runner.</p>
 
@@ -1034,13 +1051,15 @@
   </div>
 </div>
 
-<p>My pace barely changed — stayed with 7.3 to 7.5 minutes per kilometer the whole training. Over the period of time, I was able to handle the load better gradually and keep increasing week after week. Barely from 153 bpm to 145 bpm.</p>
+<p>For all my easy runs, I stayed close to the same pace of around 7:20 min/km throughout the training block, no matter how the training changed. Even as the weekly training load increased, I found that my body was handling the effort better.</p>
 
 
 <!-- SECTION 2 -->
 <h2>The problem I can't explain away</h2>
 
-<p>Here's the part I can't ignore. Aerobic decoupling measures how much your heart rate rises compared to your pace during a single run. A run is considered aerobically fit when this number stays under 5%. My median was <strong>7.1%</strong>. Only 3 of my 21 runs stayed under that 5% mark.</p>
+<p>Here's another metric I couldn't ignore. Aerobic Decoupling(Heart Rate Drift) measures how much your heart rate changes while maintaining a steady aerobic effort. In simple terms, it compares how efficiently you ran during the second half of the run with the first half, after excluding the warm up.</p>
+
+<p>As a general guideline, a value below 5% suggests you were able to maintain your aerobic effort without your heart rate drifting too much. My median value across the 21 easy runs was 7.1%, and only 3 of those runs stayed below the 5% mark</p>
 
 <blockquote>"Seven of twenty-one runs crossed the 8% line — the strongest within-run fatigue signal in these sessions."</blockquote>
 
@@ -1068,26 +1087,26 @@
 
 <!-- TEMPERATURE VS HR SCATTER -->
 <div class="chart-wrap">
-  <p class="chart-title">Temperature vs average HR — 19 easy runs (weighted avg °C)</p>
+  <p class="chart-title">Temperature vs average HR — 20 easy runs (weighted avg °C)</p>
   <p style="font-size:12px; color:var(--ink-muted); margin-bottom:14px;">Notebook used for this analysis: <a href="https://github.com/jvinodraj/theEagle/blob/master/notebooks/easy_run_daily_hr_smoothness.ipynb" target="_blank" rel="noopener" style="color:var(--cyan);">easy_run_daily_hr_smoothness.ipynb</a>.</p>
   <div style="display:flex; gap:16px; margin-bottom:14px; flex-wrap:wrap;">
     <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#9A9082;"><span style="width:10px;height:10px;border-radius:50%;background:#00D4B8;display:inline-block;"></span>Easy run</span>
-    <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#9A9082;"><span style="width:22px;height:2px;background:#C8873A;display:inline-block;"></span>Fit: HR = 2.88×Temp + 57.1</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#9A9082;"><span style="width:22px;height:2px;background:#C8873A;display:inline-block;"></span>Fit: HR = 3.19×Temp + 50.7</span>
   </div>
   <div class="chart-canvas-wrap" style="height:280px;">
-    <canvas id="tempHrChart" role="img" aria-label="Scatter plot showing positive correlation between weighted average temperature and average heart rate across 16 easy runs with temperature data, with a linear fit of HR = 2.88 times temperature plus 57.1"></canvas>
+    <canvas id="tempHrChart" role="img" aria-label="Scatter plot showing positive correlation between weighted average temperature and average heart rate across 20 easy runs with temperature data, with a linear fit of HR = 3.19 times temperature plus 50.7"></canvas>
   </div>
 </div>
 
-<p>Each extra degree Celsius adds roughly <strong>2.9 beats per minute</strong> to my heart rate. The formula is HR = 2.88 × temperature + 57.1, and temperature alone explains most of the difference in heart rate between my runs. In practical terms: a run at 31.5°C puts about 7 more beats per minute of strain on my heart than a run at 29°C — before fatigue, fitness, or pace are even considered.</p>
+<p>Each extra degree Celsius adds roughly <strong>3.2 beats per minute</strong> to my heart rate. The formula is HR = 3.19 × temperature + 50.7, and temperature alone explains most of the difference in heart rate between my runs. In practical terms: a run at 31.5°C puts about 8 more beats per minute of strain on my heart than a run at 29°C — before fatigue, fitness, or pace are even considered.</p>
 
-<p>Two runs stand out. On June 23 (29.8°C, 143 bpm), my heart rate was lower than the temperature alone would predict — the clearest sign of real fitness improvement in the whole dataset. On April 18 (31.1°C, 155 bpm), my heart rate was higher than expected — the highest of the entire ten weeks, early on, before I had adapted to the heat or built an aerobic base.</p>
+<p>Two runs stand out. On July 14 (30.3°C, 142 bpm), my heart rate came in about 5 bpm lower than temperature alone would predict — the strongest sign of adaptation in the whole dataset, right at the end of the block. On April 30 (30.2°C, 152 bpm), heart rate ran nearly 5 bpm higher than expected, the largest positive miss, early on before the heat adaptation had set in.</p>
 
 <div class="callout amber">
   <div class="stat-item">
-    <span class="stat-num">~2.9</span>
+    <span class="stat-num">~3.2</span>
     <span class="stat-label">BPM cost per °C of heat</span>
-    <p class="stat-sub">Linear regression, 16 runs with temperature data</p>
+    <p class="stat-sub">Linear regression, 20 runs with temperature data (r = 0.58, p = 0.0074). One run failed to record temperature</p>
   </div>
   <div class="stat-item">
     <span class="stat-num">−12 bpm</span>
@@ -1101,7 +1120,7 @@
   </div>
 </div>
 
-<p>This means comparing heart rate or Efficiency Factor between runs without accounting for temperature can be misleading. A heart rate of 148 bpm at 29°C is a very different effort than 148 bpm at 32°C. Adjusting Efficiency Factor for heat is the more accurate way to track progress here — and even after making that adjustment, my trend still points upward.</p>
+<p>This means comparing heart rate or Efficiency Factor between runs without accounting for temperature can be misleading. A heart rate of 148 bpm at 29°C is a very different effort than 148 bpm at 32°C. Adjusting Efficiency Factor for heat is the more accurate way to track progress here and even after making that adjustment, my trend still points upward.</p>
 
 
 <!-- SECTION 3 – Weekly EF band -->
@@ -1112,6 +1131,7 @@
 <!-- Week EF bars -->
 <div>
   <div class="week-labels">
+    <span class="week-label">Base</span>
     <span class="week-label">W1</span>
     <span class="week-label">W2</span>
     <span class="week-label">W3</span>
@@ -1125,7 +1145,6 @@
     <span class="week-label">W11</span>
     <span class="week-label">W12</span>
     <span class="week-label">W13</span>
-    <span class="week-label">W14</span>
   </div>
   <div class="week-band" id="weekBand"></div>
 </div>
@@ -1141,13 +1160,13 @@
 <!-- SECTION 4 -->
 <h2>Intervals and threshold: going harder</h2>
 
-<p>Easy runs are only part of the story. Alongside them, I ran 12 interval and threshold sessions, and both the volume and intensity of these sessions have been increasing.</p>
+<p>Easy runs are only part of the story. Alongside them, I ran 17 interval and threshold sessions, and both the volume and intensity of these sessions have been increasing.</p>
 
 <div class="callout green">
   <div class="stat-item">
     <span class="stat-num">17</span>
     <span class="stat-label">Interval / threshold sessions</span>
-    <p class="stat-sub">Apr 28 – Jul 18</p>
+    <p class="stat-sub">Apr 14 – Jul 18</p>
   </div>
   <div class="stat-item">
     <span class="stat-num">5.0</span>
@@ -1161,42 +1180,12 @@
   </div>
 </div>
 
-<p>Session (June 27th) was 101 minutes and 16km — the longest of the block. I completed eleven reps with almost no pace drop-off (0.15%) and very consistent power output (varying by just 1.6%). By these numbers, this was the most controlled hard session of the thirteen weeks.</p>
-
-<p>My threshold pace has settled around 6.2 to 6.3 minutes per kilometer. For comparison, my first interval session back in late April had a threshold pace of 5.56 min/km — faster on paper, but far less controlled. My sessions now are longer, steadier, and give a bigger training benefit. That's the right direction.</p>
-
-
 <!-- SECTION 6 -->
 <h2>Strengthening, and whether it helped</h2>
 
-<p>24 strength sessions alongside the running — roughly twice a week, averaging an hour each. The interaction with running was the hardest thing to measure, but the overall picture is positive.</p>
+<p>Alongside the running, I completed 24 strength sessions, averaging about two sessions each week. Most of them lasted between one and two hours.</p>
 
-<div class="callout" style="border-left-color: var(--ink-muted); grid-template-columns: 1fr;">
-  <div>
-    <div class="signal-row">
-      <div class="signal-dot" style="background: var(--green);"></div>
-      <span class="signal-desc">Potential positive transfer to running</span>
-      <span class="signal-count">5 sessions</span>
-    </div>
-    <div class="signal-row">
-      <div class="signal-dot" style="background: var(--red);"></div>
-      <span class="signal-desc">Possible interference with running</span>
-      <span class="signal-count">5 sessions</span>
-    </div>
-    <div class="signal-row">
-      <div class="signal-dot" style="background: var(--ink-muted);"></div>
-      <span class="signal-desc">Neutral or inconclusive signal</span>
-      <span class="signal-count">3 sessions</span>
-    </div>
-    <div class="signal-row">
-      <div class="signal-dot" style="background: var(--ink-faint);"></div>
-      <span class="signal-desc">Insufficient data (weight not logged)</span>
-      <span class="signal-count">6 sessions</span>
-    </div>
-  </div>
-</div>
-
-<p>The main limitation is missing weight data — without knowing how much weight I lifted per set, I can't measure fatigue as precisely. The average recovery cost was 59.4 out of 100, which is moderate and manageable. No session pushed me into high fatigue risk. Strength training and running appear to work well together. The lesson for next time: write down the weights I lift.</p>
+<p>One limitation is that all my strength sessions were bodyweight exercises. Since I wasn't lifting weights, it was hard to measure or track. Even so, the average recovery cost was 59.4 out of 100, which is in the moderate range, and none of the sessions reached a high fatigue level. Overall, the strength sessions worked well alongside my running.</p>
 
 
 <!-- SECTION 7 -->
@@ -1624,7 +1613,7 @@ new Chart(document.getElementById('efChart'), {
         yAxisID: 'y'
       },
       {
-        label: 'Aerobic Decoupling (%)',
+        label: 'Aerobic Decoupling',
         data: decVals,
         borderColor: '#C8873A',
         borderWidth: 1.5,
@@ -1788,20 +1777,21 @@ const tempHrData = [
   { x: 30.041, y: 149, label: '07-May' },
   { x: 29.377, y: 147, label: '09-May' },
   { x: 30.709, y: 150, label: '14-May' },
-  { x: 31.446, y: 151, label: '21-May' },
-  { x: 31.380, y: 153, label: '23-May' },
+  { x: 31.415, y: 151, label: '21-May' },
+  { x: 31.349, y: 153, label: '23-May' },
   { x: 31.470, y: 152, label: '28-May' },
   { x: 30.378, y: 148, label: '02-Jun' },
   { x: 30.297, y: 144, label: '04-Jun' },
   { x: 29.012, y: 146, label: '13-Jun' },
   { x: 30.678, y: 147, label: '16-Jun' },
   { x: 29.768, y: 143, label: '23-Jun' },
-  { x: 30.005, y: 143, label: '30-Jun' },
+  { x: 30.035, y: 143, label: '30-Jun' },
   { x: 30.997, y: 145, label: '04-Jul' },
-  { x: 30.026, y: 143, label: '07-Jul' }
+  { x: 29.996, y: 143, label: '07-Jul' },
+  { x: 30.262, y: 142, label: '14-Jul' }
 ];
-const slope = 2.88, intercept = 57.1;
-const fitXMin = 28.8, fitXMax = 31.8;
+const slope = 3.19, intercept = 50.7;
+const fitXMin = 28.9, fitXMax = 31.7;
 const fitLine = [
   { x: fitXMin, y: slope * fitXMin + intercept },
   { x: fitXMax, y: slope * fitXMax + intercept }
