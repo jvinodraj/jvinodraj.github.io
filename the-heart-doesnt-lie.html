@@ -929,7 +929,10 @@
   <div class="chart-canvas-wrap" style="height:300px;">
     <canvas id="weeklyLoadChart" role="img" aria-label="Stacked bar chart of weekly training load by day starting with a baseline week followed by 13 numbered weeks, showing total weekly load rising from around 1900 to a peak of 2884 in week 10 before tapering into race week 13"></canvas>
   </div>
-  <button id="weeklyLoadToggle" class="metrics-toggle-btn" type="button" aria-expanded="false" style="margin-top:16px;">Show weekly load table</button>
+  <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:16px;">
+    <button id="weeklyLoadToggle" class="metrics-toggle-btn" type="button" aria-expanded="false">Show weekly load table</button>
+    <button id="loadFocusToggle" class="metrics-toggle-btn" type="button" aria-expanded="false">Show load focus chart</button>
+  </div>
 </div>
 
 <div class="metrics-table-wrap" id="weeklyLoadTableWrap" style="margin-top:1.5rem; display:none;">
@@ -963,6 +966,50 @@
       <tr><td>13</td><td>13–19 Jul</td><td>477</td><td>522</td><td>REST</td><td>REST</td><td>—</td><td>999*</td></tr>
     </tbody>
   </table>
+</div>
+
+<div class="chart-wrap" id="loadFocusSection" style="margin-top:1.5rem; display:none;">
+  <p class="chart-title">Weekly load focus — Baseline + Week 1 to 13</p>
+  <div style="display:flex; gap:14px; margin-bottom:14px; flex-wrap:wrap;">
+    <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#9A9082;"><span style="width:10px;height:10px;border-radius:2px;background:#4DB87A;display:inline-block;"></span>Low Aerobic</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#9A9082;"><span style="width:10px;height:10px;border-radius:2px;background:#C8873A;display:inline-block;"></span>High Aerobic</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#9A9082;"><span style="width:10px;height:10px;border-radius:2px;background:#E05C5C;display:inline-block;"></span>Anaerobic</span>
+  </div>
+  <div class="chart-canvas-wrap" style="height:300px;">
+    <canvas id="loadFocusChart" role="img" aria-label="100% stacked area chart of weekly load focus split into Low Aerobic, High Aerobic, and Anaerobic share, starting with a baseline week followed by 13 numbered weeks, showing High Aerobic share growing from the midpoint of the block onward"></canvas>
+  </div>
+
+  <div class="metrics-table-wrap" style="margin-top:1.5rem;">
+    <table class="metrics-table" role="table" aria-label="Weekly load focus, Baseline plus Week 1 to 13">
+      <thead>
+        <tr>
+          <th>Week</th>
+          <th>Dates</th>
+          <th>Low Aerobic</th>
+          <th>High Aerobic</th>
+          <th>Anaerobic</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Baseline</td><td>13–19 Apr</td><td>652</td><td>645</td><td>46</td></tr>
+        <tr><td>1</td><td>20–26 Apr</td><td>652</td><td>645</td><td>46</td></tr>
+        <tr><td>2</td><td>27 Apr–03 May</td><td>902</td><td>551</td><td>23</td></tr>
+        <tr><td>3</td><td>04–10 May</td><td>1036</td><td>376</td><td>12</td></tr>
+        <tr><td>4</td><td>11–17 May</td><td>850</td><td>697</td><td>24</td></tr>
+        <tr><td>5</td><td>18–24 May</td><td>893</td><td>729</td><td>24</td></tr>
+        <tr><td>6</td><td>25–31 May</td><td>652</td><td>1048</td><td>37</td></tr>
+        <tr><td>7</td><td>01–07 Jun</td><td>660</td><td>1129</td><td>24</td></tr>
+        <tr><td>8</td><td>08–14 Jun</td><td>655</td><td>808</td><td>12</td></tr>
+        <tr><td>9</td><td>15–21 Jun</td><td>523</td><td>1052</td><td>12</td></tr>
+        <tr class="top-metric"><td>10</td><td>22–28 Jun</td><td>733</td><td>885</td><td>14</td></tr>
+        <tr><td>11</td><td>29 Jun–05 Jul</td><td>753</td><td>796</td><td>14</td></tr>
+        <tr><td>12</td><td>06–12 Jul</td><td>717</td><td>1166</td><td>14</td></tr>
+        <tr><td>13</td><td>13–19 Jul</td><td>800</td><td>1166</td><td>14</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="font-size:13px; color:var(--ink-muted); margin-top:1rem; margin-bottom:0;">The mix shifts noticeably after the fever week (Week 8) — High Aerobic's share pulls ahead of Low Aerobic from Week 6 onward, tracking the same intensification visible in the daily load chart above. Anaerobic stays a thin band throughout, tapering further as race week approaches.</p>
 </div>
 
 <p>Week 1, from 20 to 26 April, marks the start of this training block. I kept the previous week only as a baseline so I could compare how the training progressed. Week 8 was different. Got fever, and Coach asked me to take rest. This way I missed the Tuesday, Wednesday, and Thursday workouts, and my weekly load dropped to 1310, the lowest of the entire training block. The following week, I was back to training as usual. By Week 10, the weekly load reached its highest point at 2884, helped by a 16 km tempo run on Saturday. Week 13 was the taper week. It included only an easy run on Tuesday and a shorter interval session on Wednesday, with Thursday and Saturday kept completely free before race day.</p>
@@ -2026,6 +2073,83 @@ if (weeklyLoadToggle && weeklyLoadTableWrap) {
     weeklyLoadTableWrap.style.display = expanded ? 'none' : 'block';
     weeklyLoadToggle.setAttribute('aria-expanded', String(!expanded));
     weeklyLoadToggle.textContent = expanded ? 'Show weekly load table' : 'Hide weekly load table';
+  });
+}
+
+/* Weekly load focus 100% stacked area chart (Low Aerobic / High Aerobic / Anaerobic) */
+const lfWeeks = ['Baseline','1','2','3','4','5','6','7','8','9','10','11','12','13'];
+const lfLow = [652,652,902,1036,850,893,652,660,655,523,733,753,717,800];
+const lfHigh = [645,645,551,376,697,729,1048,1129,808,1052,885,796,1166,1166];
+const lfAna = [46,46,23,12,24,24,37,24,12,12,14,14,14,14];
+const lfTotal = lfWeeks.map((_, i) => lfLow[i] + lfHigh[i] + lfAna[i]);
+const lfLowPct = lfLow.map((v, i) => +(v / lfTotal[i] * 100).toFixed(1));
+const lfHighPct = lfHigh.map((v, i) => +(v / lfTotal[i] * 100).toFixed(1));
+const lfAnaPct = lfAna.map((v, i) => +(v / lfTotal[i] * 100).toFixed(1));
+let loadFocusChartInstance = null;
+
+function buildLoadFocusChart() {
+  if (loadFocusChartInstance) return;
+  loadFocusChartInstance = new Chart(document.getElementById('loadFocusChart'), {
+    type: 'line',
+    data: {
+      labels: lfWeeks,
+      datasets: [
+        { label: 'Low Aerobic', data: lfLowPct, backgroundColor: 'rgba(77,184,122,0.55)', borderColor: '#4DB87A', borderWidth: 1.5, fill: true, stack: 'focus', tension: 0.3, pointRadius: 0 },
+        { label: 'High Aerobic', data: lfHighPct, backgroundColor: 'rgba(200,135,58,0.55)', borderColor: '#C8873A', borderWidth: 1.5, fill: true, stack: 'focus', tension: 0.3, pointRadius: 0 },
+        { label: 'Anaerobic', data: lfAnaPct, backgroundColor: 'rgba(224,92,92,0.55)', borderColor: '#E05C5C', borderWidth: 1.5, fill: true, stack: 'focus', tension: 0.3, pointRadius: 0 }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#1A1A17',
+          borderColor: '#3A3530',
+          borderWidth: 1,
+          titleColor: '#9A9082',
+          bodyColor: '#F0EBE1',
+          padding: 10,
+          callbacks: {
+            label: ctx => {
+              const i = ctx.dataIndex;
+              const raw = [lfLow[i], lfHigh[i], lfAna[i]][ctx.datasetIndex];
+              return ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(1) + '% (' + raw + ' min)';
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          stacked: true,
+          ticks: { color: '#9A9082', font: { size: 10 } },
+          grid: { display: false }
+        },
+        y: {
+          stacked: true,
+          min: 0,
+          max: 100,
+          ticks: { color: '#3A3530', font: { size: 10 }, callback: v => v + '%' },
+          grid: { color: 'rgba(58,53,48,0.5)', lineWidth: 0.5 },
+          title: { display: true, text: 'Share of load focus', color: '#9A9082', font: { size: 10 } }
+        }
+      }
+    }
+  });
+}
+
+/* Expand/collapse the load focus chart */
+const loadFocusToggle = document.getElementById('loadFocusToggle');
+const loadFocusSection = document.getElementById('loadFocusSection');
+if (loadFocusToggle && loadFocusSection) {
+  loadFocusToggle.addEventListener('click', () => {
+    const expanded = loadFocusToggle.getAttribute('aria-expanded') === 'true';
+    loadFocusSection.style.display = expanded ? 'none' : 'block';
+    loadFocusToggle.setAttribute('aria-expanded', String(!expanded));
+    loadFocusToggle.textContent = expanded ? 'Show load focus chart' : 'Hide load focus chart';
+    if (!expanded) buildLoadFocusChart();
   });
 }
 
