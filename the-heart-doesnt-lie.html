@@ -689,11 +689,11 @@
 
 
 <!-- INTRO -->
-<p class="drop-cap">The heart does not lie. On purpose you may run slower or faster. You may blame a bad workout due to outside factors. But your heart rate tells you the pakka story that is tracked over weeks.</p>
+<p class="drop-cap">The heart doesn't lie. You might think that's true... but you can't always say that. But day-to-day, there's always an excuse of age factor, recovery status, stress, conditions when HR spikes. Something to explain away a bad reading etc..—there's always something to justify it with... BUT... the heart rate tells you the real story when tracked over weeks..</p>
 
-<p>Between April 16 and July 14, 2026, happened to do 21 easy runs, where the heat alone tells us a different story which I found out later. Its a Sports watch, saved every workout file, and analyzed the numbers using a FIT file analyser. Here's what I found.</p>
+<p>Completed 21 easy runs during this training block(April to July). Garmin Training Effect also reflected the same - Aerobic(Base). During many of those runs, and in conversations with other runners, the same words kept coming up whenever heart rate started to climb. Heat. Humidity. Salty air. Everyone seemed to have a reason why an easy run did not feel easy anymore.</p>
 
-<p>The results are mostly good news. aanaa enna... but there's one problem which I can't ignore. Namma chennai wheather condition tha</p>
+<p>Everything looks good... until the charts show the real story.</p>
 
 <div class="callout">
   <div class="stat-item">
@@ -836,38 +836,11 @@
           <td>−3 kcal</td>
           <td>Negligible change</td>
         </tr>
-        <tr class="hidden-metric">
-          <td>Ground Contact Durability (GDI)</td>
-          <td>21.6</td>
-          <td>64.4</td>
-          <td>+198%</td>
-          <td>Major improvement in running mechanics</td>
-        </tr>
-        <tr class="hidden-metric">
-          <td>Cadence Stability Index (CSI)</td>
-          <td>31.8</td>
-          <td>56.2</td>
-          <td>+77%</td>
-          <td>More consistent cadence</td>
-        </tr>
-        <tr class="hidden-metric">
-          <td>Biomechanical Efficiency Score (BES)</td>
-          <td>~43</td>
-          <td>48.5</td>
-          <td>+13%</td>
-          <td>Better movement efficiency</td>
-        </tr>
-        <tr class="hidden-metric">
-          <td>Fatigue Resistance Score (FRS)</td>
-          <td>~53</td>
-          <td>43.4</td>
-          <td>−18%</td>
-          <td>Indicates accumulated fatigue despite fitness gains</td>
-        </tr>
+
       </tbody>
     </table>
   </div>
-  <button id="metricsToggle" class="metrics-toggle-btn" type="button" aria-expanded="false">Show all 14 metrics</button>
+  <button id="metricsToggle" class="metrics-toggle-btn" type="button" aria-expanded="false">Show all 15 metrics</button>
   <p class="metrics-note">Top 5 are visible by default.</p>
 </div>
 
@@ -938,6 +911,65 @@
 </div>
 
 <p>Strength ended up carrying the largest single share of hours (40%) — a byproduct of consistency rather than intent, since each session ran close to an hour. The aerobic base and the interval/threshold/tempo work split the rest at 33% and 26%. That's a leaner base than a textbook pyramid would call for, but it lines up with a short block aimed at a specific race rather than a full aerobic-development cycle.</p>
+
+<!-- WEEKLY TRAINING LOAD -->
+<h3>Weekly training load, day by day</h3>
+
+<p>Every day of the week carries a fixed role in this block — Tuesday for speed/threshold, Wednesday and Sunday for strength, Thursday for easy aerobic running, Saturday for the long or tempo effort. Stacking Coach Gokul's daily load numbers by week shows how that mix shifted as race day approached.</p>
+
+<div class="chart-wrap">
+  <p class="chart-title">Weekly training load by day — Baseline + Week 1 to 13</p>
+  <div style="display:flex; gap:14px; margin-bottom:14px; flex-wrap:wrap;">
+    <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#9A9082;"><span style="width:10px;height:10px;border-radius:2px;background:#C8873A;display:inline-block;"></span>Tue · Speed/Threshold</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#9A9082;"><span style="width:10px;height:10px;border-radius:2px;background:#00D4B8;display:inline-block;"></span>Wed · Strength</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#9A9082;"><span style="width:10px;height:10px;border-radius:2px;background:#4DB87A;display:inline-block;"></span>Thu · Easy Aerobic</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#9A9082;"><span style="width:10px;height:10px;border-radius:2px;background:#E05C5C;display:inline-block;"></span>Sat · Long/Tempo</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#9A9082;"><span style="width:10px;height:10px;border-radius:2px;background:#7C93C9;display:inline-block;"></span>Sun · Strength</span>
+  </div>
+  <div class="chart-canvas-wrap" style="height:300px;">
+    <canvas id="weeklyLoadChart" role="img" aria-label="Stacked bar chart of weekly training load by day starting with a baseline week followed by 13 numbered weeks, showing total weekly load rising from around 1900 to a peak of 2884 in week 10 before tapering into race week 13"></canvas>
+  </div>
+  <button id="weeklyLoadToggle" class="metrics-toggle-btn" type="button" aria-expanded="false" style="margin-top:16px;">Show weekly load table</button>
+</div>
+
+<div class="metrics-table-wrap" id="weeklyLoadTableWrap" style="margin-top:1.5rem; display:none;">
+  <table class="metrics-table" role="table" aria-label="Weekly training load by day, Baseline plus Week 1 to 13">
+    <thead>
+      <tr>
+        <th>Week</th>
+        <th>Dates</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thu</th>
+        <th>Sat</th>
+        <th>Sun</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Baseline</td><td>13–19 Apr</td><td>427</td><td>381</td><td>388</td><td>375</td><td>337</td><td>1908</td></tr>
+      <tr><td>1</td><td>20–26 Apr</td><td>385</td><td>406</td><td>418</td><td>383</td><td>334</td><td>1926</td></tr>
+      <tr><td>2</td><td>27 Apr–03 May</td><td>377</td><td>409</td><td>447</td><td>419</td><td>405</td><td>2057</td></tr>
+      <tr><td>3</td><td>04–10 May</td><td>460</td><td>463</td><td>484</td><td>429</td><td>287</td><td>2123</td></tr>
+      <tr><td>4</td><td>11–17 May</td><td>429</td><td>370</td><td>407</td><td>485</td><td>440</td><td>2131</td></tr>
+      <tr><td>5</td><td>18–24 May</td><td>502</td><td>464</td><td>517</td><td>522</td><td>437</td><td>2442</td></tr>
+      <tr><td>6</td><td>25–31 May</td><td>474</td><td>451</td><td>502</td><td>574</td><td>499</td><td>2500</td></tr>
+      <tr><td>7</td><td>01–07 Jun</td><td>449</td><td>389</td><td>436</td><td>562</td><td>522</td><td>2358</td></tr>
+      <tr><td>8</td><td>08–14 Jun</td><td>350</td><td>288</td><td>228</td><td>226</td><td>218</td><td>1310</td></tr>
+      <tr><td>9</td><td>15–21 Jun</td><td>247</td><td>239</td><td>441</td><td>637</td><td>575</td><td>2139</td></tr>
+      <tr class="top-metric"><td>10</td><td>22–28 Jun</td><td>530</td><td>492</td><td>544</td><td>701</td><td>617</td><td>2884</td></tr>
+      <tr><td>11</td><td>29 Jun–05 Jul</td><td>534</td><td>469</td><td>556</td><td>511</td><td>332</td><td>2402</td></tr>
+      <tr><td>12</td><td>06–12 Jul</td><td>367</td><td>340</td><td>446</td><td>607</td><td>544</td><td>2304</td></tr>
+      <tr><td>13</td><td>13–19 Jul</td><td>477</td><td>522</td><td>REST</td><td>REST</td><td>—</td><td>999*</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<p>Week 1 (20–26 Apr) is the first week counted in the block; the week before it (13–19 Apr) is kept as a baseline reading rather than part of the 13-week build. Week 8 (08–14 Jun) was an off week — a fever forced Tuesday, Wednesday, and Thursday's sessions to be skipped entirely, and load dropped to 1310, the lowest of the block, as a direct result. Load then climbed sharply through the back half, peaking at Week 10 (22–28 Jun) at 2884, driven by a 16K tempo run on Saturday. From there the numbers taper into race week: Week 13 keeps only an easy Tuesday and a shortened Wednesday interval session, with Thursday and Saturday off entirely ahead of race day.</p>
+
+<p style="font-size:12px; color:var(--ink-muted); margin-top:-1rem;">*Week 13 is still in progress — Sunday's shakeout load hadn't been logged yet as of this writing.</p>
+
+<p style="font-size:12px; color:var(--ink-muted); margin-top:-0.5rem;">Source: <a href="https://docs.google.com/spreadsheets/d/1EMRGG6NvOwmLqFuWzaR4VSWpw7U0bds4Hmn0_BqESoE/edit" target="_blank" rel="noopener" style="color:var(--cyan);">DRHM 2026 Performance Tracker</a>, logged weekly by Coach Gokul Prasad PB.</p>
 
 
 
@@ -1645,6 +1677,60 @@ new Chart(document.getElementById('efChart'), {
   }
 });
 
+/* Weekly training load stacked bar chart */
+const wlWeeks = ['Baseline','1','2','3','4','5','6','7','8','9','10','11','12','13'];
+const wlTue = [427,385,377,460,429,502,474,449,350,247,530,534,367,477];
+const wlWed = [381,406,409,463,370,464,451,389,288,239,492,469,340,522];
+const wlThu = [388,418,447,484,407,517,502,436,228,441,544,556,446,0];
+const wlSat = [375,383,419,429,485,522,574,562,226,637,701,511,607,0];
+const wlSun = [337,334,405,287,440,437,499,522,218,575,617,332,544,0];
+
+new Chart(document.getElementById('weeklyLoadChart'), {
+  type: 'bar',
+  data: {
+    labels: wlWeeks,
+    datasets: [
+      { label: 'Tue · Speed/Threshold', data: wlTue, backgroundColor: '#C8873A', stack: 'load' },
+      { label: 'Wed · Strength', data: wlWed, backgroundColor: '#00D4B8', stack: 'load' },
+      { label: 'Thu · Easy Aerobic', data: wlThu, backgroundColor: '#4DB87A', stack: 'load' },
+      { label: 'Sat · Long/Tempo', data: wlSat, backgroundColor: '#E05C5C', stack: 'load' },
+      { label: 'Sun · Strength', data: wlSun, backgroundColor: '#7C93C9', stack: 'load' }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#1A1A17',
+        borderColor: '#3A3530',
+        borderWidth: 1,
+        titleColor: '#9A9082',
+        bodyColor: '#F0EBE1',
+        padding: 10,
+        callbacks: {
+          label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y,
+          footer: items => 'Total: ' + items.reduce((s, i) => s + i.parsed.y, 0)
+        }
+      }
+    },
+    scales: {
+      x: {
+        stacked: true,
+        ticks: { color: '#9A9082', font: { size: 10 } },
+        grid: { display: false }
+      },
+      y: {
+        stacked: true,
+        ticks: { color: '#3A3530', font: { size: 10 } },
+        grid: { color: 'rgba(58,53,48,0.5)', lineWidth: 0.5 },
+        title: { display: true, text: 'Weekly load', color: '#9A9082', font: { size: 10 } }
+      }
+    }
+  }
+});
+
 /* Temperature vs HR scatter chart */
 const tempHrData = [
   { x: 31.135, y: 155, label: '18-Apr' },
@@ -1928,6 +2014,18 @@ if (metricsToggle) {
     });
     metricsToggle.setAttribute('aria-expanded', String(!expanded));
     metricsToggle.textContent = expanded ? 'Show all 14 metrics' : 'Show only top 5 metrics';
+  });
+}
+
+/* Expand/collapse weekly training load table */
+const weeklyLoadToggle = document.getElementById('weeklyLoadToggle');
+const weeklyLoadTableWrap = document.getElementById('weeklyLoadTableWrap');
+if (weeklyLoadToggle && weeklyLoadTableWrap) {
+  weeklyLoadToggle.addEventListener('click', () => {
+    const expanded = weeklyLoadToggle.getAttribute('aria-expanded') === 'true';
+    weeklyLoadTableWrap.style.display = expanded ? 'none' : 'block';
+    weeklyLoadToggle.setAttribute('aria-expanded', String(!expanded));
+    weeklyLoadToggle.textContent = expanded ? 'Show weekly load table' : 'Hide weekly load table';
   });
 }
 
