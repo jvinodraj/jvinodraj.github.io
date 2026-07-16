@@ -1049,6 +1049,7 @@ Average Heart Rate = 150 bpm</p>
   <div class="chart-canvas-wrap" style="height:350px;">
     <canvas id="efChart" role="img" aria-label="Line chart showing Efficiency Factor improving from 1.536 to 1.642 across 21 runs from April to July 2026"></canvas>
   </div>
+  <p style="font-size:12px; color:var(--ink-muted); margin-bottom:14px;">Chart data source: <a href="https://github.com/jvinodraj/theEagle/blob/master/reports/easy/hr_improvement_analysis.csv" target="_blank" rel="noopener" style="color:var(--cyan);">hr_improvement_analysis.csv</a>.</p>
 </div>
 
 <p>For all my easy runs, I stayed close to the same pace of around 7:20 min/km throughout the training block, no matter how the training changed. Even as the weekly training load increased, I found that my body was handling the effort better.</p>
@@ -1191,7 +1192,7 @@ Average Heart Rate = 150 bpm</p>
 <!-- SECTION 7 -->
 <h2>The body itself: composition over 10 weeks</h2>
 
-<p>Running and lifting change the body — but not always in the way the scale shows. My total weight dropped 2.70 kg, and what changed was what that weight is made of.</p>
+<p>Running and bodyweight training changed more than just my weight. My face became noticeably leaner, but the weighing scale told only part of the story. I lost 2.70 kg during this training block. The real question was whether I had lost fat, muscle, or a bit of both. That's where the body composition data became much more interesting.</p>
 
 <div class="callout green">
   <div class="stat-item">
@@ -1211,7 +1212,7 @@ Average Heart Rate = 150 bpm</p>
   </div>
 </div>
 
-<p>The trend is consistent and directional across six measurements: fat declining at 0.40% per measurement, skeletal muscle building at 0.20 kg per measurement, and body water rising steadily. These metrics move together in the right direction, confirming that the training dose, nutrition, and recovery are compatible.</p>
+<p>Across six body composition measurements, the changes followed a clear pattern. One thing I kept hearing was, "Too much running will make you skinny," or "You'll lose muscle." After all, its only running around 42 km per week max along with bodyweight strength training. So I wanted to know what I was actually losing. The body composition data answered that question. Body fat steadily came down, while skeletal muscle, muscle rate, protein mass, and body water all increased. Looking at these changes together, it was encouraging to see that my running, bodyweight strength training, nutrition, and recovery were working well together.</p>
 
 <div class="chart-wrap">
   <p class="chart-title">Body composition trend — 6 measurements over time</p>
@@ -1235,10 +1236,10 @@ Average Heart Rate = 150 bpm</p>
       <tr style="border-bottom:2px solid var(--ink-faint);">
         <th style="text-align:left; padding:10px; color:var(--ink-muted); font-weight:600;">Metric</th>
         <th style="text-align:center; padding:10px; color:var(--ink);">Baseline</th>
-        <th style="text-align:center; padding:10px; color:var(--ink);">Week 2</th>
-        <th style="text-align:center; padding:10px; color:var(--ink);">Week 3</th>
-        <th style="text-align:center; padding:10px; color:var(--ink);">Week 4</th>
-        <th style="text-align:center; padding:10px; color:var(--ink);">Week 5</th>
+        <th style="text-align:center; padding:10px; color:var(--ink);">W2</th>
+        <th style="text-align:center; padding:10px; color:var(--ink);">W3</th>
+        <th style="text-align:center; padding:10px; color:var(--ink);">W4</th>
+        <th style="text-align:center; padding:10px; color:var(--ink);">W5</th>
         <th style="text-align:center; padding:10px; color:var(--cyan); font-weight:600;">Current</th>
         <th style="text-align:center; padding:10px; color:var(--green); font-weight:600;">Change</th>
       </tr>
@@ -1358,9 +1359,9 @@ Average Heart Rate = 150 bpm</p>
   </table>
 </div>
 
-<p>Protein mass is now at 15.40 kg (+0.60 kg from baseline), and body water at 56.30% (+1.90%) — both strong indicators of muscle quality and hydration status. The skeletal muscle increase of +1.00 kg from baseline shows sustained, functional muscle development. Body fat at 23.10% (−2.00% from 25.10%) represents the cleanest recomposition: fat loss paired with lean mass gain. In a Chennai summer with sustained high training volume, this combination while maintaining hydration is a clear success signal.</p>
+<p>Protein mass is now at 15.40 kg (+0.60 kg from baseline), and body water at 56.30% (+1.90%) — both strong indicators of muscle quality and hydration status. The skeletal muscle increase of +1.00 kg from baseline shows sustained, functional muscle development. Body fat at 23.10% (−2.00% from 25.10%) represents the cleanest recomposition: fat loss paired with lean mass gain.</p>
 
-<p>One honest caveat: four data points show a trend, not a final answer. Home body-fat scales can be inaccurate, and that error can hide small week-to-week changes. What matters most is that every measurement has moved in the same, right direction.</p>
+<p>One thing to keep in mind is that these are only six body composition measurements, not years of data. Home body composition scales are not perfectly accurate to be considered, so small changes from one week to the next should not be overinterpreted. keep it light and low</p>
 
 <!-- SECTION 8 -->
 <h2>Most interesting findings from wellness and recovery signals</h2>
@@ -1865,7 +1866,7 @@ new Chart(document.getElementById('tempHrChart'), {
 new Chart(document.getElementById('bodyCompChart'), {
   type: 'line',
   data: {
-    labels: ['Baseline', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Current'],
+    labels: ['Baseline', 'W2', 'W3', 'W4', 'W5', 'Current'],
     datasets: [
       {
         label: 'Body fat %',
