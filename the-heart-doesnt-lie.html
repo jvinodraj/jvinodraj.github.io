@@ -14,11 +14,12 @@
 })();
 </script>
 <meta charset="UTF-8">
+<meta property="og:image" content="https://jvinodraj.github.io/assets/images/medium/word-cloud.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>13 Weeks of Running in Chennai — What the Data Actually Says</title>
 <meta property="og:title" content="13 Weeks of Running in Chennai — What the Data Actually Says">
 <meta property="og:description" content="An end-to-end review of 21 easy runs, efficiency trends, fatigue indicators, heat impact, and what changed over 101 days.">
-<meta property="og:image" content="https://jvinodraj.github.io/assets/images/medium/word-cloud.png">
+
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -348,6 +349,22 @@
     cursor: pointer;
   }
   .metrics-toggle-btn:hover { border-color: var(--amber); }
+  .inline-toggle-btn {
+    background: transparent;
+    color: var(--cyan);
+    border: none;
+    padding: 0;
+    margin-left: 4px;
+    font-size: inherit;
+    font-family: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    display: inline;
+  }
+  .inline-toggle-btn:hover { color: var(--amber); }
+  .inline-detail { display: none; }
+  .inline-detail.is-open { display: inline; }
   .metrics-note {
     margin-top: 10px;
     margin-bottom: 0;
@@ -689,9 +706,9 @@
 
 
 <!-- INTRO -->
-<p class="drop-cap">The heart doesn't lie. You might think that's true... but you can't always say that. But day-to-day, there's always an excuse of age factor, recovery status, stress, conditions when HR spikes. Something to explain away a bad reading etc..—there's always something to justify it with... BUT... the heart rate tells you the real story when tracked over weeks..</p>
+<p class="drop-cap">There was one thing that kept bothering me during this training block. No matter how easy the run was supposed to be, my heart rate always found a way to climb and be noisy in the majority of the runs. Every time it happened, the explanation was like ready made! Heat... Humidity... or Salty air... etc I accepted those answers for long time until I finally looked at the data.</p>
 
-<p>Completed 21 easy runs during this training block(April to July). Garmin Training Effect also reflected the same - Aerobic(Base). During many of those runs, and in conversations with other runners, the same words kept coming up whenever heart rate started to climb. Heat. Humidity. Salty air. Everyone seemed to have a reason why an easy run did not feel easy anymore.</p>
+<p>Between April and July, I completed 21 easy runs during this training block. Garmin classified every one of them as an Aerobic Base run. I kept the pace stayed almost for every run, and the effort was meant to be easy throughout. So one question kept coming back to me. If I was running at nearly the same pace with the same training purpose, why was my average heart rate different almost every day?</p>
 
 <p>Everything looks good... until the charts show the real story.</p>
 
@@ -853,7 +870,7 @@
 
 
 <!-- SECTION 3.5 -->
-<h2>Training composition: the big picture</h2>
+<h2>Training Background: the big picture</h2>
 
 <p>Usually, easy runs form the base of a training pyramid. Strength comes next, with intervals, tempo, and threshold sessions at the top. But this training block turned out a little different. I spent more hours on strength training than easy running. Rather than forcing the pyramid to match the usual structure, decided to let the data speak for itself and keep strength as the base</p>
 
@@ -1029,16 +1046,14 @@
 
 <p>Efficiency Factor measures how many watts I produce for every heartbeat. In simple terms, it tells me how much running power I generate for the effort my heart is putting in.</p>
 
-<strong><p>Efficiency Factor</p></strong>
+<p><strong>Efficiency Factor = Average Power ÷ Average Heart Rate</strong><button id="efFormulaToggle" class="inline-toggle-btn" type="button" aria-expanded="false" aria-controls="efFormulaDetail">Show the math</button></p>
 
-<p>Average Power ÷ Average Heart Rate</p>
-
-<p>For example,</p>
-
-<p>Average Power = 230 W<br>
-Average Heart Rate = 150 bpm</p>
-
-<p>Efficiency Factor = 230 ÷ 150 = 1.53 W/bpm</p>
+<div id="efFormulaDetail" style="display:none; margin-top:-0.75rem; margin-bottom:1rem;">
+  <p>For example:<br><br>
+  Average Power = 230 W<br>
+  Average Heart Rate = 150 bpm<br><br>
+  Efficiency Factor = 230 ÷ 150 = 1.53 W/bpm</p>
+</div>
 
 <p>The higher the Efficiency Factor, the more running power I am producing for each heartbeat. I found this to be a much better way to understand how efficiently my body was working than looking at pace alone.</p>
 
@@ -1052,13 +1067,13 @@ Average Heart Rate = 150 bpm</p>
   <p style="font-size:12px; color:var(--ink-muted); margin-bottom:14px;">Chart data source: <a href="https://github.com/jvinodraj/theEagle/blob/master/reports/easy/hr_improvement_analysis.csv" target="_blank" rel="noopener" style="color:var(--cyan);">hr_improvement_analysis.csv</a>.</p>
 </div>
 
-<p>For all my easy runs, I stayed close to the same pace of around 7:20 min/km throughout the training block, no matter how the training changed. Even as the weekly training load increased, I found that my body was handling the effort better.</p>
+<p>For all my easy runs, I stayed close to the same pace of around 7:20 /km throughout the training block, irrespective to the training load. Even as the weekly training load increased, I found that my body was handling the effort better.</p>
 
 
 <!-- SECTION 2 -->
-<h2>The problem I can't explain away</h2>
+<h2>The problem I can't explain away: Aerobic Decoupling</h2>
 
-<p>Here's another metric I couldn't ignore. Aerobic Decoupling(Heart Rate Drift) measures how much your heart rate changes while maintaining a steady aerobic effort. In simple terms, it compares how efficiently you ran during the second half of the run with the first half, after excluding the warm up.</p>
+<p>Here's another metric I couldn't ignore. Aerobic Decoupling(Heart Rate Drift) measures how much your heart rate changes while maintaining a steady aerobic effort. In simple terms, it compares how efficiently you ran during the second half of the run when compared to the first half, after excluding the warm up.</p>
 
 <p>As a general guideline, a value below 5% suggests you were able to maintain your aerobic effort without your heart rate drifting too much. My median value across the 21 easy runs was 7.1%, and only 3 of those runs stayed below the 5% mark</p>
 
@@ -1099,7 +1114,7 @@ Average Heart Rate = 150 bpm</p>
   </div>
 </div>
 
-<p>Each extra degree Celsius adds roughly <strong>3.2 beats per minute</strong> to my heart rate. The formula is HR = 3.19 × temperature + 50.7, and temperature alone explains most of the difference in heart rate between my runs. In practical terms: a run at 31.5°C puts about 8 more beats per minute of strain on my heart than a run at 29°C — before fatigue, fitness, or pace are even considered.</p>
+<p>Each extra degree Celsius adds roughly <strong>3.2 beats per minute</strong> to my heart rate.<button id="tempFormulaToggle" class="inline-toggle-btn" type="button" aria-expanded="false" aria-controls="tempFormulaDetail">Show the math</button><span id="tempFormulaDetail" class="inline-detail"> The formula is HR = 3.19 × temperature + 50.7, and temperature alone explains most of the difference in heart rate between my runs. In practical terms: a run at 31.5°C puts about 8 more beats per minute of strain on my heart than a run at 29°C — before fatigue, fitness, or pace are even considered.</span></p>
 
 <p>Two runs stand out. On July 14 (30.3°C, 142 bpm), my heart rate came in about 5 bpm lower than temperature alone would predict — the strongest sign of adaptation in the whole dataset, right at the end of the block. On April 30 (30.2°C, 152 bpm), heart rate ran nearly 5 bpm higher than expected, the largest positive miss, early on before the heat adaptation had set in.</p>
 
@@ -2064,6 +2079,30 @@ if (weeklyLoadToggle && weeklyLoadTableWrap) {
     weeklyLoadTableWrap.style.display = expanded ? 'none' : 'block';
     weeklyLoadToggle.setAttribute('aria-expanded', String(!expanded));
     weeklyLoadToggle.textContent = expanded ? 'Show weekly load table' : 'Hide weekly load table';
+  });
+}
+
+/* Expand/collapse the temperature-formula detail sentence */
+const tempFormulaToggle = document.getElementById('tempFormulaToggle');
+const tempFormulaDetail = document.getElementById('tempFormulaDetail');
+if (tempFormulaToggle && tempFormulaDetail) {
+  tempFormulaToggle.addEventListener('click', () => {
+    const expanded = tempFormulaToggle.getAttribute('aria-expanded') === 'true';
+    tempFormulaDetail.classList.toggle('is-open', !expanded);
+    tempFormulaToggle.setAttribute('aria-expanded', String(!expanded));
+    tempFormulaToggle.textContent = expanded ? 'Show the math' : 'Hide';
+  });
+}
+
+/* Expand/collapse the Efficiency Factor worked example */
+const efFormulaToggle = document.getElementById('efFormulaToggle');
+const efFormulaDetail = document.getElementById('efFormulaDetail');
+if (efFormulaToggle && efFormulaDetail) {
+  efFormulaToggle.addEventListener('click', () => {
+    const expanded = efFormulaToggle.getAttribute('aria-expanded') === 'true';
+    efFormulaDetail.style.display = expanded ? 'none' : 'block';
+    efFormulaToggle.setAttribute('aria-expanded', String(!expanded));
+    efFormulaToggle.textContent = expanded ? 'Show the math' : 'Hide';
   });
 }
 
