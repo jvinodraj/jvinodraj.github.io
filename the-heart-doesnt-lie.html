@@ -1049,9 +1049,9 @@
 <p><strong>Efficiency Factor = Average Power ÷ Average Heart Rate</strong><button id="efFormulaToggle" class="inline-toggle-btn" type="button" aria-expanded="false" aria-controls="efFormulaDetail">Show the math</button></p>
 
 <div id="efFormulaDetail" style="display:none; margin-top:-0.75rem; margin-bottom:1rem;">
-  <p>For example:<br><br>
+  <p>For example:<br>
   Average Power = 230 W<br>
-  Average Heart Rate = 150 bpm<br><br>
+  Average Heart Rate = 150 bpm<br>
   Efficiency Factor = 230 ÷ 150 = 1.53 W/bpm</p>
 </div>
 
@@ -1195,6 +1195,8 @@
     <p class="stat-sub">Best of the entire block</p>
   </div>
 </div>
+
+<p style="font-size:13px; color:var(--ink-muted); margin-top:1rem;">A deeper, rep-level diagnostic for these sessions is in progress.<button id="intervalDiagToggle" class="inline-toggle-btn" type="button" aria-expanded="false" aria-controls="intervalDiagDetail">Show details</button><span id="intervalDiagDetail" class="inline-detail"> It's a composite score that normalizes power, cardiac drift, recovery drop, and pace on a 0–1 scale, so sessions can be compared apples-to-apples. Validated on one session so far; running it across all 17 is still to come. Methodology so far: the <a href="https://github.com/jvinodraj/theEagle/blob/master/notebooks/interval_training_diagnostics.ipynb" target="_blank" rel="noopener" style="color:var(--cyan);">notebook is on GitHub</a>.</span></p>
 
 <!-- SECTION 6 -->
 <h2>Strengthening, and whether it helped</h2>
@@ -2091,6 +2093,18 @@ if (tempFormulaToggle && tempFormulaDetail) {
     tempFormulaDetail.classList.toggle('is-open', !expanded);
     tempFormulaToggle.setAttribute('aria-expanded', String(!expanded));
     tempFormulaToggle.textContent = expanded ? 'Show the math' : 'Hide';
+  });
+}
+
+/* Expand/collapse the interval diagnostics detail sentence */
+const intervalDiagToggle = document.getElementById('intervalDiagToggle');
+const intervalDiagDetail = document.getElementById('intervalDiagDetail');
+if (intervalDiagToggle && intervalDiagDetail) {
+  intervalDiagToggle.addEventListener('click', () => {
+    const expanded = intervalDiagToggle.getAttribute('aria-expanded') === 'true';
+    intervalDiagDetail.classList.toggle('is-open', !expanded);
+    intervalDiagToggle.setAttribute('aria-expanded', String(!expanded));
+    intervalDiagToggle.textContent = expanded ? 'Show details' : 'Hide';
   });
 }
 
