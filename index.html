@@ -218,8 +218,28 @@
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      
+      // Generate or retrieve unique user ID
+      function getUserId() {
+        const storageName = 'ga_user_id';
+        let userId = localStorage.getItem(storageName);
+        
+        if (!userId) {
+          // Generate UUID v4
+          userId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = Math.random() * 16 | 0,
+                v = c === 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+          });
+          localStorage.setItem(storageName, userId);
+        }
+        return userId;
+      }
+      
       gtag('js', new Date());
-      gtag('config', 'G-8DNMPT9Z2Q');
+      gtag('config', 'G-8DNMPT9Z2Q', {
+        'user_id': getUserId()
+      });
     </script>
 </head>
 <body>
