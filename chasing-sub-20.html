@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+(function() {
+  try {
+    var saved = localStorage.getItem('theme');
+    var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+    var theme = saved || (prefersLight ? 'light' : 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chasing Sub 20 – A 5K Training Journey</title>
+<meta property="og:title" content="Chasing Sub 20 – A 5K Training Journey">
+<meta property="og:description" content="From 23:51 to under 20 minutes. A real-time training log of what it takes to run 5K at 4:00/km pace.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://jvinodraj.github.io/chasing-sub-20.html">
+<meta name="twitter:card" content="summary">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #F0EBE1;
+    --ink-muted: #9A9082;
+    --ink-faint: #3A3530;
+    --bg: #0F0F0D;
+    --surface: #161612;
+    --cyan: #00D4B8;
+    --amber: #C8873A;
+    --red: #E05C5C;
+    --green: #4DB87A;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  html { background: var(--bg); color: var(--ink); font-family: var(--sans); }
+
+  body {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  /* ── HERO ─────────────────────────────────────────── */
+  .hero {
+    padding: 72px 0 48px;
+    border-bottom: 1px solid var(--ink-faint);
+    margin-bottom: 56px;
+  }
+
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 6vw, 54px);
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 20px;
+    font-weight: 400;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--cyan);
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: 32px;
+    line-height: 1.2;
+    color: var(--ink);
+    margin: 3rem 0 1.5rem 0;
+    font-weight: 400;
+  }
+
+  h3 {
+    font-family: var(--serif);
+    font-size: 24px;
+    line-height: 1.2;
+    color: var(--ink);
+    margin: 2.5rem 0 1.25rem 0;
+    font-weight: 400;
+  }
+
+  .subtitle {
+    font-size: 19px;
+    color: var(--ink-muted);
+    line-height: 1.55;
+    max-width: 580px;
+    margin-bottom: 40px;
+  }
+
+  .hero-note {
+    font-size: 12px;
+    color: var(--ink-muted);
+    letter-spacing: 0.03em;
+    margin-top: 24px;
+  }
+
+  .status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(0, 212, 184, 0.1);
+    border: 1px solid var(--cyan);
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 32px;
+  }
+
+  /* ── PROSE ────────────────────────────────────────── */
+  p { color: var(--ink); margin-bottom: 1.5rem; }
+
+  strong { font-weight: 600; color: var(--ink); }
+
+  em { font-style: italic; }
+
+  /* ── CALLOUT STATS ────────────────────────────────── */
+  .callout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    padding: 32px 28px;
+    background: var(--surface);
+    border: 1px solid var(--ink-faint);
+    border-radius: 12px;
+    margin: 2.5rem 0;
+  }
+
+  .callout.amber { --primary: var(--amber); }
+  .callout.red { --primary: var(--red); }
+  .callout.green { --primary: var(--green); }
+
+  .stat-item {}
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 36px;
+    color: var(--cyan);
+    line-height: 1;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .callout.amber .stat-num { color: var(--amber); }
+  .callout.red .stat-num { color: var(--red); }
+  .callout.green .stat-num { color: var(--green); }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.4;
+    font-weight: 600;
+  }
+  .stat-sub {
+    font-size: 13px;
+    color: var(--ink-muted);
+    margin-top: 6px;
+  }
+
+  /* ── PULLQUOTE ────────────────────────────────────── */
+  blockquote {
+    margin: 2.5rem 0;
+    padding: 0 0 0 24px;
+    border-left: 1px solid var(--ink-faint);
+    font-family: var(--serif);
+    font-size: 22px;
+    font-style: italic;
+    color: var(--ink-muted);
+    line-height: 1.5;
+  }
+
+  /* ── SECTION DIVIDER ──────────────────────────────– */
+  .divider {
+    height: 1px;
+    background: var(--ink-faint);
+    margin: 3rem 0;
+  }
+
+  /* ── THEME TOGGLE ─────────────────────────────────── */
+  .theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 24px;
+    border: 0;
+    background: var(--surface);
+    border: 1px solid var(--ink-faint);
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0 2px;
+    z-index: 100;
+    transition: border-color 0.2s;
+  }
+  .theme-toggle:hover { border-color: var(--cyan); }
+
+  .ecg-track {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+  }
+  .ecg-line {
+    fill: none;
+    stroke: var(--cyan);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  html[data-theme="light"] .ecg-line { stroke: var(--amber); }
+
+  .toggle-thumb {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 1px solid var(--ink-faint);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(3px);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease;
+    color: var(--cyan);
+  }
+  html[data-theme="light"] .toggle-thumb {
+    transform: translateX(35px);
+    color: var(--amber);
+  }
+
+  .icon-sun, .icon-moon {
+    position: absolute;
+    transition: opacity 0.2s ease, transform 0.25s ease;
+  }
+  .icon-moon { opacity: 1; transform: scale(1) rotate(0deg); }
+  .icon-sun  { opacity: 0; transform: scale(0.5) rotate(-90deg); }
+  html[data-theme="light"] .icon-moon { opacity: 0; transform: scale(0.5) rotate(90deg); }
+  html[data-theme="light"] .icon-sun  { opacity: 1; transform: scale(1) rotate(0deg); }
+
+  /* ── AUTHOR / FOOTER ──────────────────────────────– */
+  .author-line {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 32px 0;
+    border-top: 1px solid var(--ink-faint);
+    margin-top: 4rem;
+  }
+  .author-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--cyan), var(--amber));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--bg);
+    flex-shrink: 0;
+  }
+  .author-meta { font-size: 14px; color: var(--ink-muted); line-height: 1.5; }
+  .author-name { font-weight: 600; color: var(--ink); }
+
+  .tag-row { margin-top: 2rem; display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag {
+    font-size: 12px;
+    padding: 4px 12px;
+    border: 1px solid var(--ink-faint);
+    border-radius: 20px;
+    color: var(--ink-muted);
+  }
+
+  /* ── UPDATE LOG ───────────────────────────────────── */
+  .update-log {
+    background: var(--surface);
+    border: 1px solid var(--ink-faint);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 2.5rem 0;
+  }
+  .update-log h4 {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--ink);
+    margin-bottom: 16px;
+    font-weight: 400;
+  }
+  .update-item {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--ink-faint);
+  }
+  .update-item:last-child { border-bottom: none; }
+  .update-date {
+    font-size: 12px;
+    color: var(--cyan);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .update-note {
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  /* ── FITNESS TEST TABLE ───────────────────────────── */
+  .fitness-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--ink-faint);
+    border-radius: 10px;
+    margin: 2.5rem 0;
+  }
+  .fitness-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .fitness-table thead {
+    background: var(--surface);
+    border-bottom: 2px solid var(--ink-faint);
+  }
+  .fitness-table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 13px;
+  }
+  .fitness-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--ink-faint);
+    color: var(--ink);
+  }
+  .fitness-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  .fitness-table tbody tr:hover {
+    background: rgba(0, 212, 184, 0.03);
+  }
+  .category-row {
+    background: var(--surface);
+    border-bottom: 2px solid var(--ink-faint);
+  }
+  .category-row td {
+    padding: 14px 16px;
+    font-weight: 600;
+    color: var(--cyan);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-bottom: 2px solid var(--ink-faint);
+  }
+  .category-row:hover {
+    background: var(--surface);
+  }
+  .test-name {
+    color: var(--ink);
+  }
+  .test-name.fail {
+    color: var(--red);
+  }
+  .test-status {
+    font-weight: 600;
+    text-align: center;
+  }
+  .test-status.pass {
+    color: var(--green);
+  }
+  .test-status.fail {
+    color: var(--red);
+  }
+  @media (max-width: 768px) {
+    .fitness-table {
+      font-size: 12px;
+    }
+    .fitness-table th,
+    .fitness-table td {
+      padding: 10px 12px;
+    }
+    .category-row td {
+      padding: 12px 12px;
+      font-size: 11px;
+    }
+  }
+
+  /* ── RESULT CIRCLE INDICATOR ──────────────────────── */
+  .result-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+  }
+  .result-circle.pass {
+    background: var(--green);
+  }
+  .result-circle.fail {
+    background: var(--red);
+  }
+  .result-circle:hover {
+    transform: scale(1.8);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+  }
+  .result-circle::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink-faint);
+    color: var(--ink);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+  .result-circle:hover::after {
+    opacity: 1;
+  }
+  @media (max-width: 768px) {
+    .result-circle {
+      width: 20px;
+      height: 20px;
+    }
+    .result-circle:hover {
+      transform: scale(1.6);
+    }
+  }
+
+  .measurement-callout {
+    background: var(--surface);
+    border: 1px solid var(--ink-faint);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 2.5rem 0;
+  }
+  .measurement-item {
+    padding: 12px 0;
+  }
+  .measurement-item:not(:last-child) {
+    border-bottom: 1px solid var(--ink-faint);
+  }
+  .measurement-label {
+    font-size: 12px;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .measurement-value {
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  /* ── LIGHT THEME OVERRIDES ────────────────────────── */
+  html[data-theme="light"] {
+    --ink: #1C1A16;
+    --ink-muted: #6B6355;
+    --ink-faint: #E2DBCB;
+    --bg: #FBF8F2;
+    --surface: #FFFFFF;
+    --cyan: #037C6D;
+    --amber: #9F5F1A;
+    --red: #C23B3B;
+    --green: #297C4F;
+  }
+
+  html, body, .chart-wrap, .callout, .theme-toggle, .toggle-thumb {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  @media (max-width: 480px) {
+    .theme-toggle { top: 12px; right: 12px; }
+    body { padding: 0 16px 60px; }
+    .callout {
+      grid-template-columns: 1fr;
+      padding: 22px 20px;
+      gap: 18px;
+      margin: 2.5rem -4px;
+    }
+    .callout .stat-item:not(:last-child) {
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--ink-faint);
+    }
+    .stat-num { font-size: 32px; }
+    h2 { font-size: 26px; }
+    h3 { font-size: 20px; }
+  }
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8DNMPT9Z2Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8DNMPT9Z2Q', {
+    'user_id': (function() {
+      const storageName = 'ga_user_id';
+      let userId = localStorage.getItem(storageName);
+      if (!userId) {
+        userId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+          var r = Math.random() * 16 | 0;
+          return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+        });
+        localStorage.setItem(storageName, userId);
+      }
+      return userId;
+    })()
+  });
+</script>
+</head>
+<body>
+
+<button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch between dark and light theme" aria-pressed="false">
+  <svg class="ecg-track" viewBox="0 0 60 24" width="60" height="24" aria-hidden="true">
+    <path class="ecg-line" d="M0,12 L14,12 L18,4 L22,20 L26,12 L60,12" />
+  </svg>
+  <span class="toggle-thumb">
+    <svg class="icon-moon" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor"/></svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></g></svg>
+  </span>
+</button>
+
+<article>
+
+<!-- HERO -->
+<header class="hero">
+  <p class="eyebrow">Training · 5K Running · Personal Journal</p>
+  <h1>Chasing Sub 20</h1>
+  <p class="subtitle">From 23:51 to under 20 minutes. A real-time training log of what it takes to run 5K at 4:00/km pace.</p>
+  <p class="hero-note">This is a living article that will evolve as training progresses. Started August 2026. Target completion: End of 2026.</p>
+  <div class="status-badge">In Progress</div>
+</header>
+
+<!-- THE GOAL -->
+<p>I have run a lot of kilometres over the years.</p>
+
+<p>Some runs were easy. Some were painful. Some made me feel strong. And some made me question why I was running at all.</p>
+
+<p>But now I have a very specific goal.</p>
+
+<p><strong>I want to run 5K in under 20 minutes.</strong></p>
+
+<p>My current personal best is 23:51.</p>
+
+<p>Going from 23:51 to something below 20 minutes is not a small improvement. It means running faster than 4:00 per kilometre for the entire 5K.</p>
+
+<p>That is the goal I am chasing.</p>
+
+<div class="callout">
+  <div class="stat-item">
+    <span class="stat-num">23:51</span>
+    <span class="stat-label">Current 5K PB</span>
+    <p class="stat-sub">≈ 4:46 per km</p>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">19:59</span>
+    <span class="stat-label">Target Time</span>
+    <p class="stat-sub">≈ 4:00 per km</p>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">3:51</span>
+    <span class="stat-label">Gap to Close</span>
+    <p class="stat-sub">~46 seconds per km</p>
+  </div>
+</div>
+
+<h2>Why Sub 20?</h2>
+
+<p>A sub 20 minute 5K has always felt like one of those running milestones that separates running regularly from becoming a reasonably fast runner.</p>
+
+<p>It is only 5 kilometres.</p>
+
+<p>But running those 5 kilometres at around 4 minutes per kilometre is a completely different challenge.</p>
+
+<p>My current pace tells me that I am not there yet.</p>
+
+<p>So instead of asking myself, <strong>"How can I run 5K faster?"</strong></p>
+
+<p>I started asking a different question.</p>
+
+<p><strong>"What is stopping me from running 5K at 4:00/km?"</strong></p>
+
+<p>That question changed the way I started looking at training.</p>
+
+<h2>The Gap</h2>
+
+<p>The gap is almost one minute per kilometre. That is a big gap.</p>
+
+<p>It cannot be solved by simply adding more hard runs.</p>
+
+<p>I need better aerobic fitness.</p>
+
+<p>I need better running economy.</p>
+
+<p>I need stronger legs.</p>
+
+<p>I need better running mechanics.</p>
+
+<p>And most importantly, I need to be able to hold a fast pace when fatigue starts building.</p>
+
+<p>That is what this training journey is really about.</p>
+
+<h2>Building the Engine</h2>
+
+<p>The first part of this journey is not about running every session fast.</p>
+
+<p>It is about building the engine.</p>
+
+<p>Easy runs are still important because they allow me to build aerobic capacity without constantly stressing the body. Longer easy runs help me spend more time running. Threshold sessions help me become comfortable running hard for longer periods. Intervals teach my body what faster running feels like. And strength training helps me produce and control force when running at speed.</p>
+
+<p>Each session has a purpose.</p>
+
+<p>I am trying to build all of these pieces together.</p>
+
+<h2>Strength Is Not Just Extra Training</h2>
+
+<p>One thing I have started looking at differently is strength training.</p>
+
+<p>Earlier, I used to think about strength training as something separate from running. Now I see it as part of running performance.</p>
+
+<p>For a faster 5K, I need strong glutes, hamstrings, calves and lower legs. I need to be able to produce force quickly. I also need to control that force when my legs are tired. That is where plyometrics and running specific strength work become important.</p>
+
+<p>The goal isn't to become a bodybuilder. The goal is to become a better runner.</p>
+
+<h2>The Starting Point: Fitness Tests</h2>
+
+<p>Before starting this training journey, I wanted to understand something beyond my pace and heart rate.</p>
+
+<p>How well is my body actually moving?</p>
+
+<p>A faster 5K is not only about having a strong heart and strong legs. Mobility, posture and movement quality can also influence how efficiently I run.</p>
+
+<p>So I started with a set of fitness tests covering lower body flexibility, upper body flexibility and posture.</p>
+
+<p>The results were interesting.</p>
+
+<div class="callout">
+  <div class="stat-item">
+    <span class="stat-num">19</span>
+    <span class="stat-label">Fitness Tests</span>
+    <p class="stat-sub">Initial assessment</p>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">9</span>
+    <span class="stat-label">Passing</span>
+    <p class="stat-sub">47% of tests</p>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">10</span>
+    <span class="stat-label">Failing</span>
+    <p class="stat-sub">53% of tests</p>
+  </div>
+</div>
+
+<h3>Where I Need Work</h3>
+
+<p>The assessment showed that my biggest limitations are not simply in my legs.</p>
+
+<p>Several of the mobility tests around the hips, ankle and upper body were marked as failing. I also had failing results for waist angle, shoulder position and upper back posture.</p>
+
+<p>My dorsiflexion test was also marked as failing. When I measured it separately, I could currently reach the wall from about 2 inches away.</p>
+
+<p>For adduction, my current measurement was about one and three-quarter hand spans from hip to heel during the stretch.</p>
+
+<p>These measurements give me a starting point.</p>
+
+<p>Instead of assuming that something is wrong with my running mechanics, I now have specific things that I can measure and work on.</p>
+
+<h3>Fitness Test Baseline</h3>
+
+<div class="fitness-table-wrap">
+  <table class="fitness-table" role="table" aria-label="Fitness test baseline results with 19 tests organized by category">
+    <thead>
+      <tr>
+        <th>Test Name</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="category-row">
+        <td colspan="2">Flexibility | Passive | Lower</td>
+      </tr>
+      <tr>
+        <td class="test-name fail">Adduction</td>
+        <td class="test-status fail">Failing</td>
+      </tr>
+      <tr>
+        <td class="test-name pass">Hip Flexion</td>
+        <td class="test-status pass">Passing</td>
+      </tr>
+      <tr>
+        <td class="test-name fail">Hip External Rotation</td>
+        <td class="test-status fail">Failing</td>
+      </tr>
+      <tr>
+        <td class="test-name pass">Hip Internal Rotation</td>
+        <td class="test-status pass">Passing</td>
+      </tr>
+      <tr>
+        <td class="test-name fail">Leg Extension</td>
+        <td class="test-status fail">Failing</td>
+      </tr>
+      <tr>
+        <td class="test-name pass">Knee Flexion</td>
+        <td class="test-status pass">Passing</td>
+      </tr>
+      <tr>
+        <td class="test-name fail">Dorsiflexion</td>
+        <td class="test-status fail">Failing</td>
+      </tr>
+      <tr class="category-row">
+        <td colspan="2">Flexibility | Passive | Upper</td>
+      </tr>
+      <tr>
+        <td class="test-name pass">Overhead Flexion</td>
+        <td class="test-status pass">Passing</td>
+      </tr>
+      <tr>
+        <td class="test-name fail">Transverse Extension</td>
+        <td class="test-status fail">Failing</td>
+      </tr>
+      <tr>
+        <td class="test-name fail">External Rotation</td>
+        <td class="test-status fail">Failing</td>
+      </tr>
+      <tr>
+        <td class="test-name fail">Internal Rotation</td>
+        <td class="test-status fail">Failing</td>
+      </tr>
+      <tr class="category-row">
+        <td colspan="2">Posture | Front | Upper</td>
+      </tr>
+      <tr>
+        <td class="test-name pass">Feet</td>
+        <td class="test-status pass">Passing</td>
+      </tr>
+      <tr>
+        <td class="test-name pass">Lower Legs</td>
+        <td class="test-status pass">Passing</td>
+      </tr>
+      <tr>
+        <td class="test-name pass">Upper Legs</td>
+        <td class="test-status pass">Passing</td>
+      </tr>
+      <tr>
+        <td class="test-name pass">Hands</td>
+        <td class="test-status pass">Passing</td>
+      </tr>
+      <tr class="category-row">
+        <td colspan="2">Posture | Side | Upper</td>
+      </tr>
+      <tr>
+        <td class="test-name pass">Knee Angle</td>
+        <td class="test-status pass">Passing</td>
+      </tr>
+      <tr>
+        <td class="test-name fail">Waist Angle</td>
+        <td class="test-status fail">Failing</td>
+      </tr>
+      <tr>
+        <td class="test-name fail">Shoulder Position</td>
+        <td class="test-status fail">Failing</td>
+      </tr>
+      <tr>
+        <td class="test-name fail">Upper Back</td>
+        <td class="test-status fail">Failing</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>Measured Values</h3>
+
+<div class="measurement-callout">
+  <div class="measurement-item">
+    <div class="measurement-label">Dorsiflexion</div>
+    <div class="measurement-value">App classification: <span class="result-fail">Failing</span><br>Current measurement: 2 inches wall distance</div>
+  </div>
+  <div class="measurement-item">
+    <div class="measurement-label">Adduction</div>
+    <div class="measurement-value">App classification: <span class="result-fail">Failing</span><br>Current measurement: 1¾ hand spans from hip to heel</div>
+  </div>
+</div>
+
+<h3>What I Will Track</h3>
+
+<p>I don't want this assessment to become just another list of numbers.</p>
+
+<p>I will repeat these tests during the training journey and compare the results with my running.</p>
+
+<p>If my dorsiflexion improves, does my running feel different?</p>
+
+<p>If my hip mobility improves, does my stride feel better?</p>
+
+<p>If my posture improves, does fatigue affect my form differently?</p>
+
+<p>I don't know the answers yet.</p>
+
+<p>That is one of the things I want to find out during this journey.</p>
+
+<h2>Learning to Run Fast</h2>
+
+<p>Running at 4:00/km is very different from running at 5:00/km.</p>
+
+<p>At slower speeds, I can settle into the run and control my breathing. At faster speeds, everything becomes more important.</p>
+
+<p>Cadence. Stride. Ground contact. Breathing. Posture. Muscle fatigue.</p>
+
+<p>Even small inefficiencies start becoming expensive.</p>
+
+<p>That is why I don't want to chase the target pace in every workout. I want my body to gradually become capable of running at that speed.</p>
+
+<h2>The Garmin Data</h2>
+
+<p>I also want to use the data from my Garmin differently this time.</p>
+
+<p>A watch can tell me my pace and heart rate. But those numbers can tell a much bigger story when looked at together.</p>
+
+<p>I am interested in things like heart rate response, running power, cadence, efficiency and aerobic decoupling. For example, if I can run faster while keeping my heart rate under control, that tells me something. If my pace drops badly during the second half of a hard run, that tells me something too.</p>
+
+<p>The goal is not to collect more numbers. The goal is to understand what those numbers are telling me.</p>
+
+<div class="divider"></div>
+
+<!-- TRAINING LOG / UPDATES -->
+<h2>Training Progress & Updates</h2>
+
+<p>This section will be updated as the training block progresses. Each phase will include data, lessons learned, and how the training changed from week to week.</p>
+
+<div class="update-log">
+  <h4>Training Updates</h4>
+  <div class="update-item">
+    <div class="update-date">Aug 28, 2026</div>
+    <div class="update-note">Training plan framework established. Initial mobility and posture assessment completed. The assessment showed several areas that need attention, particularly hip mobility, dorsiflexion and upper body posture. A repeat fitness test will be used later to see whether these areas improve during training.</div>
+  </div>
+</div>
+
+<h3>What Will Evolve</h3>
+
+<p>As this training block progresses, I will add sections for:</p>
+
+<ul style="margin-left: 1.5rem; color: var(--ink); margin-bottom: 1.5rem;">
+  <li><strong>Training Block Updates</strong> – Weekly summaries of what was planned vs. what happened</li>
+  <li><strong>First Fitness Test</strong> – Baseline metrics and what they tell me</li>
+  <li><strong>First Sub 4:30/km Interval</strong> – The first time I hit a key speed target</li>
+  <li><strong>What Went Wrong</strong> – Honest reflection on injuries, setbacks, or bad sessions</li>
+  <li><strong>What Changed</strong> – Adjustments to training, diet, recovery, or psychology</li>
+  <li><strong>Final Attempt</strong> – The race-week plan and preparation</li>
+  <li><strong>Race Report</strong> – The full story of the day I break 20 minutes</li>
+</ul>
+
+<h2>The Real Test</h2>
+
+<p>Eventually, I will have to put everything together.</p>
+
+<p>5 kilometres.</p>
+
+<p>20 minutes.</p>
+
+<p>No calculations.</p>
+
+<p>No excuses.</p>
+
+<p>Just running.</p>
+
+<p>The first kilometre will probably feel manageable. The middle kilometres will start asking questions. And the last kilometre will tell me whether the training worked.</p>
+
+<p>That is where the real test will be.</p>
+
+<h2>This Is Still a Work in Progress</h2>
+
+<p>I am writing this article before achieving the goal.</p>
+
+<p>That is intentional.</p>
+
+<p>I don't know yet whether I will run 19:xx.</p>
+
+<p>I don't know exactly when it will happen.</p>
+
+<p>I don't even know what the final training block will look like.</p>
+
+<p>But I know the target.</p>
+
+<p><strong>Sub 20 minutes for 5K.</strong></p>
+
+<p>My expectation is to complete this training journey by the end of 2026.</p>
+
+<p>Until then, this article will remain a work in progress. I will add the training, the mistakes, the good sessions, the bad sessions and the lessons along the way.</p>
+
+<p>And when the day finally comes, I want to come back to this article and add one more thing.</p>
+
+<p><strong>The time.</strong></p>
+
+<h2>The Number I Am Chasing</h2>
+
+<blockquote>
+19:59
+</blockquote>
+
+<p>That is the number.</p>
+
+<p>For now, it is only a target.</p>
+
+<p>But every easy run, every interval, every strength session and every recovery day is a small step towards it.</p>
+
+<p>The journey is still happening.</p>
+
+<p>And this time, I am not just chasing a faster 5K.</p>
+
+<p>I am trying to build the runner who can run it.</p>
+
+<!-- AUTHOR -->
+<div class="author-line">
+  <div class="author-avatar">V</div>
+  <div>
+    <div class="author-name">Vinodraj</div>
+    <div class="author-meta">
+      Written in August 2026<br>
+      Updated as training progresses
+    </div>
+  </div>
+</div>
+
+<div class="tag-row">
+  <span class="tag">5K Training</span>
+  <span class="tag">Running Goals</span>
+  <span class="tag">Sub 20 Minutes</span>
+  <span class="tag">Training Log</span>
+  <span class="tag">Fitness Data</span>
+</div>
+
+</article>
+
+<script>
+// Theme toggle functionality
+const themeToggle = document.getElementById('themeToggle');
+
+themeToggle.addEventListener('click', function() {
+  const html = document.documentElement;
+  const currentTheme = html.getAttribute('data-theme');
+  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+  
+  html.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  
+  this.setAttribute('aria-pressed', newTheme === 'light' ? 'true' : 'false');
+});
+
+// Set initial state
+const html = document.documentElement;
+const currentTheme = html.getAttribute('data-theme');
+themeToggle.setAttribute('aria-pressed', currentTheme === 'light' ? 'true' : 'false');
+</script>
+
+</body>
+</html>
