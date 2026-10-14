@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Look: OpenCode | Vinodraj Jayaraman</title>
+    <meta name="description" content="Why I started exploring OpenCode, what caught my attention, and how I'm using it for agentic AI development.">
+    <style>
+        :root {
+            --bg: #f3f7f6;
+            --surface: #ffffff;
+            --ink: #132023;
+            --muted: #4b5f63;
+            --brand: #0f766e;
+            --accent: #f59e0b;
+            --line: #d8dfdb;
+            --radius: 14px;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 10% 12%, #dcfce7 0%, transparent 28%),
+                radial-gradient(circle at 90% 0%, #fef3c7 0%, transparent 30%),
+                var(--bg);
+        }
+
+        .container { width: min(820px, 92vw); margin: 0 auto; }
+
+        header {
+            border-bottom: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(6px);
+            position: sticky;
+            top: 0;
+            z-index: 20;
+        }
+
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; }
+        .links { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+        .links a { text-decoration: none; color: var(--muted); font-weight: 600; }
+        .links a:hover { color: var(--brand); }
+
+        main { padding: 2.6rem 0 3.2rem; }
+
+        article h1 {
+            margin: 0 0 0.5rem;
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            line-height: 1.2;
+        }
+
+        .post-meta {
+            color: var(--muted);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .post-meta span { margin-right: 1.2rem; }
+
+        article p {
+            margin: 1rem 0;
+            line-height: 1.7;
+            color: var(--ink);
+        }
+
+        article h2 {
+            margin: 2.5rem 0 1rem;
+            font-size: 1.5rem;
+            color: var(--ink);
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        article h3 {
+            margin: 1.8rem 0 0.8rem;
+            font-size: 1.15rem;
+            color: var(--brand);
+        }
+
+        .code-block {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            margin: 1.2rem 0;
+            overflow-x: auto;
+            font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .code-block code { color: var(--ink); }
+
+        .cmd { color: var(--brand); font-weight: 600; }
+        .arg { color: #155e75; }
+        .flag { color: #7c4a03; }
+        .comment { color: var(--muted); }
+
+        .callout {
+            background: #fef3c7;
+            border: 1px solid #fcd34d;
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .callout strong { color: #92400e; }
+        .callout p { margin: 0.5rem 0; color: #78350f; }
+
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+            line-height: 1.7;
+        }
+
+        li { margin: 0.6rem 0; }
+
+        a { color: var(--brand); text-decoration: none; font-weight: 600; }
+        a:hover { text-decoration: underline; }
+
+        .back-link {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--line);
+        }
+
+        .closing-thought {
+            font-style: italic;
+            color: var(--muted);
+            border-left: 3px solid var(--brand);
+            padding-left: 1rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 640px) {
+            .code-block { padding: 0.8rem; font-size: 0.85rem; }
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8DNMPT9Z2Q"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      
+      function getUserId() {
+        const storageName = 'ga_user_id';
+        let userId = localStorage.getItem(storageName);
+        
+        if (!userId) {
+          userId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = Math.random() * 16 | 0,
+                v = c === 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+          });
+          localStorage.setItem(storageName, userId);
+        }
+        return userId;
+      }
+      
+      gtag('js', new Date());
+      gtag('config', 'G-8DNMPT9Z2Q', {
+        'user_id': getUserId()
+      });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <strong>Vinodraj Jayaraman</strong>
+                <div class="links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="projects.html">Projects</a>
+                    <a href="resume.html">Resume</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <article>
+            <h1>My First Look at OpenCode</h1>
+            <div class="post-meta">
+                <span>October 2024</span>
+                <span>Tooling</span>
+            </div>
+
+            <h2>Why did I start looking for an alternative?</h2>
+
+            <p>
+                I've been using GitHub Copilot in VS Code quite extensively. It's convenient right there in the editor, suggesting completions, helping with boilerplate. 
+                But very soon, I have the pain of watching my usage meter climb the ladder.
+            </p>
+
+            <p>
+                I wanted to keep experimenting with AI, writing more prompts, 
+                trying different approaches without constantly watching a usage meter. 
+                That's when I started exploring OpenCode.
+            </p>
+
+            <h2>What caught my attention?</h2>
+
+            <p>
+                The first thing that stood out: <strong>free model access</strong>. OpenCode gives you 
+                immediate access to multiple models like Nemotron 3 Ultra and Llama 3.1 405B through their hosted inference - no API keys, no credit card, no setup. You can also bring your own keys for other providers if you want.
+            </p>
+
+            <p>
+                Then I saw the model list. <strong>NVIDIA Nemotron 3 Ultra 550B parameters</strong>. A model of that scale, available to experiment with at no cost? That got my attention. Of course, free access depends on the provider and their limits, but having the option to test large-scale models without committing to a paid tier changes how you approach exploration.
+            </p>
+
+            <p>
+                It also made me realize: I'd been dependent on a single AI assistant. OpenCode lets me swap models mid-task and use a reasoning-heavy model for architecture decisions, a faster one for quick edits all in the same session.
+            </p>
+
+            <h2>More prompting without losing context</h2>
+
+            <p>
+                When working on something complex like an MCP server, an agent workflow, a data pipeline, I don't get it right in one prompt. I ask, refine, test, ask again. I need the conversation history and the project context to carry forward.
+            </p>
+
+            <p>
+                OpenCode handles this through <strong>persistent sessions</strong>. Each session remembers the full conversation, the files you've touched, the context you've built. You can close the terminal, come back tomorrow, run <code>opencode connect --session ses_abc123</code>, and pick up exactly where you left off.
+            </p>
+
+            <p>
+                This matters when you're learning. You're not just getting answers but also you're building a thread of reasoning that you can revisit, export, or share.
+            </p>
+
+            <h2>Three commands I reach for daily</h2>
+
+            <h3><code>opencode connect</code> - Resume a session</h3>
+            <div class="code-block"><code><span class="cmd">opencode</span> <span class="arg">connect</span> <span class="flag">--session</span> <span class="arg">ses_abc123</span></code></div>
+            <p>Sessions persist - context, file edits, history. Switch machines, continue a multi-day task, no context lost.</p>
+
+            <h3><code>opencode model</code> - Switch models on the fly</h3>
+            <div class="code-block"><code><span class="cmd">opencode</span> <span class="arg">model</span> <span class="flag">--set</span> <span class="arg">nvidia/nemotron-3-ultra</span></code></div>
+            <p>Different models for different tasks. No restart. Just switch and keep going.</p>
+
+            <h3><code>opencode export</code> - Extract session artifacts</h3>
+            <div class="code-block"><code><span class="cmd">opencode</span> <span class="arg">export</span> <span class="flag">--session</span> <span class="arg">ses_abc123</span> <span class="flag">--format</span> <span class="arg">markdown</span></code></div>
+            <p>Export conversation, diffs, or final code changes. Clean handoff to PRs, docs, or team review.</p>
+
+            <h2>Installation & Access</h2>
+
+            <h3>Install (one-liner)</h3>
+            <div class="code-block"><code><span class="comment"># macOS / Linux</span>
+<span class="cmd">curl</span> <span class="flag">-fsSL</span> <span class="arg">https://opencode.ai/install.sh</span> <span class="cmd">|</span> <span class="cmd">bash</span>
+
+<span class="comment"># Windows (PowerShell)</span>
+<span class="cmd">irm</span> <span class="arg">https://opencode.ai/install.ps1</span> <span class="cmd">|</span> <span class="cmd">iex</span></code></div>
+
+            <h3>Verify</h3>
+            <div class="code-block"><code><span class="cmd">opencode</span> <span class="arg">version</span>
+<span class="comment"># → opencode 0.x.x</span></code></div>
+
+            <h3>Run in Command Prompt / Terminal</h3>
+            <p>Navigate to any git repository and start:</p>
+            <div class="code-block"><code><span class="cmd">cd</span> <span class="arg">my-project</span>
+<span class="cmd">opencode</span></code></div>
+            <p>OpenCode reads the repo, detects the stack, opens an interactive session. Type your task, hit Enter.</p>
+
+            <h3>Run in VS Code</h3>
+            <p>Two options - pick your flow:</p>
+
+            <h4>Option A: Integrated Terminal (recommended)</h4>
+            <ol>
+                <li>Open project folder in VS Code (<code>File → Open Folder</code>)</li>
+                <li>Open terminal: <code>Ctrl + `</code> or <code>Terminal → New Terminal</code></li>
+                <li>Run <code>opencode</code> - full session inside VS Code</li>
+            </ol>
+            <p>File edits appear instantly in the editor, git changes show in Source Control, zero context switch.</p>
+
+            <h4>Option B: VS Code Extension</h4>
+            <div class="code-block"><code><span class="cmd">code</span> <span class="flag">--install-extension</span> <span class="arg">opencode.opencode</span></code></div>
+            <p>Sidebar with session history, model picker, one-click resume. Still uses the terminal underneath.</p>
+
+            <h3>First Run Checklist</h3>
+            <ul>
+                <li><strong>Git repo required</strong> - OpenCode needs a <code>.git</code> directory</li>
+                <li><strong>Optional: <code>AGENTS.md</code></strong> - Project instructions for the agent (<a href="https://opencode.ai/docs/agents-md" target="_blank" rel="noopener noreferrer">docs</a>)</li>
+                <li><strong>Optional: <code>.opencode/</code></strong> - Local config, custom tools, MCP server definitions</li>
+            </ul>
+
+            <h2>Where This Fits My Stack</h2>
+
+            <p>
+                I build agentic AI systems - MCP servers (Power BI, data observability)  for agent workflows, evaluation pipelines. OpenCode doesn't replace those tools. It accelerates the <em>development loop</em> for them.
+            </p>
+
+            <p>
+                Faster iteration on prompts, tool definitions, integration logic. Since it speaks MCP natively, I can test my Power BI MCP server end-to-end without leaving the terminal. That's a real workflow win.
+            </p>
+
+            <p>
+                Next post: exploring opencode and its capabilities in agentic AI development.
+            </p>
+
+            <div class="closing-thought">
+                Sometimes, reaching a limit with one tool is what leads us to discover something new.
+            </div>
+
+            <div class="back-link">
+                <p><a href="blog.html">← Back to all posts</a></p>
+            </div>
+        </article>
+    </main>
+</body>
+</html>
