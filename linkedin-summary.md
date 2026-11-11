@@ -1,6 +1,6 @@
 # LinkedIn About Draft
 
-Data Engineer with 13 years of experience building and supporting production data platforms across retail, payments, and financial services.
+Data Engineer with 17+ years of experience building and supporting production data platforms across retail, payments, and financial services.
 
 Career timeline: Atos (Aug 2012 - Present, across multiple client engagements), Global Analytics (Mar 2010 - Mar 2012), CalydonTech (Mar 2008 - Mar 2010).
 
