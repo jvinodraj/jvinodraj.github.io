@@ -1,355 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vinodraj Jayaraman | Portfolio</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2722%27 fill=%27%230f766e%27/%3E%3Ctext x=%2750%27 y=%2768%27 font-size=%2760%27 text-anchor=%27middle%27 fill=%27white%27 font-family=%27Georgia,serif%27%3EVJ%3C/text%3E%3C/svg%3E">
-    <link rel="canonical" href="https://jvinodraj.github.io/">
-    <meta property="og:title" content="Vinodraj Jayaraman | Portfolio">
-    <meta property="og:description" content="Data Engineer (17+ years) focused on Data Observability and Agentic AI. Portfolio, resume and blog.">
-    <meta property="og:url" content="https://jvinodraj.github.io/">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary">
-    <meta name="description" content="Portfolio of Vinodraj Jayaraman - Data Engineer (17+ years) focused on Data Observability and Agentic AI. Chennai, India.">
-    <style>
-        :root {
-            --bg: #f7f8f3;
-            --surface: #ffffff;
-            --ink: #132023;
-            --muted: #4b5f63;
-            --brand: #0f766e;
-            --brand-2: #f59e0b;
-            --line: #d8dfdb;
-            --radius: 14px;
-        }
-
-        * { box-sizing: border-box; }
-
-        body {
-            margin: 0;
-            font-family: "Segoe UI", "Trebuchet MS", sans-serif;
-            color: var(--ink);
-            background:
-                radial-gradient(circle at 5% 5%, #d8f3ea 0%, transparent 35%),
-                radial-gradient(circle at 95% 20%, #fff3cc 0%, transparent 35%),
-                var(--bg);
-            line-height: 1.6;
-        }
-
-        .container {
-            width: min(1100px, 92vw);
-            margin: 0 auto;
-        }
-
-        header {
-            position: sticky;
-            top: 0;
-            backdrop-filter: blur(8px);
-            background: rgba(247, 248, 243, 0.9);
-            border-bottom: 1px solid var(--line);
-            z-index: 20;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.85rem 0;
-        }
-
-        .brand {
-            font-weight: 700;
-            letter-spacing: 0.2px;
-        }
-
-        .links {
-            display: flex;
-            gap: 0.9rem;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-        }
-
-        .links a {
-            text-decoration: none;
-            color: var(--muted);
-            font-weight: 600;
-        }
-
-        .links a:hover { color: var(--brand); }
-
-        .hero {
-            padding: 5rem 0 3.5rem;
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .kicker {
-            display: inline-block;
-            background: #d1fae5;
-            color: #065f46;
-            border-radius: 999px;
-            padding: 0.35rem 0.8rem;
-            font-size: 0.85rem;
-            font-weight: 700;
-        }
-
-        h1, h2, h3 { line-height: 1.15; }
-
-        h1 {
-            margin: 0;
-            font-size: clamp(2rem, 4vw, 3.5rem);
-        }
-
-        section { padding: 2.2rem 0; }
-
-        .cards {
-            display: grid;
-            gap: 1rem;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-        }
-
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            padding: 1.1rem;
-            box-shadow: 0 6px 18px rgba(16, 24, 40, 0.05);
-        }
-
-        .card h3 { margin-top: 0; }
-
-        .tag-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 0.8rem;
-        }
-
-        .tag {
-            background: #ecfeff;
-            color: #155e75;
-            border: 1px solid #bae6fd;
-            padding: 0.2rem 0.55rem;
-            border-radius: 999px;
-            font-size: 0.82rem;
-            font-weight: 600;
-        }
-
-        .cta-row {
-            display: flex;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-        }
-
-        .btn {
-            display: inline-block;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: 700;
-            padding: 0.62rem 0.9rem;
-            border: 1px solid transparent;
-        }
-
-        .btn.primary {
-            background: var(--brand);
-            color: #fff;
-        }
-
-        .btn.secondary {
-            border-color: var(--line);
-            color: var(--ink);
-            background: #fff;
-        }
-
-        .blog-intro {
-            max-width: 70ch;
-            margin-bottom: 1rem;
-        }
-
-        .blog-list {
-            display: grid;
-            gap: 0.85rem;
-            margin-top: 1rem;
-        }
-
-        .blog-post {
-            display: grid;
-            gap: 0.45rem;
-            padding: 1rem 1.1rem;
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            background: linear-gradient(135deg, #ffffff, #f8fffd);
-        }
-
-        .blog-meta {
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            color: var(--brand);
-        }
-
-        .blog-post h3 {
-            margin: 0;
-            font-size: 1.1rem;
-        }
-
-        .blog-post p {
-            margin: 0;
-            color: var(--muted);
-        }
-
-        .blog-link {
-            width: fit-content;
-            text-decoration: none;
-            font-weight: 700;
-            color: var(--brand);
-        }
-
-        .blog-link:hover {
-            text-decoration: underline;
-        }
-
-        footer {
-            margin-top: 2rem;
-            border-top: 1px solid var(--line);
-            padding: 1.5rem 0 2rem;
-            color: var(--muted);
-            font-size: 0.95rem;
-        }
-    </style>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8DNMPT9Z2Q"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      
-      // Generate or retrieve unique user ID
-      function getUserId() {
-        const storageName = 'ga_user_id';
-        let userId = localStorage.getItem(storageName);
-        
-        if (!userId) {
-          // Generate UUID v4
-          userId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-            var r = Math.random() * 16 | 0,
-                v = c === 'x' ? r : (r & 0x3 | 0x8);
-            return v.toString(16);
-          });
-          localStorage.setItem(storageName, userId);
-        }
-        return userId;
-      }
-      
-      gtag('js', new Date());
-      gtag('config', 'G-8DNMPT9Z2Q', {
-        'user_id': getUserId()
-      });
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vinodraj Jayaraman | Data Engineer</title>
+<meta name="description" content="Data Engineer with 17+ years of experience, focused on Data Observability and Agentic AI. Chennai, India.">
+<link rel="canonical" href="https://jvinodraj.github.io/">
+<meta property="og:title" content="Vinodraj Jayaraman | Data Engineer">
+<meta property="og:description" content="Data Engineer with 17+ years of experience, focused on Data Observability and Agentic AI. Chennai, India.">
+<meta property="og:url" content="https://jvinodraj.github.io/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#0f766e">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/analytics.js" defer></script>
+<script src="assets/site.js" defer></script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <nav>
-                <div class="brand">Vinodraj Jayaraman</div>
-                <div class="links">
-                    <a href="#about">About</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#experience">Experience</a>
-                    <a href="#blog">Blog</a>
-                    <a href="#contact">Contact</a>
-                    <a href="about.html">Pages</a>
-                </div>
-            </nav>
-        </div>
-    </header>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">Vinodraj Jayaraman</a>
+    <ul class="nav-links"><li><a href="index.html" aria-current="page">Home</a></li><li><a href="about.html">About</a></li><li><a href="projects.html">Projects</a></li><li><a href="blog.html">Blog</a></li><li><a href="resume.html">Resume</a></li><li><a href="contact.html">Contact</a></li></ul>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">&#9680;</button>
+  </div>
+</header>
+<main id="main">
 
-    <main class="container">
-        <section class="hero" id="hero">
-            <span class="kicker">Agentic AI + Autonomous Data Engineering</span>
-            <h1>Building intelligent platforms from data pipelines to production AI agents.</h1>
-            <p>I design and ship systems for analytics, observability, and automation with a strong focus on reliability, user impact, and engineering speed.</p>
-            <div class="cta-row">
-                <a class="btn primary" href="projects.html">View Projects</a>
-                <a class="btn secondary" href="resume.html">Open Resume</a>
-            </div>
-        </section>
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Data Engineer &middot; Chennai, India</p>
+    <h1>Reliable data platforms, observable AI.</h1>
+    <p class="lead">17+ years building and supporting production data platforms across retail, payments and financial services. Now focused on Data Observability and Agentic AI.</p>
+    <div class="actions">
+      <a class="btn" href="projects.html">View projects</a>
+      <a class="btn secondary" href="resume.html">Read resume</a>
+    </div>
+  </section>
 
-        <section id="about">
-            <h2>About Me</h2>
-            <p>I am Vinodraj Jayaraman, a Data Engineer with 17+ years of experience, now focused on Data Observability, Agentic AI, autonomous data engineering, and production-grade analytics platforms. I enjoy building products that turn complex data workflows into practical tools for teams and communities.</p>
-        </section>
+  <section class="section" aria-labelledby="focus">
+    <div class="section-head"><h2 id="focus">What I work on</h2></div>
+    <div class="grid">
+      <article class="card"><h3>Data Observability</h3><p class="muted">Architecture patterns for anomaly detection, data quality, freshness, lineage and schema drift across GCP, Azure and AWS.</p></article>
+      <article class="card"><h3>Agentic AI and MCP</h3><p class="muted">MCP servers that give AI agents governed access to enterprise BI assets, plus end-to-end tracing of agent workflows.</p></article>
+      <article class="card"><h3>Data engineering</h3><p class="muted">Airflow pipelines, SQL and Python automation, and the production support that keeps them stable.</p></article>
+    </div>
+  </section>
 
-        <section id="skills">
-            <h2>Skills</h2>
-            <div class="tag-row">
-                <span class="tag">Python</span>
-                <span class="tag">SQL</span>
-                <span class="tag">MCP Servers</span>
-                <span class="tag">AI Agents</span>
-                <span class="tag">Cloud Data Platforms</span>
-            </div>
-        </section>
+  <section class="section" aria-labelledby="skills">
+    <div class="section-head"><h2 id="skills">Core skills</h2></div>
+    <ul class="chips">
+      <li class="chip">Python</li><li class="chip">SQL</li><li class="chip">Apache Airflow</li><li class="chip">BigQuery</li>
+      <li class="chip">GCP</li><li class="chip">Docker</li><li class="chip">Grafana</li><li class="chip">Power BI</li>
+      <li class="chip">Dynatrace</li><li class="chip">MCP servers</li>
+    </ul>
+  </section>
 
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="cards">
-                <article class="card">
-                    <h3>TheEagle</h3>
-                    <p>Garmin FIT File Analytics Platform for performance tracking, analysis workflows, and insight extraction.</p>
-                </article>
-                <article class="card">
-                    <h3>Zion Gospel Ministry</h3>
-                    <p>Bible Reading and Ministry Platform supporting scripture engagement, devotional plans, and ministry outreach.</p>
-                </article>
-                <article class="card">
-                    <h3>Agentic AI Projects</h3>
-                    <p>Hands-on projects around MCP Servers, AI Agents, and Data Observability implementations.</p>
-                </article>
-            </div>
-        </section>
+  <section class="section" aria-labelledby="work">
+    <div class="section-head"><h2 id="work">Selected work</h2><a class="text-link" href="projects.html">All projects &rarr;</a></div>
+    <div class="grid">
+      <article class="card"><h3>Power BI MCP Server</h3><p class="muted">XMLA, DAX and semantic-model metadata exposed to AI agents in Polaris Agent Studio. Demonstrated at TxAI Day.</p></article>
+      <article class="card"><h3>Agentic AI observability</h3><p class="muted">Dynatrace-based tracing across chats, agent flows, LLM calls and tool invocations.</p></article>
+      <article class="card"><h3><a href="https://github.com/jvinodraj/theEagle" target="_blank" rel="noopener noreferrer">TheEagle</a></h3><p class="muted">Running analytics from Garmin FIT data: efficiency, heart-rate drift and training load.</p></article>
+    </div>
+  </section>
 
-        <section id="experience">
-            <h2>Experience</h2>
-            <div class="card">
-                <h3>Data and AI Engineering</h3>
-                <p>Delivered end-to-end data products, observability flows, and AI-assisted solutions spanning ingestion, transformation, orchestration, and user-facing analytics.</p>
-            </div>
-        </section>
+  <section class="section" aria-labelledby="writing">
+    <div class="section-head"><h2 id="writing">Latest writing</h2><a class="text-link" href="blog.html">All posts &rarr;</a></div>
+    <div class="grid">
+      <article class="card"><p class="meta">June 2026 &middot; Data analysis</p><h3><a href="the-heart-doesnt-lie.html">13 Weeks of Running in Chennai: What the Data Actually Says</a></h3><p class="muted">Efficiency trends, heat impact and performance signals across 21 easy runs.</p></article>
+      <article class="card"><p class="meta">July 2026 &middot; Data analysis</p><h3><a href="heat-impact-analysis.html">How Heat Shaped My Running Data</a></h3><p class="muted">The Chennai temperature effect on heart rate, decoupling and training efficiency.</p></article>
+    </div>
+  </section>
 
-        <section id="blog">
-            <h2>Blog</h2>
-            <p class="blog-intro">I publish engineering notes on Agentic AI, data platforms, and practical experiments. The latest post is listed below, and the blog archive is structured for future posts.</p>
-            <div class="blog-list">
-                <article class="blog-post">
-                    <span class="blog-meta">Latest Post · June 2026</span>
-                    <h3>13 Weeks of Running in Chennai - What the Data Actually Says</h3>
-                    <p>A data-backed training analysis covering efficiency trends, heat impact, and performance signals across 21 easy runs.</p>
-                    <a class="blog-link" href="the-heart-doesnt-lie.html">Read the Post</a>
-                </article>
-            </div>
-            <div class="cta-row">
-                <a class="btn secondary" href="blog.html">Open Blog Archive</a>
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>For collaboration, consulting, or engineering discussions, connect via GitHub or drop a message from the contact page.</p>
-            <div class="cta-row">
-                <a class="btn primary" href="contact.html">Contact Me</a>
-                <a class="btn secondary" href="https://github.com/jvinodraj" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div>&copy; 2026 Vinodraj Jayaraman. Built on GitHub Pages.</div>
-        </div>
-    </footer>
+  <section class="section" aria-labelledby="contact">
+    <h2 id="contact">Let&rsquo;s talk</h2>
+    <p class="prose muted">Open to conversations on data engineering, data observability, agentic AI and enterprise BI modernization.</p>
+    <div class="actions"><a class="btn" href="contact.html">Get in touch</a></div>
+  </section>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 Vinodraj Jayaraman &middot; Chennai, India</span>
+    <span><a href="https://github.com/jvinodraj" target="_blank" rel="noopener noreferrer">GitHub</a> &middot; <a href="https://www.linkedin.com/in/vinodrajj/" target="_blank" rel="noopener noreferrer">LinkedIn</a> &middot; <a href="mailto:vinodraj.j@gmail.com">Email</a></span>
+  </div>
+</footer>
 </body>
 </html>

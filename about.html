@@ -1,102 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | Vinodraj Jayaraman</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2722%27 fill=%27%230f766e%27/%3E%3Ctext x=%2750%27 y=%2768%27 font-size=%2760%27 text-anchor=%27middle%27 fill=%27white%27 font-family=%27Georgia,serif%27%3EVJ%3C/text%3E%3C/svg%3E">
-    <link rel="canonical" href="https://jvinodraj.github.io/about.html">
-    <meta property="og:title" content="About | Vinodraj Jayaraman">
-    <meta property="og:description" content="About Vinodraj Jayaraman - Agentic AI Engineer and Data Engineer.">
-    <meta property="og:url" content="https://jvinodraj.github.io/about.html">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary">
-    <meta name="description" content="About Vinodraj Jayaraman - Agentic AI Engineer and Data Engineer.">
-    <style>
-        :root {
-            --bg: #f7f8f3;
-            --surface: #ffffff;
-            --ink: #132023;
-            --muted: #4b5f63;
-            --brand: #0f766e;
-            --line: #d8dfdb;
-            --radius: 14px;
-        }
-        * { box-sizing: border-box; }
-        body {
-            margin: 0;
-            font-family: "Segoe UI", "Trebuchet MS", sans-serif;
-            color: var(--ink);
-            background: var(--bg);
-        }
-        .container { width: min(980px, 92vw); margin: 0 auto; }
-        header { border-bottom: 1px solid var(--line); background: #fff; }
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; }
-        .links { display: flex; gap: 0.9rem; flex-wrap: wrap; }
-        .links a { text-decoration: none; color: var(--muted); font-weight: 600; }
-        .links a:hover { color: var(--brand); }
-        main { padding: 2.5rem 0; }
-        .panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.2rem; }
-    
-        @media (max-width: 600px) {
-            nav { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
-            .links { gap: 0.6rem; }
-            h1 { font-size: 1.6rem; }
-            .container { padding-left: 1rem; padding-right: 1rem; }
-        }
-    </style>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8DNMPT9Z2Q"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      
-      // Generate or retrieve unique user ID
-      function getUserId() {
-        const storageName = 'ga_user_id';
-        let userId = localStorage.getItem(storageName);
-        
-        if (!userId) {
-          // Generate UUID v4
-          userId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-            var r = Math.random() * 16 | 0,
-                v = c === 'x' ? r : (r & 0x3 | 0x8);
-            return v.toString(16);
-          });
-          localStorage.setItem(storageName, userId);
-        }
-        return userId;
-      }
-      
-      gtag('js', new Date());
-      gtag('config', 'G-8DNMPT9Z2Q', {
-        'user_id': getUserId()
-      });
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>About | Vinodraj Jayaraman</title>
+<meta name="description" content="About Vinodraj Jayaraman: Data Engineer with 17+ years of experience, focused on Data Observability and Agentic AI.">
+<link rel="canonical" href="https://jvinodraj.github.io/about.html">
+<meta property="og:title" content="About | Vinodraj Jayaraman">
+<meta property="og:description" content="About Vinodraj Jayaraman: Data Engineer with 17+ years of experience, focused on Data Observability and Agentic AI.">
+<meta property="og:url" content="https://jvinodraj.github.io/about.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#0f766e">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/analytics.js" defer></script>
+<script src="assets/site.js" defer></script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <nav>
-                <strong>Vinodraj Jayaraman</strong>
-                <div class="links">
-                    <a href="index.html">Home</a>
-                    <a href="projects.html">Projects</a>
-                    <a href="blog.html">Blog</a>
-                    <a href="resume.html">Resume</a>
-                    <a href="contact.html">Contact</a>
-                </div>
-            </nav>
-        </div>
-    </header>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">Vinodraj Jayaraman</a>
+    <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html" aria-current="page">About</a></li><li><a href="projects.html">Projects</a></li><li><a href="blog.html">Blog</a></li><li><a href="resume.html">Resume</a></li><li><a href="contact.html">Contact</a></li></ul>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">&#9680;</button>
+  </div>
+</header>
+<main id="main">
 
-    <main class="container">
-        <h1>About Me</h1>
-        <div class="panel">
-            <p>I am a Data Engineer with 17+ years of experience, now focused on Data Observability and Agentic AI, building practical products at the intersection of intelligent automation, analytics, and platform engineering.</p>
-            <p>My focus areas include AI agent orchestration, MCP ecosystem tooling, reliable data pipelines, and observability for production systems.</p>
-            <p>I enjoy turning hard technical problems into clear user experiences and measurable business outcomes.</p>
-        </div>
-    </main>
+<div class="wrap">
+  <header class="page-head">
+    <p class="eyebrow">About</p>
+    <h1>Data engineer, now building for AI.</h1>
+  </header>
+  <section class="section prose">
+    <p class="lead" style="margin-bottom:1.5rem">I&rsquo;m a Data Engineer with 17+ years of experience, based in Chennai and working at Atos (Eviden).</p>
+    <p>My career started in embedded and database work in 2008. Since 2012 I have worked across client engagements in retail, payments and financial services, building and supporting production data platforms: pipelines, SQL and PL/SQL, Airflow, and the monitoring that keeps them reliable.</p>
+    <p>For the last year I have focused on R&amp;D in Data Observability, Agentic AI and Business Intelligence modernization, including an MCP server that lets AI agents work with enterprise Power BI assets, and Dynatrace-based tracing for agentic applications.</p>
+    <p>Outside work I run in Chennai and analyze my own Garmin data. Those write-ups are on the <a href="blog.html">blog</a>.</p>
+  </section>
+  <section class="section" aria-labelledby="focus">
+    <h2 id="focus">Focus areas</h2>
+    <div class="grid">
+      <article class="card"><h3>Data Observability</h3><p class="muted">Quality, freshness, lineage and drift monitoring across clouds.</p></article>
+      <article class="card"><h3>Agentic AI</h3><p class="muted">Agent orchestration, MCP tooling and traceability for LLM applications.</p></article>
+      <article class="card"><h3>BI modernization</h3><p class="muted">Power BI migration components: metadata extraction and dependency analysis.</p></article>
+    </div>
+    <div class="actions"><a class="btn" href="resume.html">Read resume</a><a class="btn secondary" href="contact.html">Contact</a></div>
+  </section>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 Vinodraj Jayaraman &middot; Chennai, India</span>
+    <span><a href="https://github.com/jvinodraj" target="_blank" rel="noopener noreferrer">GitHub</a> &middot; <a href="https://www.linkedin.com/in/vinodrajj/" target="_blank" rel="noopener noreferrer">LinkedIn</a> &middot; <a href="mailto:vinodraj.j@gmail.com">Email</a></span>
+  </div>
+</footer>
 </body>
 </html>

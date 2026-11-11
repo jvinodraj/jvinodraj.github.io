@@ -1,308 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume | Vinodraj Jayaraman</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2722%27 fill=%27%230f766e%27/%3E%3Ctext x=%2750%27 y=%2768%27 font-size=%2760%27 text-anchor=%27middle%27 fill=%27white%27 font-family=%27Georgia,serif%27%3EVJ%3C/text%3E%3C/svg%3E">
-    <link rel="canonical" href="https://jvinodraj.github.io/resume.html">
-    <meta property="og:title" content="Resume | Vinodraj Jayaraman">
-    <meta property="og:description" content="Resume overview for Vinodraj Jayaraman.">
-    <meta property="og:url" content="https://jvinodraj.github.io/resume.html">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary">
-    <meta name="description" content="Resume overview for Vinodraj Jayaraman.">
-    <style>
-        :root {
-            --bg: #f7f8f3;
-            --surface: #ffffff;
-            --ink: #132023;
-            --muted: #4b5f63;
-            --brand: #0f766e;
-            --line: #d8dfdb;
-            --radius: 14px;
-        }
-        * { box-sizing: border-box; }
-        body {
-            margin: 0;
-            font-family: "Segoe UI", "Trebuchet MS", sans-serif;
-            color: var(--ink);
-            background: var(--bg);
-        }
-        .container { width: min(980px, 92vw); margin: 0 auto; }
-        header { border-bottom: 1px solid var(--line); background: #fff; }
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; }
-        .links { display: flex; gap: 0.9rem; flex-wrap: wrap; }
-        .links a { text-decoration: none; color: var(--muted); font-weight: 600; }
-        .links a:hover { color: var(--brand); }
-        main { padding: 2.5rem 0; }
-        .section { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem; margin-bottom: 1rem; }
-        ul { margin: 0.5rem 0 0; }
-        .meta { color: var(--muted); margin: 0.2rem 0 0.8rem; }
-        .two-col {
-            display: grid;
-            gap: 1rem;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        }
-        .role { margin-bottom: 1.2rem; }
-        .role h3 { margin-bottom: 0.35rem; }
-        .role .timeline { color: var(--muted); font-weight: 600; margin: 0 0 0.6rem; }
-        .chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.45rem;
-            margin-top: 0.7rem;
-        }
-        .chip {
-            border: 1px solid var(--line);
-            border-radius: 999px;
-            padding: 0.22rem 0.58rem;
-            font-size: 0.86rem;
-            background: #f8fbfa;
-            color: var(--muted);
-            font-weight: 600;
-        }
-        .cert-toggle {
-            margin-top: 0.8rem;
-            border: 1px solid var(--line);
-            border-radius: 10px;
-            background: #fbfdfc;
-            padding: 0.6rem 0.8rem;
-        }
-        .cert-toggle summary {
-            cursor: pointer;
-            color: var(--brand);
-            font-weight: 700;
-            list-style: none;
-        }
-        .cert-toggle summary::-webkit-details-marker { display: none; }
-        .cert-toggle ul { margin-top: 0.7rem; }
-        .small { font-size: 0.95rem; color: var(--muted); }
-    
-        @media (max-width: 600px) {
-            nav { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
-            .links { gap: 0.6rem; }
-            h1 { font-size: 1.6rem; }
-            .container { padding-left: 1rem; padding-right: 1rem; }
-        }
-    </style>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8DNMPT9Z2Q"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      
-      // Generate or retrieve unique user ID
-      function getUserId() {
-        const storageName = 'ga_user_id';
-        let userId = localStorage.getItem(storageName);
-        
-        if (!userId) {
-          // Generate UUID v4
-          userId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-            var r = Math.random() * 16 | 0,
-                v = c === 'x' ? r : (r & 0x3 | 0x8);
-            return v.toString(16);
-          });
-          localStorage.setItem(storageName, userId);
-        }
-        return userId;
-      }
-      
-      gtag('js', new Date());
-      gtag('config', 'G-8DNMPT9Z2Q', {
-        'user_id': getUserId()
-      });
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Resume | Vinodraj Jayaraman</title>
+<meta name="description" content="Resume of Vinodraj Jayaraman, Data Engineer with 17+ years of experience in data platforms, observability and agentic AI.">
+<link rel="canonical" href="https://jvinodraj.github.io/resume.html">
+<meta property="og:title" content="Resume | Vinodraj Jayaraman">
+<meta property="og:description" content="Resume of Vinodraj Jayaraman, Data Engineer with 17+ years of experience in data platforms, observability and agentic AI.">
+<meta property="og:url" content="https://jvinodraj.github.io/resume.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#0f766e">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/analytics.js" defer></script>
+<script src="assets/site.js" defer></script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <nav>
-                <strong>Vinodraj Jayaraman</strong>
-                <div class="links">
-                    <a href="index.html">Home</a>
-                    <a href="about.html">About</a>
-                    <a href="projects.html">Projects</a>
-                    <a href="blog.html">Blog</a>
-                    <a href="contact.html">Contact</a>
-                </div>
-            </nav>
-        </div>
-    </header>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">Vinodraj Jayaraman</a>
+    <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="projects.html">Projects</a></li><li><a href="blog.html">Blog</a></li><li><a href="resume.html" aria-current="page">Resume</a></li><li><a href="contact.html">Contact</a></li></ul>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">&#9680;</button>
+  </div>
+</header>
+<main id="main">
 
-    <main class="container">
-        <h1>Executive Resume</h1>
-        <p class="meta">Vinodraj Jayaraman | Data Engineer | Chennai, India | vinodraj.j@gmail.com</p>
+<div class="wrap">
+  <header class="page-head resume-head">
+    <div>
+      <p class="eyebrow">Resume</p>
+      <h1>Vinodraj Jayaraman</h1>
+      <p class="contact-line">Data Engineer &middot; Chennai, India &middot; <a href="mailto:vinodraj.j@gmail.com">vinodraj.j@gmail.com</a></p>
+    </div>
+    <div class="actions no-print" style="margin:0"><button class="btn" id="print-btn" type="button">Print / Save as PDF</button></div>
+  </header>
 
-        <div class="section">
-            <h2>Professional Summary</h2>
-            <p>Data Engineer with 17+ years of experience delivering and supporting production data platforms, data pipelines, and analytics solutions across retail, payments, and financial services. Over the last year, focused on R&D in Data Observability, Agentic AI, and Business Intelligence modernization, including Power BI MCP integration, semantic model access, and end-to-end tracing for AI applications.</p>
-        </div>
+  <section class="section" aria-labelledby="summary">
+    <h2 id="summary">Summary</h2>
+    <p class="prose">Data Engineer with 17+ years of experience delivering and supporting production data platforms, data pipelines and analytics solutions across retail, payments and financial services. Over the last year, focused on R&amp;D in Data Observability, Agentic AI and Business Intelligence modernization, including Power BI MCP integration, semantic model access and end-to-end tracing for AI applications.</p>
+  </section>
 
-        <div class="section">
-            <h2>Core Skills</h2>
-            <div class="chips">
-                <span class="chip">Python</span>
-                <span class="chip">SQL</span>
-                <span class="chip">C++</span>
-                <span class="chip">Docker</span>
-                <span class="chip">Grafana</span>
-                <span class="chip">Power BI</span>
-                <span class="chip">Dynatrace</span>
-                <span class="chip">Apache Airflow</span>
-                <span class="chip">BigQuery</span>
-                <span class="chip">GCP</span>
-            </div>
-        </div>
+  <section class="section" aria-labelledby="skills">
+    <h2 id="skills">Core skills</h2>
+    <ul class="chips">
+      <li class="chip">Python</li><li class="chip">SQL</li><li class="chip">C++</li><li class="chip">Docker</li><li class="chip">Grafana</li>
+      <li class="chip">Power BI</li><li class="chip">Dynatrace</li><li class="chip">Apache Airflow</li><li class="chip">BigQuery</li><li class="chip">GCP</li>
+    </ul>
+  </section>
 
-        <div class="section">
-            <h2>Selected Achievements</h2>
-            <ul>
-                <li>Designed and optimized Airflow workflows, improving pipeline reliability and reducing rerun frequency.</li>
-                <li>Improved operational visibility through proactive dashboards and alerting, helping teams triage incidents faster.</li>
-                <li>Refactored and reviewed multi-language codebases, improving maintainability and release confidence.</li>
-                <li>Automated recurring operational processes with Python and shell scripting to reduce manual effort.</li>
-                <li>Demonstrated Power BI MCP integration at TxAI Day, enabling AI agents to query semantic models and generate charts through natural language interactions.</li>
-            </ul>
-        </div>
+  <section class="section" aria-labelledby="achievements">
+    <h2 id="achievements">Selected achievements</h2>
+    <ul class="prose">
+      <li>Designed and optimized Airflow workflows, improving pipeline reliability and reducing rerun frequency.</li>
+      <li>Improved operational visibility through proactive dashboards and alerting, helping teams triage incidents faster.</li>
+      <li>Refactored and reviewed multi-language codebases, improving maintainability and release confidence.</li>
+      <li>Automated recurring operational processes with Python and shell scripting to reduce manual effort.</li>
+      <li>Demonstrated Power BI MCP integration at TxAI Day, enabling AI agents to query semantic models and generate charts through natural language.</li>
+    </ul>
+  </section>
 
-        <div class="section">
-            <h2>R&D and Innovation Contributions (Last 1 Year)</h2>
-            <ul>
-                <li><strong>Data Observability Platform Research:</strong> Evaluated enterprise architecture patterns for anomaly detection, data quality, freshness, lineage, and schema drift across GCP, Azure, and AWS, and created a reusable reference framework.</li>
-                <li><strong>Power BI MCP Server for Polaris Agent Studio:</strong> Designed and developed MCP capabilities (XMLA, DAX, semantic model metadata) to enable AI agents to access enterprise Power BI assets.</li>
-                <li><strong>Power BI Migration Accelerator:</strong> Built reusable migration components for metadata extraction and dependency analysis to improve migration planning consistency and delivery speed.</li>
-                <li><strong>Dynatrace-Based Agentic AI Observability:</strong> Leading R&D for end-to-end traceability across chat interactions, agent flows, LLM calls, and tool invocations to improve root-cause analysis and operational visibility.</li>
-                <li><strong>TxAI Day Demonstration:</strong> Engineered custom system prompts and MCP tool configurations for TxAI Day demonstration, enabling dynamic DAX query execution and chart generation from Power BI semantic models via agent workflows.</li>
-            </ul>
-        </div>
+  <section class="section" aria-labelledby="rd">
+    <h2 id="rd">R&amp;D and innovation (last year)</h2>
+    <div class="prose">
+      <div class="rd-item"><strong>Data Observability platform research</strong>Evaluated enterprise architecture patterns for anomaly detection, data quality, freshness, lineage and schema drift across GCP, Azure and AWS, and created a reusable reference framework.</div>
+      <div class="rd-item"><strong>Power BI MCP Server for Polaris Agent Studio</strong>Designed and developed MCP capabilities (XMLA, DAX, semantic model metadata) so AI agents can access enterprise Power BI assets.</div>
+      <div class="rd-item"><strong>Power BI Migration Accelerator</strong>Built reusable migration components for metadata extraction and dependency analysis to improve migration planning consistency and delivery speed.</div>
+      <div class="rd-item"><strong>Dynatrace-based Agentic AI observability</strong>Leading R&amp;D for end-to-end traceability across chat interactions, agent flows, LLM calls and tool invocations to improve root-cause analysis.</div>
+      <div class="rd-item"><strong>TxAI Day demonstration</strong>Engineered custom system prompts and MCP tool configurations enabling dynamic DAX query execution and chart generation from Power BI semantic models via agent workflows.</div>
+    </div>
+  </section>
 
-        <div class="section">
-            <h2>Experience</h2>
+  <section class="section" aria-labelledby="exp">
+    <h2 id="exp">Experience</h2>
+    <p class="muted">Atos, Aug 2012 &ndash; Present, across multiple client engagements: end-to-end SDLC delivery, production support, release planning with onsite and offshore teams, code reviews, documentation and runbooks.</p>
+<div class="job"><div class="job-head"><h3>R&amp;D: Data Observability and Agentic AI <span class="job-org">&middot; Atos</span></h3><span class="job-date">Jan 2025 &ndash; Present</span></div><ul><li>Drive research initiatives in data observability and AI-enabled operations across enterprise data platforms.</li><li>Develop and validate Power BI MCP and migration accelerator patterns for BI modernization programs.</li><li>Lead Dynatrace-based observability implementation for end-to-end tracing of AI agent workflows and chat interactions.</li><li>Design traceability frameworks covering user interactions, LLM requests/responses, tool invocation flows and multi-agent execution paths.</li></ul></div>
+<div class="job"><div class="job-head"><h3>Consultant Data Engineer <span class="job-org">&middot; The Home Depot</span></h3><span class="job-date">Jun 2023 &ndash; Dec 2024</span></div><ul><li>Built and supported Apache Airflow DAGs and Python tasks for fulfillment, customer and core data workflows.</li><li>Troubleshot production issues, coordinated fixes and supported deployment readiness.</li><li>Used monitoring and performance analysis to improve pipeline reliability and response time.</li><li>Participated in standups, design sessions, story grooming, retrospectives and cross-team delivery coordination.</li><li>Prepared deployment documentation and troubleshooting guides for faster issue resolution and knowledge transfer.</li></ul></div>
+<div class="job"><div class="job-head"><h3>Consultant Software Developer <span class="job-org">&middot; PayPal</span></h3><span class="job-date">Jan 2022 &ndash; Jan 2023</span></div><ul><li>Executed application refactoring and change requests across C++, Python, shell scripting and PL/SQL.</li><li>Provided production hot-fix support and delivered quality improvements through code reviews.</li><li>Designed and optimized Oracle SQL/PLSQL routines and Python scripts for data extraction, transformation and process automation.</li><li>Monitored application performance against KPIs and supported enhancements across development, testing and production.</li></ul></div>
+<div class="job"><div class="job-head"><h3>Consultant <span class="job-org">&middot; State Street</span></h3><span class="job-date">Oct 2016 &ndash; Dec 2021</span></div><ul><li>Automated interfaces using Python and PowerShell, and managed build/deploy/test cycles for change requests.</li><li>Supported production monitoring and incident handling for data workflows and dependent systems.</li><li>Collaborated with SMEs to gather business requirements and translate them into executable process flows.</li><li>Enforced development best practices including code reviews and unit testing.</li></ul></div>
 
-            <div class="role">
-                <h3>Atos | Aug 2012 - Present</h3>
-                <p class="timeline">Worked across multiple client engagements in data engineering, modernization, production support, and R&D initiatives.</p>
-                <ul>
-                    <li>Participated in end-to-end SDLC delivery including requirement analysis, design, development, testing, deployment, and production support.</li>
-                    <li>Coordinated with onsite and offshore teams for release planning, defect triage, and incident response.</li>
-                    <li>Drove engineering quality through code reviews, technical documentation, and operational runbooks.</li>
-                </ul>
-            </div>
+    <div class="job"><div class="job-head"><h3>Earlier Atos client work <span class="job-org">&middot; State Street, PayPal</span></h3><span class="job-date">2012 &ndash; 2016</span></div>
+      <p class="muted" style="margin:0">State Street (Sr. Analyst, 2013&ndash;2016) and PayPal (Software Engineer, 2012&ndash;2013): Teradata utilities (BTEQ, MLoad, FLoad), database objects, SQL/PLSQL development, shell-based automation, data quality checks and enterprise data delivery support.</p></div>
+    <div class="job"><div class="job-head"><h3>Software Engineer <span class="job-org">&middot; Global Analytics</span></h3><span class="job-date">Mar 2010 &ndash; Mar 2012</span></div>
+      <ul>
+        <li>Worked with business analysts to translate requirements into technical implementations and complex SQL-based solutions.</li>
+        <li>Developed functions, procedures and complex queries across Netezza SQL, MySQL and Oracle.</li>
+        <li>Created and maintained database objects such as tables, views, sequences and synonyms.</li>
+        <li>Developed SQL*Loader and PL/SQL scripts for ingesting data from external sources.</li>
+        <li>Performed bug analysis and debugging; integrated C++ modules with Python scripts for real-time transaction flows.</li>
+        <li>Used makefile, gcc and gdb for compile and debug activities.</li>
+      </ul><p class="env">Environment: Python, C++, MySQL, Oracle, Netezza, GitHub</p></div>
+    <div class="job"><div class="job-head"><h3>Analyst Programmer <span class="job-org">&middot; CalydonTech</span></h3><span class="job-date">Mar 2008 &ndash; Mar 2010</span></div>
+      <ul>
+        <li>Designed and implemented GSM communication workflows for mobile communication use cases.</li>
+        <li>Contributed to database design and implementation, including table and view creation based on data models.</li>
+        <li>Prepared UI and functional documentation and maintained project data documentation standards.</li>
+        <li>Created, modified and maintained GIS datasets for engineering and survey initiatives.</li>
+        <li>Collaborated with technicians and analysts on project support, data processing and visualization requests.</li>
+        <li>Maintained desktop geospatial datasets with QA/QC focus on data accuracy and content quality.</li>
+      </ul><p class="env">Environment: Oracle, Keil C</p></div>
+  </section>
 
-            <div class="role">
-                <h3>R&D Project | Data Observability and Agentic AI</h3>
-                <p class="timeline">Jan 2025 - Present</p>
-                <ul>
-                    <li>Drive research initiatives in data observability and AI-enabled operations across enterprise data platforms.</li>
-                    <li>Develop and validate Power BI MCP and migration accelerator patterns for BI modernization programs.</li>
-                    <li>Lead Dynatrace-based observability implementation for end-to-end tracing of AI agent workflows and chat interactions.</li>
-                    <li>Design traceability frameworks covering user interactions, LLM requests/responses, tool invocation flows, and multi-agent execution paths.</li>
-                </ul>
-            </div>
+  <section class="section" aria-labelledby="cert">
+    <h2 id="cert">Certifications</h2>
+    <ul class="cert-list"><li>Post Graduate Program in Data Engineering<small>NIELIT &middot; Nov 2023</small></li><li>BigQuery for Big Data Engineers: Master BigQuery Internals<small>Udemy &middot; Oct 2023</small></li><li>Go (Basic)<small>HackerRank &middot; Mar 2023</small></li><li>Go: The Complete Developer&rsquo;s Guide (Golang)<small>Udemy &middot; Aug 2022</small></li><li>The Complete Splunk Beginner Course 2022<small>Udemy &middot; May 2022</small></li></ul>
+    <details class="certs"><summary>Show all other certifications</summary><ul class="cert-list"><li>Programming in C++ Certification<small>Udemy &middot; Feb 2022</small></li><li>Data Analysis using Python Level 2<small>Mettl &middot; Jun 2021</small></li><li>Docker Workshop<small>Mettl &middot; Apr 2021</small></li><li>Machine Learning Level 1<small>Mettl &middot; Apr 2021</small></li><li>Python Basics<small>Mettl &middot; Mar 2021</small></li><li>Deploying Applications - GCP<small>Coursera &middot; Aug 2019</small></li><li>Kubernetes in the Google Cloud<small>Coursera &middot; Aug 2019</small></li><li>Application Development - Python<small>Coursera &middot; Aug 2019</small></li><li>App Deployment, Debugging, and Performance<small>Coursera &middot; Aug 2019</small></li><li>Securing and Integrating Components of your Application<small>Coursera &middot; Aug 2019</small></li><li>Getting Started With Application Development<small>Coursera &middot; Jun 2019</small></li><li>Google Cloud Platform Fundamentals: Core Infrastructure<small>Coursera &middot; Jul 2019</small></li></ul></details>
+  </section>
 
-            <div class="role">
-                <h3>The Home Depot | Consultant Data Engineer</h3>
-                <p class="timeline">Jun 2023 - Dec 2024</p>
-                <ul>
-                    <li>Built and supported Apache Airflow DAGs and Python tasks for fulfillment, customer, and core data workflows.</li>
-                    <li>Troubleshot production issues, coordinated fixes, and supported deployment readiness.</li>
-                    <li>Used monitoring and performance analysis to improve pipeline reliability and response time.</li>
-                    <li>Participated in standups, design sessions, story grooming, retrospectives, and cross-team delivery coordination.</li>
-                    <li>Prepared deployment documentation and troubleshooting guides to support faster issue resolution and knowledge transfer.</li>
-                </ul>
-            </div>
-
-            <div class="role">
-                <h3>PayPal | Consultant Software Developer</h3>
-                <p class="timeline">Jan 2022 - Jan 2023</p>
-                <ul>
-                    <li>Executed application refactoring and change requests across C++, Python, shell scripting, and PL/SQL.</li>
-                    <li>Provided production hot-fix support and delivered quality improvements through code reviews.</li>
-                    <li>Designed and optimized Oracle SQL/PLSQL routines and Python scripts for data extraction, transformation, and process automation.</li>
-                    <li>Monitored application performance against KPIs and supported enhancements across development, testing, and production lifecycles.</li>
-                </ul>
-            </div>
-
-            <div class="role">
-                <h3>StateStreet | Consultant</h3>
-                <p class="timeline">Oct 2016 - Dec 2021</p>
-                <ul>
-                    <li>Automated interfaces using Python and PowerShell, and managed build/deploy/test cycles for change requests.</li>
-                    <li>Supported production monitoring and incident handling for data workflows and dependent systems.</li>
-                    <li>Collaborated with SMEs to gather business requirements and translate them into executable process flows.</li>
-                    <li>Enforced development best practices including code reviews and unit testing to maintain engineering quality.</li>
-                </ul>
-            </div>
-
-            <p class="small"><strong>Additional Atos client history:</strong> StateStreet (Sr. Analyst, 2013 - 2016) and PayPal (Software Engineer, 2012 - 2013), with responsibilities spanning Teradata utilities (BTEQ, MLoad, FLoad), database object creation, SQL/PLSQL development, shell-based automation, data quality checks, and enterprise data delivery support.</p>
-
-            <div class="role">
-                <h3>Global Analytics | Software Engineer</h3>
-                <p class="timeline">Mar 2010 - Mar 2012</p>
-                <ul>
-                    <li>Worked with business analysts to translate requirements into technical implementations and complex SQL-based solutions.</li>
-                    <li>Developed functions, procedures, and complex queries across Netezza SQL, MySQL, and Oracle environments.</li>
-                    <li>Created and maintained database objects such as tables, views, sequences, and synonyms.</li>
-                    <li>Developed SQL-Loader and PL/SQL scripts for ingesting data from external sources.</li>
-                    <li>Performed bug analysis and debugging; integrated C++ modules with Python scripts for real-time transaction flows.</li>
-                    <li>Used makefile, gcc, and gdb tooling for compile/debug activities.</li>
-                </ul>
-                <p class="small"><strong>Environment:</strong> Python, C++, MySQL, Oracle, Netezza, Github</p>
-            </div>
-
-            <div class="role">
-                <h3>CalydonTech | Analyst Programmer</h3>
-                <p class="timeline">Mar 2008 - Mar 2010</p>
-                <ul>
-                    <li>Designed and implemented GSM communication workflows for mobile communication use cases.</li>
-                    <li>Contributed to database design and implementation, including table and view creation based on data models.</li>
-                    <li>Prepared UI and functional documentation and maintained project data documentation standards.</li>
-                    <li>Created, modified, and maintained GIS datasets for engineering and survey initiatives.</li>
-                    <li>Collaborated with technicians and analysts on project support, data processing, and visualization requests.</li>
-                    <li>Maintained desktop geospatial datasets with QA/QC focus on data accuracy and content quality.</li>
-                </ul>
-                <p class="small"><strong>Environment:</strong> Oracle, Keil C</p>
-            </div>
-        </div>
-
-        <div class="section two-col">
-            <div>
-                <h2>Certifications</h2>
-                <ul>
-                    <li>Post Graduate Program in Data Engineering - NIELIT (Issued Nov 2023)</li>
-                    <li>BigQuery for Big Data Engineers: Master BigQuery Internals - Udemy (Issued Oct 2023, Credential ID: UC-afcc8980-197d-4a77-8020-2b196501c4fd)</li>
-                    <li>Go (Basic) - HackerRank (Issued Mar 2023, Credential ID: 33a5ff20f7c3)</li>
-                    <li>Go: The Complete Developer's Guide (Golang) - Udemy (Issued Aug 2022, Credential ID: UC-a92652ea-6d78-4dc1-95c8-bab776d3961e)</li>
-                    <li>The Complete Splunk Beginner Course 2022 - Udemy (Issued May 2022, Credential ID: UC-a67cf037-fbe2-40a7-a841-9a0c39b7d0e1)</li>
-                </ul>
-                <details class="cert-toggle">
-                    <summary>Show all other certifications</summary>
-                    <ul>
-                        <li>Programming in C++ Certification - Udemy (Issued Feb 2022, Credential ID: c03d8c4d-d362-47bf-9d1e-49dacddb9850)</li>
-                        <li>Data Analysis using Python Level 2 - Mettl (Issued Jun 2021)</li>
-                        <li>Docker Workshop - Mettl (Issued Apr 2021)</li>
-                        <li>Machine Learning Level 1 - Mettl (Issued Apr 2021)</li>
-                        <li>Python Basics - Mettl (Issued Mar 2021)</li>
-                        <li>Deploying Applications - GCP - Coursera (Issued Aug 2019)</li>
-                        <li>Kubernetes in the Google Cloud - Coursera (Issued Aug 2019)</li>
-                        <li>Application Development - Python - Coursera (Issued Aug 2019)</li>
-                        <li>App Deployment, Debugging, and Performance - Coursera (Issued Aug 2019, Credential ID: 9JU5KVT5WSQK)</li>
-                        <li>Securing and Integrating Components of your Application - Coursera (Issued Aug 2019, Credential ID: EX54Y7PFLM)</li>
-                        <li>Getting Started With Application Development - Coursera (Issued Jun 2019, Credential ID: 4F34P7E34M44)</li>
-                        <li>Google Cloud Platform Fundamentals: Core Infrastructure - Coursera (Issued Jul 2019, Credential ID: KJX7P49N7GZ3)</li>
-                    </ul>
-                </details>
-            </div>
-            <div>
-                <h2>Education</h2>
-                <p><strong>Bachelor Degree in Computer Science</strong></p>
-                <p class="small">Shri Andal Alagar College of Engineering (2004 - 2008)</p>
-                <h2>Language</h2>
-                <p class="small">Tamil, English</p>
-            </div>
-        </div>
-    </main>
+  <section class="section" aria-labelledby="edu">
+    <h2 id="edu">Education and languages</h2>
+    <p><strong>Bachelor Degree in Computer Science</strong><br><span class="muted">Shri Andal Alagar College of Engineering, 2004 &ndash; 2008</span></p>
+    <p class="muted">Languages: Tamil, English</p>
+  </section>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 Vinodraj Jayaraman &middot; Chennai, India</span>
+    <span><a href="https://github.com/jvinodraj" target="_blank" rel="noopener noreferrer">GitHub</a> &middot; <a href="https://www.linkedin.com/in/vinodrajj/" target="_blank" rel="noopener noreferrer">LinkedIn</a> &middot; <a href="mailto:vinodraj.j@gmail.com">Email</a></span>
+  </div>
+</footer>
 </body>
 </html>

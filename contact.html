@@ -1,112 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Vinodraj Jayaraman</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2722%27 fill=%27%230f766e%27/%3E%3Ctext x=%2750%27 y=%2768%27 font-size=%2760%27 text-anchor=%27middle%27 fill=%27white%27 font-family=%27Georgia,serif%27%3EVJ%3C/text%3E%3C/svg%3E">
-    <link rel="canonical" href="https://jvinodraj.github.io/contact.html">
-    <meta property="og:title" content="Contact | Vinodraj Jayaraman">
-    <meta property="og:description" content="Contact information for Vinodraj Jayaraman.">
-    <meta property="og:url" content="https://jvinodraj.github.io/contact.html">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary">
-    <meta name="description" content="Contact information for Vinodraj Jayaraman.">
-    <style>
-        :root {
-            --bg: #f7f8f3;
-            --surface: #ffffff;
-            --ink: #132023;
-            --muted: #4b5f63;
-            --brand: #0f766e;
-            --line: #d8dfdb;
-            --radius: 14px;
-        }
-        * { box-sizing: border-box; }
-        body {
-            margin: 0;
-            font-family: "Segoe UI", "Trebuchet MS", sans-serif;
-            color: var(--ink);
-            background: var(--bg);
-        }
-        .container { width: min(980px, 92vw); margin: 0 auto; }
-        header { border-bottom: 1px solid var(--line); background: #fff; }
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; }
-        .links { display: flex; gap: 0.9rem; flex-wrap: wrap; }
-        .links a { text-decoration: none; color: var(--muted); font-weight: 600; }
-        .links a:hover { color: var(--brand); }
-        main { padding: 2.5rem 0; }
-        .panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem; }
-        .button {
-            display: inline-block;
-            margin-top: 0.8rem;
-            text-decoration: none;
-            font-weight: 700;
-            background: var(--brand);
-            color: #fff;
-            border-radius: 10px;
-            padding: 0.58rem 0.9rem;
-        }
-    
-        @media (max-width: 600px) {
-            nav { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
-            .links { gap: 0.6rem; }
-            h1 { font-size: 1.6rem; }
-            .container { padding-left: 1rem; padding-right: 1rem; }
-        }
-    </style>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8DNMPT9Z2Q"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      
-      // Generate or retrieve unique user ID
-      function getUserId() {
-        const storageName = 'ga_user_id';
-        let userId = localStorage.getItem(storageName);
-        
-        if (!userId) {
-          // Generate UUID v4
-          userId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-            var r = Math.random() * 16 | 0,
-                v = c === 'x' ? r : (r & 0x3 | 0x8);
-            return v.toString(16);
-          });
-          localStorage.setItem(storageName, userId);
-        }
-        return userId;
-      }
-      
-      gtag('js', new Date());
-      gtag('config', 'G-8DNMPT9Z2Q', {
-        'user_id': getUserId()
-      });
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Contact | Vinodraj Jayaraman</title>
+<meta name="description" content="Contact Vinodraj Jayaraman for collaboration on data engineering, data observability and agentic AI.">
+<link rel="canonical" href="https://jvinodraj.github.io/contact.html">
+<meta property="og:title" content="Contact | Vinodraj Jayaraman">
+<meta property="og:description" content="Contact Vinodraj Jayaraman for collaboration on data engineering, data observability and agentic AI.">
+<meta property="og:url" content="https://jvinodraj.github.io/contact.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#0f766e">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/analytics.js" defer></script>
+<script src="assets/site.js" defer></script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <nav>
-                <strong>Vinodraj Jayaraman</strong>
-                <div class="links">
-                    <a href="index.html">Home</a>
-                    <a href="about.html">About</a>
-                    <a href="projects.html">Projects</a>
-                    <a href="blog.html">Blog</a>
-                    <a href="resume.html">Resume</a>
-                </div>
-            </nav>
-        </div>
-    </header>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">Vinodraj Jayaraman</a>
+    <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="projects.html">Projects</a></li><li><a href="blog.html">Blog</a></li><li><a href="resume.html">Resume</a></li><li><a href="contact.html" aria-current="page">Contact</a></li></ul>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">&#9680;</button>
+  </div>
+</header>
+<main id="main">
 
-    <main class="container">
-        <h1>Contact</h1>
-        <div class="panel">
-            <p>If you would like to collaborate on Agentic AI, data platform engineering, or analytics product work, feel free to connect through GitHub.</p>
-            <p>Email: <a href="mailto:vinodraj.j@gmail.com">vinodraj.j@gmail.com</a></p>
-            <a class="button" href="https://github.com/jvinodraj" target="_blank" rel="noopener noreferrer">Visit GitHub</a>
-        </div>
-    </main>
+<div class="wrap">
+  <header class="page-head">
+    <p class="eyebrow">Contact</p>
+    <h1>Get in touch</h1>
+    <p class="lead">For collaboration, consulting or engineering conversations on data engineering, observability and agentic AI.</p>
+  </header>
+  <section class="section">
+    <div class="grid">
+      <article class="card"><h3>Email</h3><p><a href="mailto:vinodraj.j@gmail.com">vinodraj.j@gmail.com</a></p></article>
+      <article class="card"><h3>LinkedIn</h3><p><a href="https://www.linkedin.com/in/vinodrajj/" target="_blank" rel="noopener noreferrer">linkedin.com/in/vinodrajj</a></p></article>
+      <article class="card"><h3>GitHub</h3><p><a href="https://github.com/jvinodraj" target="_blank" rel="noopener noreferrer">github.com/jvinodraj</a></p></article>
+    </div>
+  </section>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 Vinodraj Jayaraman &middot; Chennai, India</span>
+    <span><a href="https://github.com/jvinodraj" target="_blank" rel="noopener noreferrer">GitHub</a> &middot; <a href="https://www.linkedin.com/in/vinodrajj/" target="_blank" rel="noopener noreferrer">LinkedIn</a> &middot; <a href="mailto:vinodraj.j@gmail.com">Email</a></span>
+  </div>
+</footer>
 </body>
 </html>
